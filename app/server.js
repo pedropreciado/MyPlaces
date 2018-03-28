@@ -2,11 +2,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const User = require("./models/user");
 
 var app = express();
 var router = express.Router();
 
 var port = process.env.API_PORT || 3001;
+
+mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -24,6 +27,39 @@ app.use(function(req, res, next) {
 router.get("/", (req, res) => {
   res.json({ message: 'API Initialized' });
 });
+
+router.route("/users")
+  .get((req, res) => {
+    User.find((err, users) => {
+      if (err)
+      res.send(err);
+      res.json(users)
+    });
+  })
+  .post((req, res) => {
+    let user = new User();
+
+    if (req.body.username &&
+        req.body.password &&
+        req.body.passwordConf) {
+
+          let userData = {
+            username: req.body.username,
+            password: req.body.password,
+            passwordConf: req.body.passwordConf,
+          }
+
+          User.create(userData, (err, user) => {
+            if (err) {
+              return next(err);
+            } else {
+              return res.redirect('profile');
+            }
+          });
+        }
+  })
+
+
 
 app.use('/api', router);
 
