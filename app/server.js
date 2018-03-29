@@ -55,12 +55,16 @@ router.route("/users")
           }
 
           User.create(userData, (err, user, next) => {
+            console.log("hello");
             if (err) {
-              return next(err);
+              console.log("POST user failed");
+              console.log(err);
+              // res.send(err);
             } else {
               console.log("User created!");
-              return res.json("yes");
+              res.json(user);
             }
+            return;
           });
         }
   })
