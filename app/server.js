@@ -63,19 +63,54 @@ router.route("/users")
           }
 
           User.create(userData, (err, user, next) => {
-            console.log("hello");
             if (err) {
               console.log("POST user failed");
               console.log(err);
               res.send(err);
             } else {
               console.log("User created!");
+              req.session.userId = user._id;
               res.json(user);
             }
             return;
           });
+
+        } else if (req.body.logemail && req.body.logpassword) {
+
+          User.authenticate(req.body.logemail, req.body.logpassword, (error, user) => {
+            if (error || !user) {
+              var err = new Error("Wrong email or password");
+              err.status = 401;
+              return next(err);
+            } else {
+              req.session.userId  = user._id;
+              console.log("Logged in!");
+              // return res.redirect("/profile")
+              return;
+            }
+          })
+
+        } else {
+
+          let err = new Error('All fields required');
+          err.status = 400;
+          return next(err);
+
         }
   })
+
+
+router.get("/logout", (req, res) => {
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
+})
 
 
 
