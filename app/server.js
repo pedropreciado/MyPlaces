@@ -2,6 +2,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+
 const User = require("./models/user");
 
 var app = express();
@@ -23,6 +25,12 @@ app.use(function(req, res, next) {
  res.setHeader('Cache-Control', 'no-cache');
  next();
 });
+
+app.use(session({
+  secret: 'word hard',
+  resave: true,
+  saveUninitialized: false
+}));
 
 router.get("/", (req, res) => {
   res.json({ message: 'API Initialized' });
@@ -59,7 +67,7 @@ router.route("/users")
             if (err) {
               console.log("POST user failed");
               console.log(err);
-              // res.send(err);
+              res.send(err);
             } else {
               console.log("User created!");
               res.json(user);
