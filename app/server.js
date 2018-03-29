@@ -30,6 +30,9 @@ router.get("/", (req, res) => {
 
 router.route("/users")
   .get((req, res) => {
+
+    console.log("GET users requested");
+
     User.find((err, users) => {
       if (err)
       res.send(err);
@@ -38,6 +41,8 @@ router.route("/users")
   })
   .post((req, res) => {
     let user = new User();
+
+    console.log("POST user requested");
 
     if (req.body.username &&
         req.body.password &&
@@ -49,11 +54,12 @@ router.route("/users")
             passwordConf: req.body.passwordConf,
           }
 
-          User.create(userData, (err, user) => {
+          User.create(userData, (err, user, next) => {
             if (err) {
               return next(err);
             } else {
-              return res.redirect('profile');
+              console.log("User created!");
+              return res.json("yes");
             }
           });
         }
