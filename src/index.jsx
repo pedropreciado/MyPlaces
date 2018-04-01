@@ -1,8 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "../dist/components/app";
 
 ReactDOM.render(
-  <div>Sup</div>,
+  <App />,
   document.getElementById("app")
 );
 
