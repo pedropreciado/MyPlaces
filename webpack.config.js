@@ -1,3 +1,4 @@
+const path = require("path");
 const webpack = require("webpack");
 
 module.exports = {
@@ -18,9 +19,9 @@ module.exports = {
      extensions: ['*', '.js', '.jsx']
    },
   output: {
-    path: __dirname + '/dist',
-    publicPath: '/',
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
