@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const getPlaceData = (name) => {
+const fetchPlaceData = (name) => {
   let key = 'AIzaSyAuID19sxhCthckUbYSJLihvs9daXytRag';
   let res;
 

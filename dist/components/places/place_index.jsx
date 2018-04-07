@@ -2,7 +2,7 @@ import React from 'react';
 import PlaceIndexItem from './place_index_item';
 
 class PlaceIndex extends React.Component {
-  contructor(props) {
+  constructor(props) {
     super(props);
   }
 
@@ -15,3 +15,5 @@ class PlaceIndex extends React.Component {
     )
   }
 }
+
+export default PlaceIndex;
