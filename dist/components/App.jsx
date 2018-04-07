@@ -1,34 +1,17 @@
 import React from 'react';
 import getPlaceData from '../utils/google_api_util';
+import PlaceIndexContainer from './places/place_index_container';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  handleClick = () => {
-    console.log('req sent');
-
-    getPlaceData("Philz coffee")
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log("ERROR");
-        console.log(err);
-      })
-
-  }
-
   render() {
     return (
-      <h1>
-        <button
-          onClick={this.handleClick}
-          >
-          press
-        </button>
-      </h1>
+      <Provider store={ store }>
+        <PlaceIndexContainer>
+      </Provider>
     )
   }
 }
