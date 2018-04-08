@@ -1,4 +1,4 @@
-import * as GoogleApiUtil from '../util/google_api_util';
+import * as GoogleApiUtil from '../utils/google_api_util';
 
 export const RECEIVE_PLACE_DATA = 'RECEIVE_PLACE_DATA';
 export const RECEIVE_PLACE_IDS = 'RECEIVE_PLACE_IDS';

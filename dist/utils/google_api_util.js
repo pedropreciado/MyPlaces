@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const fetchPlaceData = (name) => {
+export const fetchPlaceData = (name) => {
   let key = 'AIzaSyAuID19sxhCthckUbYSJLihvs9daXytRag';
   let res;
 
@@ -21,7 +21,7 @@ const fetchPlaceData = (name) => {
       url: `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}&`,
       headers: {
         'Access-Control-Allow-Origin': '*',
-         'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Credentials': true,
         'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT,DELETE,OPTIONS',
         'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
       },
@@ -40,5 +40,3 @@ const fetchPlaceData = (name) => {
 //   .catch((err) => {
 //     console.log(err);
 //   })
-
-module.exports = getPlaceData;

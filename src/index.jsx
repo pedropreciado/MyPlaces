@@ -1,10 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "../dist/components/app";
+import configureStore from "../dist/store/store";
 
-ReactDOM.render(
-  <App />,
-  document.getElementById("app")
-);
+document.addEventListener("DOMContentLoaded", () => {
+  let store = configureStore();
+
+  ReactDOM.render(
+    <App />,
+    document.getElementById("app")
+  );
+
+
+})
+
 
 module.hot.accept();
