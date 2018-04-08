@@ -1,7 +1,7 @@
 let express = require('express');
 const router = express.Router();
 const Place = require('../models/place');
-import 'lodash/merge' from "lodash";
+const { merge } = require('lodash');
 const key = 'AIzaSyAuID19sxhCthckUbYSJLihvs9daXytRag';
 
 router.route('/places')
@@ -50,6 +50,7 @@ router.route('/favorites')
     )
     .then((response) => {
       console.log(response);
-
     })
   })
+
+module.exports = router;

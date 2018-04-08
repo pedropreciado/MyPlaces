@@ -6,7 +6,7 @@ const PlaceSchema = new mongoose.Schema({
     required: true
   },
   name: {
-    String:,
+    type: String,
     required: true
   },
   open: {

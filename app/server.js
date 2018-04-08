@@ -6,10 +6,12 @@ const session = require("express-session");
 
 // ******************************************* routes
 
-const users = require("./api/users");
-
+const usersRouter = require("./api/users");
+const placesRouter = require('./api/places');
 // ******************************************* models
+
 const User = require("./models/user");
+const Place = require('./models/place');
 
 var app = express();
 var router = express.Router();
@@ -40,7 +42,9 @@ app.use(session({
   saveUninitialized: false
 }));
 
-app.use("/api", users);
+app.use("/api", usersRouter);
+app.use('/api', placesRouter);
+
 
 router.get("/", (req, res) => {
   res.json({ message: 'API Initialized' });
