@@ -2,18 +2,19 @@ let express = require('express');
 const router = express.Router();
 const Place = require('../models/place');
 import 'lodash/merge' from "lodash";
-
+const key = 'AIzaSyAuID19sxhCthckUbYSJLihvs9daXytRag';
 
 router.route('/places')
   .get((req, res) => {
     let params = {
       name: req.body.name,
       location: req.body.location,
-      rankby: 'prominence'
+      rankby: 'prominence',
+      key
     }
 
-    axios(
-      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}&`,
+    axios.get(
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json`,
       params
     )
     .then((response) => {
@@ -37,5 +38,18 @@ router.route('/favorites')
   })
   .post((req, res) => {
     let place = new Place();
-    
+
+    let params = {
+      placeid: req.body.placeid,
+      key
+    }
+
+    axios.get(
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?`,
+      params
+    )
+    .then((response) => {
+      console.log(response);
+
+    })
   })

@@ -1,7 +1,6 @@
 const axios = require("axios");
 
 export const fetchPlaceData = (name) => {
-  let key = 'AIzaSyAuID19sxhCthckUbYSJLihvs9daXytRag';
   let res;
 
   window.navigator.geolocation.getCurrentPosition((pos) => {
