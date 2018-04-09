@@ -20,7 +20,7 @@ const nodeColors = {
   'yellowbg': "\x1b[43m",
   'bluebg': "\x1b[44m",
   'magentabg': "\x1b[45m",
-  'cyan': "\x1b[46m",
+  'cyanbg': "\x1b[46m",
   'whitebg': "\x1b[47m"
 }
 

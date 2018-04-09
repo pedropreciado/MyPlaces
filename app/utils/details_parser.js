@@ -1,14 +1,19 @@
-function getDetails({ result }) {
+const Flag = require('./node_colors');
+
+function getDetails(res) {
+  console.log(Flag.red, Object.keys(res.data));
+  let result = res.data.result;
+
   let adrObj = {}
 
   result.address_components.forEach((comp) => {
     adrObj[comp.types[0]] = comp.short_name
   })
 
-  let address = adrObj['street_number'] +
-                adrObj['route'] +
-                adrObj['locality'] +
-                adrObj['administrative_area_level_1'] +
+  let address = adrObj['street_number'] + ' ' +
+                adrObj['route'] + ' ' +
+                adrObj['locality'] + ', ' +
+                adrObj['administrative_area_level_1'] + ' ' +
                 adrObj['postal_code']
 
   return {
