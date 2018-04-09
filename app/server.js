@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const NodeColors = require('./utils/node_colors');
 
 // ******************************************* routes
 
@@ -67,5 +68,5 @@ router.get("/logout", (req, res) => {
 app.use('/api', router);
 
 app.listen(port, () => {
-  console.log('api running on port: ', port);
+  console.log(NodeColors.green, 'api running on port: ', port);
 });
