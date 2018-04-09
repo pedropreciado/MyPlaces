@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const PlaceSchema = new mongoose.Schema({
-  place_id: {
+  placeid: {
     type: String,
     required: true
   },
@@ -9,8 +9,16 @@ const PlaceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  open: {
+  isOpen: {
     type: Boolean
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  phoneNumber: {
+    type: String,
+    required: true
   }
 });
 
