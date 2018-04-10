@@ -7,6 +7,7 @@ const axios = require('axios');
 const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('../utils/node_colors');
 const extractDetails = require('../utils/details_parser');
+const getBusyHours = require('busy-hours');
 
 router.route('/places')
   .get((req, res) => {
@@ -46,13 +47,14 @@ router.route('/favorites')
 
     Place.find((err, places) => {
       if (err)
-      res.send();
+      console.log(Flag.red, err);
+      console.log('PLaces: ', places);
       res.json(places);
     });
   })
   .post((req, res) => {
 
-    console.log(Flag.red, req.query.placeid);
+    console.log(Flag.green, 'POST Place requested!');
 
     axios.get(
       'https://maps.googleapis.com/maps/api/place/details/json?' +
@@ -60,9 +62,11 @@ router.route('/favorites')
       `&key=${key}`
     )
     .then((response) => {
-      console.log(Flag.green, 'SUCCESS!');
+      console.log(Flag.green, 'Response from Google success!');
 
       let place = new Place(extractDetails(response));
+
+      console.log(Flag.green, 'Details extracted!');
 
       place.save((err) => {
         if (err)

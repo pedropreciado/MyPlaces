@@ -9,10 +9,17 @@ const NodeColors = require('./utils/node_colors');
 
 const usersRouter = require("./api/users");
 const placesRouter = require('./api/places');
+
 // ******************************************* models
 
 const User = require("./models/user");
 const Place = require('./models/place');
+
+// ******************************************* utils
+
+const getBusyHours = require('./utils/getBusy');
+
+
 
 var app = express();
 var router = express.Router();

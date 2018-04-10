@@ -1,9 +1,7 @@
 const Flag = require('./node_colors');
 
-function getDetails(res) {
-  console.log(Flag.red, Object.keys(res.data));
-  let result = res.data.result;
-
+function getDetails({ data: { result } }) {
+  console.log(Flag.red, 'extracting details...');
   let adrObj = {}
 
   result.address_components.forEach((comp) => {
@@ -19,7 +17,7 @@ function getDetails(res) {
   return {
     placeid: result.place_id,
     name: result.name,
-    isOpen: result.open_now,
+    isOpen: result.opening_hours.open_now,
     address,
     phoneNumber: result.international_phone_number.slice(3)
   }

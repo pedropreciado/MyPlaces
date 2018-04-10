@@ -19,8 +19,11 @@ const PlaceSchema = new mongoose.Schema({
   phoneNumber: {
     type: String,
     required: true
+  },
+  busyHours: {
+    type: String
   }
-});
+}); 
 
 const Place = mongoose.model('Place', PlaceSchema);
 
