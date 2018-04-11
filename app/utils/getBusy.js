@@ -4,28 +4,22 @@ const Flag = require('./node_colors');
 const Place = require('../models/place');
 
 async function getBusyHours() {
-  let placesLeft = places.length;
   let completed = 0;
 
   let places = await Place.find((err, places) => {
     if (err)
     console.log(Flag.red, err);
-    console.log(places);
-
-    res.json(places);
   })
-  
+
   for (var place of places) {
     console.log(Flag.red, `Getting busy hours for: ${place.name}`);
 
-    let data = await BusyHours(place.placeid, key);
+    let busyHourData = await BusyHours(place.placeid, key);
     console.log(Flag.green, `busyHours recieved for: ${place.name}`);
 
-    let query = await Place.findById(place._id);
-
-    query['busyHours'] = data;
-
-    query.save((err) => {
+    let placeDocument = await Place.findById(place._id);
+    placeDocument['busyHours'] = busyHourData;
+    placeDocument.save((err) => {
       if (err)
       console.log(Flag.red, err);;
     })
@@ -34,7 +28,7 @@ async function getBusyHours() {
     completed++
   }
 
-  console.log(Flag.green, `Set busy hours for ${completed}/${places.length} places!!`);
+  console.log(Flag.blue, `Saved ${completed}/${places.length}`);
 }
 
 module.exports = getBusyHours;

@@ -42,19 +42,18 @@ router.route('/places')
 
 router.route('/favorites')
   .get((req, res) => {
-    console.log('GET ALL PLACES REQUESTED!');
+    console.log(Flag.blue, 'GET ALL PLACES REQUESTED!');
 
     Place.find((err, places) => {
       if (err)
       console.log(Flag.red, err);
-      console.log(places);
 
       res.json(places);
     });
   })
   .post((req, res) => {
 
-    console.log(Flag.green, 'POST Place requested!');
+    console.log(Flag.blue, 'POST PLACE REQUESTED!');
 
     axios.get(
       'https://maps.googleapis.com/maps/api/place/details/json?' +

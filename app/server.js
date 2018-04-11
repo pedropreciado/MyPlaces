@@ -18,12 +18,13 @@ const Place = require('./models/place');
 // ******************************************* utils
 
 const getBusyHours = require('./utils/getBusy');
+const Flag = require('./utils/node_colors');
 
 setInterval(() => {
   console.log(Flag.red, 'Getting all busy hours!');
   getBusyHours();
   console.log(Flag.green, 'Received and saved busyHours!');
-}, 1000 * 60 * 30);
+}, 1000 * 60 * 2);
 
 var app = express();
 var router = express.Router();
@@ -79,5 +80,5 @@ router.get("/logout", (req, res) => {
 app.use('/api', router);
 
 app.listen(port, () => {
-  console.log(NodeColors.green, 'api running on port: ', port);
+  console.log(NodeColors.green, 'myPlaces api running on port: ', port);
 });
