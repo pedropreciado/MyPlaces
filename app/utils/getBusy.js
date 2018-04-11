@@ -5,25 +5,28 @@ const Place = require('../models/place');
 
 async function getBusyHours(places) {
   let placesLeft = places.length;
+  let completed = 0;
 
   for (var place of places) {
     console.log(Flag.red, `Getting busy hours for: ${place.name}`);
 
     let data = await BusyHours(place.placeid, key);
-
     console.log(Flag.green, `busyHours recieved for: ${place.name}`);
-    let dataString = JSON.stringify(data);
 
     let query = await Place.findById(place._id);
 
-    query['busyHours'] = dataString;
+    query['busyHours'] = data;
+
     query.save((err) => {
       if (err)
       console.log(Flag.red, err);;
     })
 
     console.log(Flag.green, `busyHours added to: ${query.name}`);
+    completed++
   }
+
+  console.log(Flag.green, `Set busy hours for ${completed}/${places.length} places!!`);
 }
 //
 getBusyHours([

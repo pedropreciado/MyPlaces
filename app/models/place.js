@@ -21,9 +21,9 @@ const PlaceSchema = new mongoose.Schema({
     required: true
   },
   busyHours: {
-    type: String
+    type: Object
   }
-}); 
+});
 
 const Place = mongoose.model('Place', PlaceSchema);
 
