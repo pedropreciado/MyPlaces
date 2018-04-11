@@ -19,7 +19,11 @@ const Place = require('./models/place');
 
 const getBusyHours = require('./utils/getBusy');
 
-
+setInterval(() => {
+  console.log(Flag.red, 'Getting all busy hours!');
+  getBusyHours();
+  console.log(Flag.green, 'Received and saved busyHours!');
+}, 1000 * 60 * 30);
 
 var app = express();
 var router = express.Router();
