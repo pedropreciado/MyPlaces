@@ -23,7 +23,6 @@ const Flag = require('./utils/node_colors');
 setInterval(() => {
   console.log(Flag.red, 'Getting all busy hours!');
   getBusyHours();
-  console.log(Flag.green, 'Received and saved busyHours!');
 }, 1000 * 60 * 2);
 
 var app = express();

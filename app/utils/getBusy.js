@@ -28,7 +28,8 @@ async function getBusyHours() {
     completed++
   }
 
-  console.log(Flag.blue, `Saved ${completed}/${places.length}`);
+  console.log(Flag.blue, `Saved ${completed}/${places.length} places!`);
+  console.log(Flag.green, 'Received and saved busyHours!');
 }
 
 module.exports = getBusyHours;
