@@ -24,7 +24,7 @@ async function getBusyHours() {
       console.log(Flag.red, err);;
     })
 
-    console.log(Flag.green, `busyHours added to: ${query.name}`);
+    console.log(Flag.green, `busyHours added to: ${placeDocument.name}`);
     completed++
   }
 
