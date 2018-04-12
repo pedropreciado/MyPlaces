@@ -21,21 +21,13 @@ const getBusyHours = require('./utils/getBusy');
 const Flag = require('./utils/node_colors');
 
 
-
-
-
-
 // ******************************************* getBusyHours interval
 // ******************************************* (set for 2 min!)
-// 
+//
 // setInterval(() => {
 //   console.log(Flag.red, 'Getting all busy hours!');
 //   getBusyHours();
 // }, 1000 * 60 * 60);
-
-
-
-
 
 
 
@@ -58,7 +50,7 @@ app.use(function(req, res, next) {
    'Access-Control-Allow-Headers',
    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
 );
-//and remove cacheing so we get the most recent comments
+
  res.setHeader('Cache-Control', 'no-cache');
  next();
 });
@@ -89,7 +81,6 @@ router.get("/logout", (req, res) => {
     });
   }
 })
-
 
 app.use('/api', router);
 

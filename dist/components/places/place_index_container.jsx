@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 import { fetchFavorites } from "../../actions/place_actions";
 
 const mapStateToProps = (state) => {
+
+  let places = Object.keys(state.places).map((id) => {
+    return state.places[id]
+  })
+
   return {
-    places: state.places
+    places
   }
 }
 

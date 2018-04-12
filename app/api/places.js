@@ -42,12 +42,13 @@ router.route('/places')
 
 router.route('/favorites')
   .get((req, res) => {
-    console.log(Flag.blue, 'GET ALL PLACES REQUESTED!');
+    console.log(Flag.blue, 'FETCHING FAVORITE PLACES!');
 
     Place.find((err, places) => {
       if (err)
       console.log(Flag.red, err);
 
+      console.log(Flag.green, 'FAVORITE PLACES SENT!');
       res.json(places);
     });
   })

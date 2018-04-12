@@ -6,8 +6,7 @@ import merge from 'lodash/merge';
 
 const PlaceReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
-  console.log('oldState: ', oldState);
-  console.log('action: ', action);
+
   switch (action.type) {
     case RECEIVE_SEARCH_RESULTS:
       return merge({}, oldState, action.results);
