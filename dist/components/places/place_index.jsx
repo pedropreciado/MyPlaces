@@ -11,7 +11,6 @@ class PlaceIndex extends React.Component {
   }
 
   render() {
-    console.log('poops: ', this.props);
     if (!this.props.places.length) {
       return (
         <h1>
@@ -20,10 +19,10 @@ class PlaceIndex extends React.Component {
       )
     } else {
       return (
-        <ul>
+        <div className='place-index'>
           {
             this.props.places.map((place) => {
-              
+
               return (
                 <PlaceIndexItem
                   key={place._id}
@@ -32,7 +31,7 @@ class PlaceIndex extends React.Component {
               )
             })
           }
-        </ul>
+        </div>
       )
     }
     }
