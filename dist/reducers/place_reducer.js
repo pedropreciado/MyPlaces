@@ -1,6 +1,21 @@
-import { RECEIVE_PLACE_IDS, RECEIVE_PLACE_DATA } from '../actions/place_actions';
+import {
+  RECEIVE_SEARCH_RESULTS,
+  RECEIVE_FAVORITE_PLACES
+ } from '../actions/place_actions';
 import merge from 'lodash/merge';
 
-const PlaceReducer = (oldState = {}, action) {
-  
+const PlaceReducer = (oldState = {}, action) => {
+  Object.freeze(oldState);
+  console.log('oldState: ', oldState);
+  console.log('action: ', action);
+  switch (action.type) {
+    case RECEIVE_SEARCH_RESULTS:
+      return merge({}, oldState, action.results);
+    case RECEIVE_FAVORITE_PLACES:
+      return merge({}, oldState, action.places);
+    default:
+      return oldState;
+  }
 }
+
+export default PlaceReducer;

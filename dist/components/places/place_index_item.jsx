@@ -1,15 +1,15 @@
 import React from 'react';
 
 class PlaceIndexItem extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <h4>
+      <div>
         place index item
-      </h4>
+      </div>
     )
   }
 }

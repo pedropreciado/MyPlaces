@@ -1,13 +1,20 @@
 const axios = require("axios");
-const BusyHours = require("busy-hours");
 
-const apiKey = "AIzaSyCy5UOTlY-41gJOFQukWYqr2qkDwPqU2-A";
-
-
-export const fetchPlaces = (places) => {
-  return Bus
+export const fetchFavorites = () => {
+  return axios.get({
+    method: 'url',
+    url: '/api/favorites'
+  })
 }
 
-export const fetchPlaceData = (id) => {
-  return BusyHours(id, apiKey);
+export const searchPlaces = (name, location) => {
+  return axios.get(
+    '/api/places',
+    {
+      params: {
+        name,
+        location
+      }
+    }
+  )
 }

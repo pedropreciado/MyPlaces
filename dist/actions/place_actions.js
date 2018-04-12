@@ -1,19 +1,28 @@
-import * as GoogleApiUtil from '../utils/google_api_util';
+import * as PlacesAPIUtil from '../utils/place_api_util';
 
-export const RECEIVE_PLACE_DATA = 'RECEIVE_PLACE_DATA';
-export const RECEIVE_PLACE_IDS = 'RECEIVE_PLACE_IDS';
+export const RECEIVE_FAVORITE_PLACES = 'RECEIVE_FAVORITE_PLACES';
+export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 
-export const fetchPlaceData = (name) => dispatch => (
-  GoogleApiUtil.fetchPlaceData(name)
-    .then((place) => {
-      dispatch(receivePlaceData(place))
-    })
-    .catch((err) => {
-      console.log(err);
-    })
-)
 
-const receivePlaceData = (place) => ({
-  type: RECEIVE_PLACE_DATA,
-  place
-})
+export const fetchFavorites = () => dispatch => {
+  PlacesAPIUtil.fetchFavorites().then((places) => {
+    dispatch(receiveFavoritePlaces(places));
+  })
+}
+
+export const fetchSearchResults = (name, location) => dispatch => {
+  PlaceAPIUtil.fetchSearchResults(name, location).then((results) => {
+    dispatch(receiveSeachResults(results));
+  })
+}
+
+const receiveFavoritePlaces = (places) => ({
+    type: RECEIVE_FAVORITE_PLACES,
+    places
+  });
+
+
+const receiveSearchResults = (results) => ({
+  type: RECEIVE_SEARCH_RESULTS,
+  results
+});

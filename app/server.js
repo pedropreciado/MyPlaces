@@ -20,10 +20,25 @@ const Place = require('./models/place');
 const getBusyHours = require('./utils/getBusy');
 const Flag = require('./utils/node_colors');
 
-setInterval(() => {
-  console.log(Flag.red, 'Getting all busy hours!');
-  getBusyHours();
-}, 1000 * 60 * 2);
+
+
+
+
+
+// ******************************************* getBusyHours interval
+// ******************************************* (set for 2 min!)
+// 
+// setInterval(() => {
+//   console.log(Flag.red, 'Getting all busy hours!');
+//   getBusyHours();
+// }, 1000 * 60 * 60);
+
+
+
+
+
+
+
 
 var app = express();
 var router = express.Router();

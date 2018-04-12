@@ -4,13 +4,13 @@ import { fetchPlaceData } from "../../actions/place_actions";
 
 const mapStateToProps = (state) => {
   return {
-    place: state.place
+    places: state.favorites
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchPlace: (name) => dispatch(fetchPlaceData(name))
+    fetchFavorites: () => console.log('butt')
   }
 }
 
