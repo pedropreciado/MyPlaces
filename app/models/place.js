@@ -20,8 +20,8 @@ const PlaceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  busyHours: {
-    type: Object
+  busyPercentage: {
+    type: Number
   }
 });
 

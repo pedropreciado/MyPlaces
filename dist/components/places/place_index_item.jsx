@@ -7,14 +7,8 @@ class PlaceIndexItem extends React.Component {
   }
 
   render() {
-    let date = new Date();
-
     const place = this.props.place;
     let color;
-
-    let day = Number(date.getUTCDay())
-    let currentHour = date.getHours();
-
 
     if (place.isOpen) {
       color = 'green';
