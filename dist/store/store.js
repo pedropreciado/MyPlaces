@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { logger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import * as PlaceAPIUtil from '../utils/place_api_util';
-import PlacesReducer from '../reducers/place_reducer';
+import RootReducer from '../reducers/root_reducer';
 
 function getLocation() {
   let location = window
@@ -21,7 +21,7 @@ let state = {
 
 const configureStore = (preloadedState = {}) => (
   createStore(
-    PlacesReducer,
+    RootReducer,
     preloadedState,
     applyMiddleware(thunk, logger)
   )

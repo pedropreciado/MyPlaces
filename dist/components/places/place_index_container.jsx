@@ -4,7 +4,7 @@ import { fetchFavorites } from "../../actions/place_actions";
 
 const mapStateToProps = (state) => {
   return {
-    places: state.favorites
+    places: state.places
   }
 }
 
