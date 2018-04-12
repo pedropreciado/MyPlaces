@@ -1,6 +1,6 @@
 import PlaceIndex from "./place_index";
 import { connect } from 'react-redux';
-import { fetchPlaceData } from "../../actions/place_actions";
+import { fetchFavorites } from "../../actions/place_actions";
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchFavorites: () => console.log('butt')
+    fetchFavorites: () => dispatch(fetchFavorites())
   }
 }
 

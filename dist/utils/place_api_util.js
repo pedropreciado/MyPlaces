@@ -1,10 +1,7 @@
 const axios = require("axios");
 
 export const fetchFavorites = () => {
-  return axios.get({
-    method: 'url',
-    url: '/api/favorites'
-  })
+  return axios.get('http://localhost:3001/api/favorites');
 }
 
 export const searchPlaces = (name, location) => {

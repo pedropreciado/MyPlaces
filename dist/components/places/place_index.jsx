@@ -4,14 +4,20 @@ import PlaceIndexItem from './place_index_item';
 class PlaceIndex extends React.Component {
   constructor(props) {
     super(props);
+    console.log('proops: ', props);
+  }
+
+  componentWillMount() {
+    this.props.fetchFavorites();
   }
 
   render() {
     return (
-      <h1>
+      <div>
         PlaceIndex!
         <PlaceIndexItem/>
-      </h1>
+
+      </div>
     )
   }
 }

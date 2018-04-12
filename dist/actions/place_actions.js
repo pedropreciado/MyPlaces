@@ -6,7 +6,8 @@ export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 
 export const fetchFavorites = () => dispatch => {
   PlacesAPIUtil.fetchFavorites().then((places) => {
-    dispatch(receiveFavoritePlaces(places));
+    console.log('places: ', places);
+    dispatch(receiveFavoritePlaces(places.data));
   })
 }
 
