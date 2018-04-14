@@ -14,8 +14,6 @@ class PlaceIndex extends React.Component {
 
   componentWillMount() {
     this.props.fetchFavorites();
-    let pos = this.getCurrentPosition();
-    this.setState({})
   }
 
   getCurrentPosition() {

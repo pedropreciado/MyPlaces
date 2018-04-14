@@ -30,7 +30,7 @@ class PlaceIndexItem extends React.Component {
         <a>{ place.phoneNumber}</a>
         <a>{ isClosed ? 'CLOSED' : place.busyPercentage }</a>
         <div className='plane'>
-          <div id='layer'>
+          <div className='layer'>
           </div>
         </div>
       </div>
