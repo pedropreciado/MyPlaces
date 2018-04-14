@@ -39,7 +39,6 @@ router.route('/places')
     })
   })
 
-
 router.route('/favorites')
   .get((req, res) => {
     console.log(Flag.blue, 'FETCHING FAVORITE PLACES!');

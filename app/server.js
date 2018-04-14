@@ -23,11 +23,11 @@ const Flag = require('./utils/node_colors');
 
 // ******************************************* getBusyHours interval
 // ******************************************* (set for 2 min!)
-//
+// //
 // setInterval(() => {
 //   console.log(Flag.red, 'Getting all busy hours!');
 //   getBusyHours();
-// }, 1000 * 60 * 60);
+// }, 1000 * 60 * 3);
 
 
 

@@ -1,29 +1,38 @@
 import React from 'react';
+import Modal from 'react-modal';
 
 class PlaceIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log('poops: ', this.props);
+
+    this.state = {
+      modalIsOpen: false
+    }
   }
 
   render() {
     const place = this.props.place;
     let color;
+    let isClosed = place.busyPercentage === 0;
 
-    if (place.isOpen) {
-      color = 'green';
-    } else {
+    if (isClosed) {
       color = 'red';
+    } else {
+      color = 'green';
     }
 
 
 
     return (
       <div className={`place-item-${color}`}>
-        <a>{ place.name }</a>
+        <a>{ place.name + ' @' }</a>
         <a>{ place.address}</a>
         <a>{ place.phoneNumber}</a>
-        <a>{ place.busyHours.week[day].hours[currentHour]}</a>
+        <a>{ isClosed ? 'CLOSED' : place.busyPercentage }</a>
+        <div className='plane'>
+          <div id='layer'>
+          </div>
+        </div>
       </div>
     )
   }

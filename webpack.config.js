@@ -3,6 +3,7 @@ const webpack = require("webpack");
 
 module.exports = {
   entry: [
+     'babel-polyfill',
      'react-hot-loader/patch',
     './src/index.jsx'
   ],
@@ -15,7 +16,7 @@ module.exports = {
        }
      ]
    },
-   resolve: {
+    resolve: {
      extensions: ['*', '.js', '.jsx']
    },
   output: {

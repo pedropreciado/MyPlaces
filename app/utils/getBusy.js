@@ -42,6 +42,4 @@ async function getBusyHours() {
   console.log(Flag.green, 'Received and saved busyHours!');
 }
 
-getBusyHours();
-
 module.exports = getBusyHours;

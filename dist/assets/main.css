@@ -1,5 +1,5 @@
 html {
-  background-color: rgb(33, 33, 33);
+  background-image: url('./images/sf.jpeg');
   color: white;
   font-family: 'Roboto', sans-serif;
 }
@@ -17,21 +17,24 @@ a {
 }
 
 .place-item-green {
-  background-color: rgb(80, 137, 71);
+  background-color: rgba(80, 137, 71, .9);
 }
 
 .place-item-red {
-  background-color: rgb(139, 40, 43);
+  background-color: rgba(139, 40, 43, .9);
 }
 
 .place-item-green, .place-item-red {
   display: flex;
   align-items: center;
   flex-flow: column;
-  border: .5px solid white;
   min-width: 200px;
   max-width: 200px;
   min-height: 200px;
   max-height: 200px;
-  margin: 10px;
+  margin: 20px;
+}
+
+.plane {
+  background-color: cyan;
 }
