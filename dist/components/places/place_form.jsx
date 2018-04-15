@@ -3,6 +3,7 @@ import React from 'react';
 class PlaceForm extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
   }
 
   render() {
@@ -13,3 +14,5 @@ class PlaceForm extends React.Component {
     )
   }
 }
+
+export default PlaceForm;

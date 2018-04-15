@@ -8,6 +8,7 @@ const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('../utils/node_colors');
 const extractDetails = require('../utils/details_parser');
 
+
 router.route('/places')
   .get((req, res) => {
     console.log(req.query);

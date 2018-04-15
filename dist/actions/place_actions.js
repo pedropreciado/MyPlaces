@@ -1,4 +1,5 @@
 import * as PlacesAPIUtil from '../utils/place_api_util';
+import subscribeToTimer from '../utils/socket_api_util';
 
 export const RECEIVE_FAVORITE_PLACES = 'RECEIVE_FAVORITE_PLACES';
 export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';

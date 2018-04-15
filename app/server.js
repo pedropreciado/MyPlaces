@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 const NodeColors = require('./utils/node_colors');
+const io = require('socket.io')();
 
 // ******************************************* routes
 
@@ -26,9 +27,25 @@ const Flag = require('./utils/node_colors');
 // //
 // setInterval(() => {
 //   console.log(Flag.red, 'Getting all busy hours!');
-// }, 1000 * 60 * 3);
+//   getBusyHours();
+// }, 1000 * 30);
 
-getBusyHours();
+// initializeSocket();
+
+io.on('connection', (client) => {
+  client.on('subscribeToTimer', (interval) => {
+    console.log('client is subscribing to timer with interval ', interval);
+    setInterval(() => {
+      client.emit('timer', new Date());
+    }, interval);
+  });
+});
+
+
+const socketPort = 8000;
+io.listen(socketPort)
+
+console.log('socket listening on port: ', socketPort);
 
 
 
