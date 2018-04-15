@@ -1,6 +1,6 @@
 import PlaceIndex from "./place_index";
 import { connect } from 'react-redux';
-import { fetchFavorites } from "../../actions/place_actions";
+import { fetchFavorites, subscribeToUpdater } from "../../actions/place_actions";
 
 const mapStateToProps = (state) => {
 
@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchFavorites: () => dispatch(fetchFavorites())
+    fetchFavorites: () => dispatch(fetchFavorites()),
+    subscribeToUpdater: () => dispatch(subscribeToUpdater())
   }
 }
 

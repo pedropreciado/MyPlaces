@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaceIndexItem from './place_index_item';
-// import PlaceFormContainer from './place_form_container';
+// i/mport PlaceFormContainer from './place_form_container';
 
 class PlaceIndex extends React.Component {
   constructor(props) {
@@ -15,6 +15,7 @@ class PlaceIndex extends React.Component {
 
   componentWillMount() {
     this.props.fetchFavorites();
+    this.props.subscribeToUpdater();
   }
 
   getCurrentPosition() {

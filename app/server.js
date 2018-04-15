@@ -39,9 +39,11 @@ io.on('connection', (client) => {
       Place.find((err, places) => {
         if (err)
         console.log(Flag.red, err);
+        console.log('Places sent through socket!!');
+        console.log(places);
         client.emit('newPlaces', places);
       })
-    }, 1000 * 10);
+    }, 1000 * 20);
   });
 });
 
