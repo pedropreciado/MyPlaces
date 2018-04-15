@@ -1,6 +1,5 @@
 import React from 'react';
 import PlaceIndexItem from './place_index_item';
-import { subscribeToTimer } from '../../utils/socket_api_util';
 // import PlaceFormContainer from './place_form_container';
 
 class PlaceIndex extends React.Component {
@@ -15,9 +14,6 @@ class PlaceIndex extends React.Component {
   }
 
   componentWillMount() {
-    subscribeToTimer(1000, (err, timestamp) => {
-      console.log(timestamp);
-    })
     this.props.fetchFavorites();
   }
 
