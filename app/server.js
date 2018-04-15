@@ -33,11 +33,15 @@ const Flag = require('./utils/node_colors');
 // initializeSocket();
 
 io.on('connection', (client) => {
-  client.on('subscribeToTimer', (interval) => {
-    console.log('client is subscribing to timer with interval ', interval);
+  client.on('subscribeToUpdater', () => {
+    console.log('client is subscribing to updater');
     setInterval(() => {
-      client.emit('timer', new Date());
-    }, interval);
+      Place.find((err, places) => {
+        if (err)
+        console.log(Flag.red, err);
+        client.emit('newPlaces', places);
+      })
+    }, 1000 * 10);
   });
 });
 
