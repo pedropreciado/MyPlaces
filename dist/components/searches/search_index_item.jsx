@@ -1,14 +1,17 @@
 import React from 'react';
-
 class SearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
     console.log(props);
+    this.state = {
+      color: ''
+    }
 
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
+    this.setState({ color: '-green' })
     this.props.addFavorite(this.props.place.place_id);
   }
 
@@ -16,15 +19,18 @@ class SearchIndexItem extends React.Component {
     let place = this.props.place;
 
     return (
-      <div id='search-index-item'>
+      <div
+        id={`search-index-item${this.state.color}`}
+        onClick={this.handleClick}
+        >
+        <a>{
+          place.name + ' on '
+        }</a>
+      <a>
         {
-          place.name + ' @ ' + place.vicinity
+          place.vicinity
         }
-        <button
-          onClick={this.handleClick}
-          >
-          +
-        </button>
+      </a>
       </div>
     )
   }

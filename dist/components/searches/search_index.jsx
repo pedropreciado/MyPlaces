@@ -10,12 +10,12 @@ class SearchIndex extends React.Component {
     console.log(this.props);
 
       return (
-        <div>
+        <div id='search-index'>
         {
           this.props.searchResults.map((place) => {
             return (
               <SearchIndexItem
-              key={place._id}
+              key={place.placeid}
               place={place}
               addFavorite={this.props.addFavorite}
               />

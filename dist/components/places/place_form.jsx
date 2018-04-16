@@ -7,7 +7,8 @@ class PlaceForm extends React.Component {
 
     this.state = {
       name: '',
-      error: ''
+      error: '',
+      color: ''
     }
 
     this.renderCurrentLocation = this.renderCurrentLocation.bind(this);
@@ -37,11 +38,19 @@ class PlaceForm extends React.Component {
   }
 
   showError(error) {
-    this.setState({ error });
+    let input = this.state.name;
+
+    this.setState({
+      name: error,
+      color: '-red'
+     });
 
     setTimeout(() => {
-      this.setState({ error: '' })
-    }, 4000);
+      this.setState({
+        name: input,
+        color: ''
+       })
+    }, 2000);
   }
 
   handleChange(name) {
@@ -52,7 +61,8 @@ class PlaceForm extends React.Component {
     event.preventDefault();
 
     if (this.props.location === undefined) {
-      this.showError(<div className="error-div">Still seaching for your location! Please wait. 😊 </div>)
+      // this.showError(<div className="error-div">Still seaching for your location! Please wait. 😊 </div>)
+      this.showError('Still searching for your location! Please wait.')
       return;
     }
 
@@ -82,7 +92,7 @@ class PlaceForm extends React.Component {
 
         <form>
           <input
-            id='name-searchbox'
+            id={`name-searchbox${this.state.color}`}
             type='text'
             onChange={(event) => this.handleChange(event.target.value)}
             value={this.state.name}

@@ -30,7 +30,7 @@ a {
 }
 
 .place-item-green {
-  background-color: rgba(80, 137, 71, .9);
+  background-color: rgba(80, 137, 71);
 }
 
 .place-item-red {
@@ -47,6 +47,10 @@ a {
   min-height: 200px;
   max-height: 200px;
   margin: 20px;
+}
+
+.error-div {
+  color: red;
 }
 
 #location-container {
@@ -67,11 +71,54 @@ a {
   font-weight: lighter;
 }
 
+#name-searchbox-red {
+  width: 56%;
+  font-size: x-large;
+  border: .5px solid red;
+  background: none;
+  padding: 2%;
+  color: red;
+  font-weight: lighter;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 3s 4s, opacity 2s linear;
+}
+
 #form-header {
   height: 20%;
   border-bottom: .5px solid white;
 }
 
-.error-div {
-  color: red;
+#search-index {
+  display: flex;
+flex-flow: column;
+justify-content: space-between;
+align-items: center;
+position: absolute;
+top: 17%;
+left: 0px;
+right: 0px;
+bottom: 0px;
+overflow-y: scroll;
+border-top: .5px solid white;
+}
+
+#search-index-item, #search-index-item-green {
+  margin: 5%;
+  display: flex;
+  flex-flow: column;
+  width: 90%;
+  justify-content: space-around;
+  padding: 10%;
+  align-items: center;
+}
+
+#search-index-item:hover {
+  background-color: #364850;
+  cursor: pointer;
+}
+
+#search-index-item-green {
+  background-color: rgb(80, 137, 71);
 }
