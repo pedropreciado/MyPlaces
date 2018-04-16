@@ -22,7 +22,7 @@ class PlaceIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchLocation();
+    // this.props.fetchLocation();
   }
 
   onSetSidebarOpen(open) {

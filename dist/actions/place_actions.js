@@ -23,10 +23,14 @@ export const fetchFavorites = () => dispatch => {
   })
 }
 
-export const fetchSearchResults = (name, location) => dispatch => {
-  PlaceAPIUtil.fetchSearchResults(name, location).then((results) => {
-    dispatch(receiveSeachResults(results));
+export const fetchSearchResults = (query) => dispatch => {
+  PlacesAPIUtil.fetchSearchResults(query)
+    .then((results) => {
+    dispatch(receiveSearchResults(results));
   })
+    .catch((err) => {
+      console.error(err);
+    })
 }
 
 const receiveFavoritePlaces = (places) => ({

@@ -33,7 +33,7 @@ setInterval(() => {
   getBusyHours();
 
   console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60 * 2 );
+}, 1000 * 60 * 20 );
 
 // initializeSocket();
 
@@ -46,7 +46,7 @@ io.on('connection', (client) => {
         console.log(Flag.red, err);
         client.emit('newPlaces', places);
       })
-    }, 1000 * 60 * 3);
+    }, 1000 * 60 * 30);
   });
 });
 

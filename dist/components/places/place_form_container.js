@@ -1,6 +1,7 @@
 import PlaceForm from './place_form';
 import { connect } from 'react-redux';
 import { fetchSearchResults } from '../../actions/place_actions';
+import { fetchLocation } from '../../actions/location_actions';
 
 const mapStateToProps = (state) => {
   let searchResults;
@@ -23,7 +24,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchSearchResults: (name, location) => dispatch(fetchSearchResults(name, location))
+    fetchSearchResults: (query) => dispatch(fetchSearchResults(query)),
+    fetchLocation: () => dispatch(fetchLocation())
   }
 }
 
