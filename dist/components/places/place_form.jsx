@@ -47,12 +47,18 @@ class PlaceForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id='form-header'>
+        <div
+          id='location-container'
+          >
         {
           this.renderCurrentLocation()
         }
+        </div>
+
         <form>
           <input
+            id='name-searchbox'
             type='text'
             onChange={(event) => this.handleChange(event.target.value)}
             value={this.state.name}

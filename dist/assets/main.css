@@ -5,6 +5,18 @@ html {
   font-family: 'Roboto', sans-serif;
 }
 
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+}
+
+form > * {
+  margin: 10px;
+}
+
+
 a {
   text-align: center;
   margin: 5px;
@@ -34,4 +46,25 @@ a {
   min-height: 200px;
   max-height: 200px;
   margin: 20px;
+}
+
+#location-container {
+  height: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#name-searchbox {
+  width: 56%;
+  font-size: x-large;
+  border: .5px solid white;
+  background: none;
+  padding: 2%;
+}
+
+#form-header {
+
+  height: 20%;
+  border-bottom: .5px solid white;
 }

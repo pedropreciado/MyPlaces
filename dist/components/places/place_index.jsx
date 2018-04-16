@@ -46,6 +46,7 @@ class PlaceIndex extends React.Component {
             sidebar={ (<PlaceFormContainer />) }
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}
+            styles={STYLES}
             >
 
 
@@ -78,3 +79,11 @@ class PlaceIndex extends React.Component {
 }
 
 export default PlaceIndex;
+
+const STYLES = {
+  sidebar: {
+    width: 500,
+    backgroundColor: 'black',
+    opacity: 5
+  }
+}
