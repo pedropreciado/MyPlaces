@@ -68,7 +68,7 @@ class PlaceIndex extends React.Component {
         <button
           onClick={() => this.onSetSidebarOpen(true)}
           >
-          +
+          >
         </button>
 
       </SideBar>

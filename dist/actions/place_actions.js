@@ -5,6 +5,7 @@ const socket = openSocket('http://localhost:8000');
 
 export const RECEIVE_FAVORITE_PLACES = 'RECEIVE_FAVORITE_PLACES';
 export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
+export const RECEIVE_FAVORITE_PLACE = 'RECEIVE_FAVORITE_PLACE';
 
 export const subscribeToUpdater = () => dispatch => {
   console.log('Subscribing to Updater ...');
@@ -32,6 +33,19 @@ export const fetchSearchResults = (query) => dispatch => {
       console.error(err);
     })
 }
+
+export const addFavorite = (id) => dispatch => {
+  PlacesAPIUtil.addFavorite(id).then((response) => {
+    let place = response.place;
+    place['message'] = response.message;
+    dispatch(receiveFavoritePlace(place));
+  })
+}
+
+const receiveFavoritePlace = (place) => ({
+  type: RECEIVE_FAVORITE_PLACE,
+  place
+})
 
 const receiveFavoritePlaces = (places) => ({
     type: RECEIVE_FAVORITE_PLACES,

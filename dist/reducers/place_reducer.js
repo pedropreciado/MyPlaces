@@ -1,4 +1,7 @@
-import { RECEIVE_FAVORITE_PLACES } from '../actions/place_actions';
+import {
+   RECEIVE_FAVORITE_PLACES,
+   RECEIVE_FAVORITE_PLACE
+ } from '../actions/place_actions';
 import merge from 'lodash/merge';
 
 const PlaceReducer = (oldState = {}, action) => {
@@ -7,6 +10,9 @@ const PlaceReducer = (oldState = {}, action) => {
   switch (action.type) {
     case RECEIVE_FAVORITE_PLACES:
       return merge({}, oldState, action.places);
+    case RECEIVE_FAVORITE_PLACE:
+      console.log(oldState, action.place);
+      return oldState;
     default:
       return oldState;
   }

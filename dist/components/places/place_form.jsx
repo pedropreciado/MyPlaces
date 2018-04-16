@@ -7,7 +7,8 @@ class PlaceForm extends React.Component {
 
     this.state = {
       name: '',
-      location: props.location
+      location: props.location,
+      requestSent: false
     }
 
     this.renderCurrentLocation = this.renderCurrentLocation.bind(this);
@@ -42,7 +43,13 @@ class PlaceForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    this.props.fetchSearchResults(this.state)
+    let name = this.state.name;
+    let location = this.state.location;
+
+    this.props.fetchSearchResults({
+      name,
+      location
+    })
   }
 
   render() {
@@ -62,7 +69,7 @@ class PlaceForm extends React.Component {
             type='text'
             onChange={(event) => this.handleChange(event.target.value)}
             value={this.state.name}
-            placeholder='Name'
+            placeholder='Search for a place'
             />
 
           <input

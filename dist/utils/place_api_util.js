@@ -13,5 +13,12 @@ export const fetchSearchResults = (query) => {
     'http://localhost:3001/api/places?' +
     `name=${name}&` +
     `location=${location}`
-)
+  );
+}
+
+export const addFavorite = (id) => {
+  return axios.post(
+    'http://localhost:3001/api/favorites?' +
+    `placeid=${id}`
+  )
 }
