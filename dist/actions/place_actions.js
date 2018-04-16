@@ -37,16 +37,13 @@ export const fetchSearchResults = (query) => dispatch => {
 
 export const addFavorite = (id) => dispatch => {
   PlacesAPIUtil.addFavorite(id).then(({ data }) => {
-    let place = data.place;
-
-    dispatch(receiveFavoritePlace(place));
+    dispatch(receiveFavoritePlace(data));
   })
 }
 
 export const deleteFavorite = (id) => dispatch => {
   PlacesAPIUtil.deleteFavorite(id).then(({ data }) => {
-    let place = data;
-    dispatch(removeFavoritePlace(place));
+    dispatch(removeFavoritePlace(data));
   })
 }
 
@@ -66,7 +63,7 @@ const receiveSearchResults = (results) => ({
   results
 });
 
-const removeFavoritePlace = (id) => ({
+const removeFavoritePlace = (place) => ({
   type: REMOVE_FAVORITE_PLACE,
   place
 })

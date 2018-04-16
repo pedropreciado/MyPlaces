@@ -74,10 +74,7 @@ router.route('/favorites')
         if (err) {
           res.send(err);
         } else {
-          res.json({
-            message: 'success',
-            place
-          })
+          res.json(place);
         }
       });
 
