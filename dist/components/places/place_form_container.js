@@ -4,13 +4,13 @@ import { fetchSearchResults } from '../../actions/place_actions';
 import { fetchLocation } from '../../actions/location_actions';
 
 const mapStateToProps = (state) => {
-  let searchResults;
+  let searchResults = Object.keys(state.searchResults);
 
-  if (!state.searchResults) {
+  if (searchResults.length === 0) {
     searchResults = [];
   } else {
-    searchResults = state.searchResults.map((id) => {
-      return state.results[id];
+    searchResults = searchResults.map((id) => {
+      return state.searchResults[id];
     })
   }
 

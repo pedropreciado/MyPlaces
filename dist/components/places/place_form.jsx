@@ -37,7 +37,6 @@ class PlaceForm extends React.Component {
 
   handleChange(name) {
     this.setState({ name, location: this.props.location });
-    console.log(this.state);
   }
 
   handleSubmit(event) {
