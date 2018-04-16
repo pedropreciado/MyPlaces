@@ -22,3 +22,7 @@ export const addFavorite = (id) => {
     `placeid=${id}`
   )
 }
+
+export const deleteFavorite = (id) => {
+  return axios.delete(`http://localhost:3001/api/favorites?id=${id}`)
+}

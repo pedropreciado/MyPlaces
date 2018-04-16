@@ -6,6 +6,7 @@ const socket = openSocket('http://localhost:8000');
 export const RECEIVE_FAVORITE_PLACES = 'RECEIVE_FAVORITE_PLACES';
 export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 export const RECEIVE_FAVORITE_PLACE = 'RECEIVE_FAVORITE_PLACE';
+export const REMOVE_FAVORITE_PLACE = 'REMOVE_FAVORITE_PLACE';
 
 export const subscribeToUpdater = () => dispatch => {
   console.log('Subscribing to Updater ...');
@@ -43,6 +44,12 @@ export const addFavorite = (id) => dispatch => {
   })
 }
 
+export const deleteFavorite = (id) => dispatch => {
+  PlacesAPIUtil.deleteFavorite(id).then((place) => {
+    dispatch(removeFavoritePlace(place));
+  })
+}
+
 const receiveFavoritePlace = (place) => ({
   type: RECEIVE_FAVORITE_PLACE,
   place
@@ -58,3 +65,8 @@ const receiveSearchResults = (results) => ({
   type: RECEIVE_SEARCH_RESULTS,
   results
 });
+
+const removeFavoritePlace = (id) => ({
+  type: REMOVE_FAVORITE_PLACE,
+  place
+})
