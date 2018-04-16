@@ -39,14 +39,14 @@ export const addFavorite = (id) => dispatch => {
   PlacesAPIUtil.addFavorite(id).then(({ data }) => {
     let place = data.place;
 
-    place['message'] = data.message;
     dispatch(receiveFavoritePlace(place));
   })
 }
 
 export const deleteFavorite = (id) => dispatch => {
   PlacesAPIUtil.deleteFavorite(id).then(({ data }) => {
-    dispatch(removeFavoritePlace(data));
+    let place = data;
+    dispatch(removeFavoritePlace(place));
   })
 }
 
@@ -58,7 +58,7 @@ const receiveFavoritePlace = (place) => ({
 const receiveFavoritePlaces = (places) => ({
     type: RECEIVE_FAVORITE_PLACES,
     places
-  });
+});
 
 
 const receiveSearchResults = (results) => ({

@@ -7,6 +7,8 @@ const axios = require('axios');
 const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('../utils/node_colors');
 const extractDetails = require('../utils/details_parser');
+const getBusyHours = require('../utils/getBusy');
+const getPercentage = require('../utils/get_percentage');
 
 router.route('/places')
   .get((req, res) => {
@@ -64,19 +66,22 @@ router.route('/favorites')
       console.log(Flag.green, 'Response from Google success!');
 
       let place = new Place(extractDetails(response));
-      console.log(Flag.green, 'Details extracted!');
 
-      console.log(Flag.red, 'Adding busy hours for: ', place.name);
-      console.log(Flag.green, 'Busy hours added!');
+      console.log(Flag.green, 'Details extracted!');
+      console.log(place);
 
       place.save((err) => {
-        if (err)
-        res.send(err);
-        res.json({
-          message: 'Place successfully added!',
-          place
-        })
-      })
+        if (err) {
+          res.send(err);
+        } else {
+          res.json({
+            message: 'success',
+            place
+          })
+        }
+      });
+
+      getBusyHours();
     })
     .catch((err) => {
       console.log(Flag.red, err);

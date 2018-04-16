@@ -9,16 +9,12 @@ const PlaceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  isOpen: {
-    type: Boolean
-  },
   address: {
     type: String,
     required: true
   },
   phoneNumber: {
-    type: String,
-    required: true
+    type: String
   },
   busyPercentage: {
     type: Number

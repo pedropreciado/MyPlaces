@@ -61,7 +61,9 @@ class PlaceIndex extends React.Component {
             sidebar={ (
               <div>
               <PlaceFormContainer />
-              <SearchIndexContainer />
+              <SearchIndexContainer
+                onSetSidebarOpen={this.onSetSidebarOpen}
+                />
               </div>
             ) }
             open={this.state.sidebarOpen}

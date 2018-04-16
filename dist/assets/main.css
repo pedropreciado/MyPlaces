@@ -112,11 +112,17 @@ border-top: .5px solid white;
   justify-content: space-around;
   padding: 10%;
   align-items: center;
+  -webkit-transition: background-color 2s ease-out;
+  -moz-transition: background-color 2s ease-out;
+  -o-transition: background-color 2s ease-out;
+  transition: background-color 2s ease-out;
 }
 
 #search-index-item:hover {
   background-color: #364850;
   cursor: pointer;
+  opacity: 1s;
+  transition: opacity .5s ease-in-out;
 }
 
 #search-index-item-green {

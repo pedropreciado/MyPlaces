@@ -13,13 +13,20 @@ function getDetails({ data: { result } }) {
                 adrObj['locality'] + ', ' +
                 adrObj['administrative_area_level_1'] + ' ' +
                 adrObj['postal_code']
+  let phoneNumber;
+
+  if (phoneNumber) {
+    phoneNumber = result.international_phone_number.slice(3);
+  } else {
+    console.log('No phonenumber found for ', result.name);
+    phoneNumber = ''
+  }
 
   return {
     placeid: result.place_id,
     name: result.name,
-    isOpen: result.opening_hours.open_now,
     address,
-    phoneNumber: result.international_phone_number.slice(3)
+    phoneNumber
   }
 }
 
