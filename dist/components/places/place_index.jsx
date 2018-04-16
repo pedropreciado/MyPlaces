@@ -2,6 +2,9 @@ import React from 'react';
 import PlaceIndexItem from './place_index_item';
 import SideBar from 'react-sidebar';
 import PlaceFormContainer from './place_form_container';
+import SearchIndexContainer from '../searches/search_index_container';
+
+
 const FontAwesome = require('react-fontawesome');
 // i/mport PlaceFormContainer from './place_form_container';
 
@@ -43,7 +46,12 @@ class PlaceIndex extends React.Component {
       return (
 
           <SideBar
-            sidebar={ (<PlaceFormContainer />) }
+            sidebar={ (
+              <div>
+              <PlaceFormContainer />
+              <SearchIndexContainer />
+              </div>
+            ) }
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}
             styles={STYLES}

@@ -61,10 +61,10 @@ a {
   border: .5px solid white;
   background: none;
   padding: 2%;
+  color: white;
 }
 
 #form-header {
-
   height: 20%;
   border-bottom: .5px solid white;
 }

@@ -1,5 +1,5 @@
 import SearchIndex from './search_index';
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 import { addFavorite } from '../../actions/place_actions';
 
 const mapStateToProps = (state) => {
