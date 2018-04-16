@@ -29,9 +29,11 @@ console.log(Flag.yellow, Date())
 
 setInterval(() => {
   console.log(Flag.red, 'Getting all busy hours!');
+
   getBusyHours();
+
   console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60 * 30 );
+}, 1000 * 60 * 2 );
 
 // initializeSocket();
 
@@ -44,7 +46,7 @@ io.on('connection', (client) => {
         console.log(Flag.red, err);
         client.emit('newPlaces', places);
       })
-    }, 1000 * 60 * 35);
+    }, 1000 * 60 * 3);
   });
 });
 

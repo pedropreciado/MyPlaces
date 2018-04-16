@@ -1,14 +1,23 @@
 import PlaceForm from './place_form';
-import { connect } from 'recat-redux';
+import { connect } from 'react-redux';
 import { fetchSearchResults } from '../../actions/place_actions';
 
 const mapStateToProps = (state) => {
-  let searchResults = state.searchResults.map((id) => {
-    return state.results[id];
-  })
+  let searchResults;
+
+  if (!state.searchResults) {
+    searchResults = [];
+  } else {
+    searchResults = state.searchResults.map((id) => {
+      return state.results[id];
+    })
+  }
+
+  let location = state.location.currentLocation;
 
   return {
-    searchResults
+    searchResults,
+    location
   }
 }
 

@@ -1,5 +1,8 @@
 import React from 'react';
 import PlaceIndexItem from './place_index_item';
+import SideBar from 'react-sidebar';
+import PlaceFormContainer from './place_form_container';
+const FontAwesome = require('react-fontawesome');
 // i/mport PlaceFormContainer from './place_form_container';
 
 class PlaceIndex extends React.Component {
@@ -7,10 +10,10 @@ class PlaceIndex extends React.Component {
     super(props);
 
     this.state = {
-      location: props.location
+      sidebarOpen: false
     }
 
-    this.getCurrentPosition = this.getCurrentPosition.bind(this);
+    this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
 
   componentWillMount() {
@@ -18,24 +21,34 @@ class PlaceIndex extends React.Component {
     this.props.subscribeToUpdater();
   }
 
-  getCurrentPosition() {
-    return new Promise((resolve, reject) => {
-      window
-        .navigator
-        .geolocation
-        .getCurrentPosition(resolve, reject)
+  componentDidMount() {
+    this.props.fetchLocation();
+  }
+
+  onSetSidebarOpen(open) {
+    this.setState({
+      sidebarOpen: open
     })
   }
 
   render() {
     if (!this.props.places.length) {
       return (
-        <h1>
-          Loading...
-        </h1>
+          <FontAwesome
+            className="fas fa-spinner fa-spin"
+            name='spinner'
+            />
       )
     } else {
       return (
+
+          <SideBar
+            sidebar={ (<PlaceFormContainer />) }
+            open={this.state.sidebarOpen}
+            onSetOpen={this.onSetSidebarOpen}
+            >
+
+
         <div className='place-index'>
           {
             this.props.places.map((place) => {
@@ -48,7 +61,16 @@ class PlaceIndex extends React.Component {
               )
             })
           }
+
         </div>
+
+        <button
+          onClick={() => this.onSetSidebarOpen(true)}
+          >
+          +
+        </button>
+
+      </SideBar>
       )
     }
     }

@@ -1,4 +1,4 @@
-import { RECEIVE_LOCATION } from '../action/location_actions';
+import { RECEIVE_LOCATION } from '../actions/location_actions';
 import merge from 'lodash/merge';
 
 const LocationReducer = (oldState = {}, action) => {
@@ -7,6 +7,8 @@ const LocationReducer = (oldState = {}, action) => {
   switch (action.type) {
     case RECEIVE_LOCATION:
       return merge({}, oldState, action.location);
+    default:
+      return oldState;
   }
 }
 export default LocationReducer;

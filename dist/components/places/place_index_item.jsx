@@ -1,5 +1,5 @@
 import React from 'react';
-import Modal from 'react-modal';
+
 
 class PlaceIndexItem extends React.Component {
   constructor(props) {
