@@ -35,9 +35,10 @@ export const fetchSearchResults = (query) => dispatch => {
 }
 
 export const addFavorite = (id) => dispatch => {
-  PlacesAPIUtil.addFavorite(id).then((response) => {
-    let place = response.place;
-    place['message'] = response.message;
+  PlacesAPIUtil.addFavorite(id).then(({ data }) => {
+    let place = data.place;
+
+    place['message'] = data.message;
     dispatch(receiveFavoritePlace(place));
   })
 }

@@ -16,6 +16,7 @@ class SearchIndex extends React.Component {
             return (
               <SearchIndexItem
               place={place}
+              addFavorite={this.props.addFavorite}
               />
             )
           })

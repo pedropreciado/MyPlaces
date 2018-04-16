@@ -24,10 +24,6 @@ class PlaceIndex extends React.Component {
     this.props.subscribeToUpdater();
   }
 
-  componentDidMount() {
-    // this.props.fetchLocation();
-  }
-
   onSetSidebarOpen(open) {
     this.setState({
       sidebarOpen: open

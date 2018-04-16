@@ -11,8 +11,8 @@ const PlaceReducer = (oldState = {}, action) => {
     case RECEIVE_FAVORITE_PLACES:
       return merge({}, oldState, action.places);
     case RECEIVE_FAVORITE_PLACE:
-      console.log(oldState, action.place);
-      return oldState;
+      let id = Object.keys(oldState).length + 1;
+      return merge({}, oldState, {[id]: action.place})
     default:
       return oldState;
   }
