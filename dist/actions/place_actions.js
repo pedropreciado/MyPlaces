@@ -10,9 +10,8 @@ export const subscribeToUpdater = () => dispatch => {
   console.log('Subscribing to Updater ...');
 
   socket.on('newPlaces', (places) => {
-    console.log('here!');
     dispatch(receiveFavoritePlaces(places));
-    console.log('Favorites updated!');
+    console.log('Favorites updated through socket!');
   })
 
   socket.emit('subscribeToUpdater')

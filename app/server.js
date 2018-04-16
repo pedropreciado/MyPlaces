@@ -25,10 +25,13 @@ const Flag = require('./utils/node_colors');
 // ******************************************* getBusyHours interval
 // ******************************************* (set for 2 min!)
 // //
-// setInterval(() => {
-//   console.log(Flag.red, 'Getting all busy hours!');
-//   getBusyHours();
-// }, 1000 * 30);
+console.log(Flag.yellow, Date())
+
+setInterval(() => {
+  console.log(Flag.red, 'Getting all busy hours!');
+  getBusyHours();
+  console.log(Flag.yellow, 'on: ', Date())
+}, 1000 * 60 * 30 );
 
 // initializeSocket();
 
@@ -39,11 +42,9 @@ io.on('connection', (client) => {
       Place.find((err, places) => {
         if (err)
         console.log(Flag.red, err);
-        console.log('Places sent through socket!!');
-        console.log(places);
         client.emit('newPlaces', places);
       })
-    }, 1000 * 20);
+    }, 1000 * 60 * 35);
   });
 });
 

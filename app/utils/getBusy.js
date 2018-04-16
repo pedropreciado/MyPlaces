@@ -7,8 +7,8 @@ function getPercentage(data) {
   let date = new Date();
   let day = Number(date.getUTCDay())
   let currentHour = Number(date.getHours());
-
-  return data.week[day]
+  let isClosedToday = data.week[day].hours.length === 0;
+  return isClosedToday ? 0 : data.week[day]
              .hours[currentHour - 5].percentage;
 }
 

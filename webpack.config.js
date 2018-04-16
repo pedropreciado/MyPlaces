@@ -31,7 +31,7 @@ module.exports = {
     contentBase: './dist',
     hot: true
   },
-  node {
+  node: {
     net: 'empty'
   }
 };
