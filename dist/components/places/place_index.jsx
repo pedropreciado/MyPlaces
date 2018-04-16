@@ -87,7 +87,7 @@ export default PlaceIndex;
 const STYLES = {
   sidebar: {
     width: 500,
-    backgroundColor: 'black',
+    backgroundColor: '#202a2f',
     opacity: 5
   }
 }

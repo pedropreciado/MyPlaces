@@ -1,6 +1,6 @@
 html {
-  background-image: url('./images/sf.jpeg');
-  /* background-color: white; */
+  /* background-image: url('./images/sf.jpeg'); */
+  background-color: #263238;
   color: white;
   font-family: 'Roboto', sans-serif;
 }
@@ -34,7 +34,8 @@ a {
 }
 
 .place-item-red {
-  background-color: rgba(139, 40, 43, .9);
+  background-color: rgba(139, 40, 43);
+  font-size: large;
 }
 
 .place-item-green, .place-item-red {
@@ -62,6 +63,7 @@ a {
   background: none;
   padding: 2%;
   color: white;
+  font-weight: lighter;
 }
 
 #form-header {

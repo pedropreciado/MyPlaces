@@ -8,7 +8,6 @@ const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('../utils/node_colors');
 const extractDetails = require('../utils/details_parser');
 
-
 router.route('/places')
   .get((req, res) => {
     console.log(req.query);
@@ -65,8 +64,10 @@ router.route('/favorites')
       console.log(Flag.green, 'Response from Google success!');
 
       let place = new Place(extractDetails(response));
-
       console.log(Flag.green, 'Details extracted!');
+
+      console.log(Flag.red, 'Adding busy hours for: ', place.name);
+      console.log(Flag.green, 'Busy hours added!');
 
       place.save((err) => {
         if (err)
@@ -81,6 +82,16 @@ router.route('/favorites')
       console.log(Flag.red, err);
 
       res.send(err)
+    })
+  })
+  .delete((req, res) => {
+    console.log(Flag.red, 'DELETE REQUESTED');
+    Place.findById(req.query.id, (err, place) => {
+      place.remove((err, post) => {
+        console.log(Flag.red, place.name, 'DELETED!');
+
+        res.send(place);
+      })
     })
   })
 
