@@ -31,12 +31,28 @@ class PlaceIndex extends React.Component {
   }
 
   render() {
+
     if (!this.props.places.length) {
+
       return (
-          <FontAwesome
-            className="fas fa-spinner fa-spin"
-            name='spinner'
-            />
+
+        <SideBar
+          sidebar={ (
+            <div>
+            <PlaceFormContainer />
+            <SearchIndexContainer />
+            </div>
+          ) }
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}
+          styles={STYLES}
+          >
+          <button
+            onClick={() => this.onSetSidebarOpen(true)}
+            >
+            Add a new place!
+          </button>
+        </SideBar>
       )
     } else {
       return (
@@ -62,6 +78,7 @@ class PlaceIndex extends React.Component {
                 <PlaceIndexItem
                   key={place._id}
                   place={place}
+                  deleteFavorite={this.props.deleteFavorite}
                   />
               )
             })

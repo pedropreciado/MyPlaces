@@ -15,6 +15,7 @@ class SearchIndex extends React.Component {
           this.props.searchResults.map((place) => {
             return (
               <SearchIndexItem
+              key={place._id}
               place={place}
               addFavorite={this.props.addFavorite}
               />

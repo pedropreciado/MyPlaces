@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class PlaceIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +32,10 @@ class PlaceIndexItem extends React.Component {
           <div className='layer'>
           </div>
         </div>
+        <button
+          onClick={() => this.props.deleteFavorite(place._id)}
+          >
+        </button>
       </div>
     )
   }

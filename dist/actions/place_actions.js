@@ -45,8 +45,8 @@ export const addFavorite = (id) => dispatch => {
 }
 
 export const deleteFavorite = (id) => dispatch => {
-  PlacesAPIUtil.deleteFavorite(id).then((place) => {
-    dispatch(removeFavoritePlace(place));
+  PlacesAPIUtil.deleteFavorite(id).then(({ data }) => {
+    dispatch(removeFavoritePlace(data));
   })
 }
 

@@ -7,13 +7,13 @@ class PlaceForm extends React.Component {
 
     this.state = {
       name: '',
-      location: props.location,
-      requestSent: false
+      error: ''
     }
 
     this.renderCurrentLocation = this.renderCurrentLocation.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.showError = this.showError.bind(this);
   }
 
   componentWillMount() {
@@ -36,15 +36,28 @@ class PlaceForm extends React.Component {
     }
   }
 
+  showError(error) {
+    this.setState({ error });
+
+    setTimeout(() => {
+      this.setState({ error: '' })
+    }, 4000);
+  }
+
   handleChange(name) {
-    this.setState({ name, location: this.props.location });
+    this.setState({ name });
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
+    if (this.props.location === undefined) {
+      this.showError(<div className="error-div">Still seaching for your location! Please wait. 😊 </div>)
+      return;
+    }
+
     let name = this.state.name;
-    let location = this.state.location;
+    let location = this.props.location;
 
     this.props.fetchSearchResults({
       name,
@@ -60,6 +73,10 @@ class PlaceForm extends React.Component {
           >
         {
           this.renderCurrentLocation()
+        }
+
+        {
+          this.state.error
         }
         </div>
 

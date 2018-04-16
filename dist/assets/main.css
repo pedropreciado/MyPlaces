@@ -52,8 +52,9 @@ a {
 #location-container {
   height: 23%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-flow: column;
 }
 
 #name-searchbox {
@@ -69,4 +70,8 @@ a {
 #form-header {
   height: 20%;
   border-bottom: .5px solid white;
+}
+
+.error-div {
+  color: red;
 }
