@@ -4,18 +4,16 @@ import SideBar from 'react-sidebar';
 import PlaceFormContainer from './place_form_container';
 import SearchIndexContainer from '../searches/search_index_container';
 
-
-const FontAwesome = require('react-fontawesome');
-// i/mport PlaceFormContainer from './place_form_container';
-
 class PlaceIndex extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      sidebarOpen: false
+      sidebarOpen: false,
+      dragHeard: false
     }
 
+    this.renderTrashCan = this.renderTrashCan.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
 
@@ -28,6 +26,24 @@ class PlaceIndex extends React.Component {
     this.setState({
       sidebarOpen: open
     })
+  }
+
+  handleDrag() {
+    this.setState({ dragHeard: true });
+  }
+
+  renderTrashCan() {
+    if (this.state.dragHeard) {
+      return (
+        <div>
+          Drag here to delete!
+        </div>
+      )
+    } else {
+      return (
+        <h2>MyPlaces</h2>
+      )
+    }
   }
 
   render() {
@@ -87,6 +103,10 @@ class PlaceIndex extends React.Component {
           }
 
         </div>
+
+        {
+            this.renderTrashCan()
+        }
 
         <button
           onClick={() => this.onSetSidebarOpen(true)}

@@ -1,13 +1,16 @@
 import React from 'react';
+import PlaceItemOptions from './place_item_options';
+import Draggable from 'react-draggable';
 
 class PlaceIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalIsOpen: false
+      isBeingDragged: false
     }
   }
+
 
   render() {
     const place = this.props.place;
@@ -21,22 +24,19 @@ class PlaceIndexItem extends React.Component {
     }
 
 
-
     return (
+      <Draggable>
       <div className={`place-item-${color}`}>
-        <a>{ place.name + ' @' }</a>
+
+        <a>{ place.name }</a>
+        <br/>
         <a>{ place.address}</a>
+        <br/>
         <a>{ place.phoneNumber}</a>
         <a>{ isClosed ? 'CLOSED' : place.busyPercentage }</a>
-        <div className='plane'>
-          <div className='layer'>
-          </div>
-        </div>
-        <button
-          onClick={() => this.props.deleteFavorite(place._id)}
-          >
-        </button>
+
       </div>
+    </Draggable>
     )
   }
 }

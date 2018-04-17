@@ -1,6 +1,6 @@
 html {
   /* background-image: url('./images/sf.jpeg'); */
-  background-color: #263238;
+  background-color: #3b4d56;
   color: white;
   font-family: 'Roboto', sans-serif;
 }
@@ -39,6 +39,7 @@ a {
 }
 
 .place-item-green, .place-item-red {
+  text-align: center;
   display: flex;
   align-items: center;
   flex-flow: column;
@@ -47,7 +48,11 @@ a {
   min-height: 200px;
   max-height: 200px;
   margin: 20px;
+  overflow:hidden;
+  position: relative;
 }
+
+
 
 .error-div {
   color: red;
@@ -87,7 +92,7 @@ a {
 
 #form-header {
   height: 20%;
-  border-bottom: .5px solid white;
+  font-family: 'Inconsolata', monospace;
 }
 
 #search-index {
@@ -96,7 +101,7 @@ flex-flow: column;
 justify-content: space-between;
 align-items: center;
 position: absolute;
-top: 17%;
+top: 25%;
 left: 0px;
 right: 0px;
 bottom: 0px;

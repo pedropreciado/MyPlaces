@@ -1,4 +1,6 @@
 import React from 'react';
+import SideBar from 'react-sidebar';
+
 class SearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,12 @@ class SearchIndexItem extends React.Component {
     this.setState({ color: '-green' })
     this.props.addFavorite(this.props.place.place_id);
     this.props.onSetSidebarOpen(false);
+  }
+
+  onSetSidebarOpen(open) {
+    this.setState({
+      sidebarOpen: open
+    })
   }
 
   render() {
