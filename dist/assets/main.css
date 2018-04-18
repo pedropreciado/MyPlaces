@@ -1,6 +1,7 @@
 html {
   /* background-image: url('./images/sf.jpeg'); */
-  background-color: #3b4d56;
+  /* background-color: #3b4d56; */
+  background-color: black;
   color: white;
   font-family: 'Roboto', sans-serif;
 }
@@ -92,7 +93,7 @@ a {
 
 #form-header {
   height: 20%;
-  font-family: 'Inconsolata', monospace;
+  font-family: 'Roboto', sans-serif;
 }
 
 #search-index {
@@ -132,4 +133,26 @@ border-top: .5px solid white;
 
 #search-index-item-green {
   background-color: rgb(80, 137, 71);
+}
+
+#trashcan {
+  background: white;
+  color: black;
+  text-align: center;
+  max-width: 13%;
+  margin: 0 auto;
+  min-height: 13%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#percentage {
+  background-color: rgba(33, 33, 33, .2);
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
 }

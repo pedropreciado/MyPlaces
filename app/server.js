@@ -46,7 +46,7 @@ io.on('connection', (client) => {
         console.log(Flag.red, err);
         client.emit('newPlaces', places);
       })
-    }, 1000 * 60 * 2);
+    }, 1000 * 45);
   });
 });
 

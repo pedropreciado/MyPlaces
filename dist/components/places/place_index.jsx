@@ -10,16 +10,23 @@ class PlaceIndex extends React.Component {
 
     this.state = {
       sidebarOpen: false,
-      dragHeard: false
+      dragHeard: false,
+
     }
 
     this.renderTrashCan = this.renderTrashCan.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    this.handleDrag = this.handleDrag.bind(this);
+    this.handleStop = this.handleStop.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchFavorites();
     this.props.subscribeToUpdater();
+  }
+
+  componentDidMount() {
+    console.log(this.refs.trashcan);
   }
 
   onSetSidebarOpen(open) {
@@ -28,8 +35,14 @@ class PlaceIndex extends React.Component {
     })
   }
 
-  handleDrag() {
-    this.setState({ dragHeard: true });
+  handleStop(positionY, id) {
+    if (event.pageY > 500) {
+      this.props.deleteFavorite(id);
+    }
+  }
+
+  handleDrag(dragHeard) {
+    this.setState({ dragHeard });
   }
 
   renderTrashCan() {
@@ -48,77 +61,51 @@ class PlaceIndex extends React.Component {
 
   render() {
 
-    if (!this.props.places.length) {
 
       return (
-
-        <SideBar
-          sidebar={ (
-            <div>
-            <PlaceFormContainer />
-            <SearchIndexContainer />
-            </div>
-          ) }
-          open={this.state.sidebarOpen}
-          onSetOpen={this.onSetSidebarOpen}
-          styles={STYLES}
-          >
-          <button
-            onClick={() => this.onSetSidebarOpen(true)}
-            >
-            Add a new place!
-          </button>
-        </SideBar>
-      )
-    } else {
-      return (
-
           <SideBar
             sidebar={ (
               <div>
-              <PlaceFormContainer />
-              <SearchIndexContainer
-                onSetSidebarOpen={this.onSetSidebarOpen}
-                />
+                <PlaceFormContainer />
+                <SearchIndexContainer />
               </div>
             ) }
             open={this.state.sidebarOpen}
             onSetOpen={this.onSetSidebarOpen}
             styles={STYLES}
             >
-
-
-        <div className='place-index'>
-          {
-            this.props.places.map((place) => {
-
-              return (
-                <PlaceIndexItem
-                  key={place._id}
-                  place={place}
-                  deleteFavorite={this.props.deleteFavorite}
-                  />
-              )
-            })
-          }
-
-        </div>
-
+      <div className='place-index'>
         {
-            this.renderTrashCan()
+          this.props.places.map((place) => {
+
+            return (
+              <PlaceIndexItem
+                key={place._id}
+                place={place}
+                deleteFavorite={this.props.deleteFavorite}
+                handleDrag={this.handleDrag}
+                handleStop={this.handleStop}
+                />
+            )
+          })
         }
+      </div>
+      <button
+        onClick={() => this.onSetSidebarOpen(true)}
+        >
+        >
+      </button>
 
-        <button
-          onClick={() => this.onSetSidebarOpen(true)}
-          >
-          >
-        </button>
-
-      </SideBar>
-      )
-    }
-    }
-
+      <div
+        ref='trashcan'
+        id='trashcan'>
+      {
+        this.renderTrashCan()
+      }
+    </div>
+    </SideBar>
+    )
+  }
 }
 
 export default PlaceIndex;

@@ -7,10 +7,19 @@ class PlaceIndexItem extends React.Component {
     super(props);
 
     this.state = {
-      isBeingDragged: false
+      positionY: null
     }
+
+    this.updatePosition = this.updatePosition.bind(this);
   }
 
+  updatePosition(event) {
+    console.log(event);
+    // let positionY = event.offsetY
+    // this.setState({
+    //   positionY
+    // })
+  }
 
   render() {
     const place = this.props.place;
@@ -22,20 +31,29 @@ class PlaceIndexItem extends React.Component {
     } else {
       color = 'green';
     }
+    // onStop={(event) => this.props.handleStop(event.nativeEvent, place.placeid)}
 
 
     return (
-      <Draggable>
+      <Draggable
+        onStart={(event) => this.props.handleDrag(true)}
+        onDrag={(event) => this.updatePosition(event.nativeEvent)}
+        onStop={(event) => this.props.handleDrag(false)}
+        >
       <div className={`place-item-${color}`}>
-
         <a>{ place.name }</a>
-        <br/>
         <a>{ place.address}</a>
-        <br/>
         <a>{ place.phoneNumber}</a>
-        <a>{ isClosed ? 'CLOSED' : place.busyPercentage }</a>
 
-      </div>
+        <a>{ isClosed ? 'CLOSED' : (
+            <div id='percentage'>
+
+
+            </div>
+
+          )}
+        </a>
+    </div>
     </Draggable>
     )
   }
