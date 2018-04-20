@@ -8,6 +8,6 @@ export const login = (user) => {
   return axios.post('http://localhost:3001/api/favorites', { user });
 }
 
-export const logout() => {
+export const logout = () => {
   return axios.get('localhost:3001/api/logout');
 }

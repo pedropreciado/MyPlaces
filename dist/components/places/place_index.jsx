@@ -3,6 +3,7 @@ import PlaceIndexItem from './place_index_item';
 import SideBar from 'react-sidebar';
 import PlaceFormContainer from './place_form_container';
 import SearchIndexContainer from '../searches/search_index_container';
+import SessionFormContainer from '../session/session_form_container';
 
 class PlaceIndex extends React.Component {
   constructor(props) {
@@ -21,8 +22,10 @@ class PlaceIndex extends React.Component {
   }
 
   componentWillMount() {
-    this.props.fetchFavorites();
-    this.props.subscribeToUpdater();
+    if (this.props.currentUser !== null) {
+      this.props.fetchFavorites();
+      this.props.subscribeToUpdater();
+    }
   }
 
   componentDidMount() {
@@ -62,7 +65,7 @@ class PlaceIndex extends React.Component {
   render() {
 
 
-      return (
+      return this.props.currentUser !== null ? (
           <SideBar
             sidebar={ (
               <div>
@@ -104,7 +107,9 @@ class PlaceIndex extends React.Component {
       }
     </div>
     </SideBar>
-    )
+  ) : (
+    <SessionFormContainer />
+  )
   }
 }
 

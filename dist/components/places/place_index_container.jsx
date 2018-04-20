@@ -12,8 +12,11 @@ const mapStateToProps = (state) => {
     return state.places[id]
   })
 
+  let currentUser = state.session.user;
+
   return {
-    places
+    places,
+    currentUser
   }
 }
 
