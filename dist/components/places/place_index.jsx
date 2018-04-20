@@ -12,7 +12,6 @@ class PlaceIndex extends React.Component {
     this.state = {
       sidebarOpen: false,
       dragHeard: false,
-
     }
 
     this.renderTrashCan = this.renderTrashCan.bind(this);
@@ -63,50 +62,52 @@ class PlaceIndex extends React.Component {
   }
 
   render() {
+    console.log(this.props);
 
-
-      return this.props.currentUser !== null ? (
-          <SideBar
-            sidebar={ (
-              <div>
-                <PlaceFormContainer />
-                <SearchIndexContainer />
-              </div>
-            ) }
-            open={this.state.sidebarOpen}
-            onSetOpen={this.onSetSidebarOpen}
-            styles={STYLES}
-            >
-      <div className='place-index'>
-        {
-          this.props.places.map((place) => {
-
-            return (
-              <PlaceIndexItem
-                key={place._id}
-                place={place}
-                deleteFavorite={this.props.deleteFavorite}
-                handleDrag={this.handleDrag}
-                handleStop={this.handleStop}
+    return this.props.currentUser !== null ? (
+        <SideBar
+          sidebar={ (
+            <div>
+              <PlaceFormContainer />
+              <SearchIndexContainer
+                currentUser={this.props.currentUser}
                 />
-            )
-          })
-        }
-      </div>
-      <button
-        onClick={() => this.onSetSidebarOpen(true)}
-        >
-        >
-      </button>
-
-      <div
-        ref='trashcan'
-        id='trashcan'>
+            </div>
+          ) }
+          open={this.state.sidebarOpen}
+          onSetOpen={this.onSetSidebarOpen}
+          styles={STYLES}
+          >
+    <div className='place-index'>
       {
-        this.renderTrashCan()
+        this.props.places.map((place) => {
+
+          return (
+            <PlaceIndexItem
+              key={place._id}
+              place={place}
+              deleteFavorite={this.props.deleteFavorite}
+              handleDrag={this.handleDrag}
+              handleStop={this.handleStop}
+              />
+          )
+        })
       }
     </div>
-    </SideBar>
+    <button
+      onClick={() => this.onSetSidebarOpen(true)}
+      >
+      >
+    </button>
+
+    <div
+      ref='trashcan'
+      id='trashcan'>
+    {
+      this.renderTrashCan()
+    }
+  </div>
+  </SideBar>
   ) : (
     <SessionFormContainer />
   )

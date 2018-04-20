@@ -18,7 +18,7 @@ router.route("/users")
     let user = new User();
 
     console.log("POST USER REQUESTED");
-
+    console.log(req);
     if (req.body.username &&
         req.body.password &&
         req.body.passwordConf &&
@@ -40,7 +40,12 @@ router.route("/users")
             } else {
               console.log("USER CREATED!");
               req.session.userId = user._id;
-              res.json(user);
+
+              res.json({
+                id: user._id,
+                username: user.username,
+                email: user.email
+              });
             }
           });
 

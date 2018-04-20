@@ -4,8 +4,8 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'
 
 export const login = (user) => dispatch => {
   SessionAPIUtil.login(credentials)
-    .then((user) => {
-    dispatch(receiveCurrentUser(user))
+    .then(({ data }) => {
+    dispatch(receiveCurrentUser(data))
   })
     .catch((err) => {
       console.error(err)
@@ -22,8 +22,8 @@ export const logout = () => dispatch => {
 
 export const signup = (user) => dispatch => {
   SessionAPIUtil.signup(user)
-    .then((user) => {
-      dispatch(receiveCurrentUser(user))
+    .then(({ data }) => {
+      dispatch(receiveCurrentUser(data))
     })
     .catch((err) => {
       console.error(err);

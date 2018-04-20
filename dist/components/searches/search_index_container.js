@@ -4,7 +4,7 @@ import { addFavorite } from '../../actions/place_actions';
 
 const mapStateToProps = (state) => {
   let searchResults = Object.keys(state.searchResults);
-
+  
   if (searchResults.length === 0) {
     searchResults = [];
   } else {

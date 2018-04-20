@@ -12,48 +12,66 @@ class SessionForm extends React.Component {
     }
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(key, value) {
-    this.setState({ key: value });
+    console.log(key, value);
+    console.log(this.state);
+    this.setState({ [key]: value });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log(this.state);
+    this.props.signup(this.state);
   }
 
   render() {
     return (
       <form>
-        <label>
           <input
+            id='name-searchbox'
             type='text'
             onChange={(event) =>
               this.handleChange('email', event.target.value)
             }
+            value={this.state.email}
+            placeholder='email'
             />
 
           <input
+            id='name-searchbox'
             type='text'
             onChange={(event) => {
               this.handleChange('username', event.target.value)
             }}
+            value={this.state.username}
+            placeholder='username'
             />
           <input
+            id='name-searchbox'
             type='password'
             onChange={(event) => {
               this.handleChange('password', event.target.value)
             }}
+            value={this.state.password}
+            placeholder='password'
             />
           <input
-            type='password'
-            onChange={(event) => {
-              this.handleChange('password', event.target.value)
-            }}
-            />
-          <input
+            id='name-searchbox'
             type='password'
             onChange={(event) => {
               this.handleChange('passwordConf', event.target.value)
             }}
+            value={this.state.passwordConf}
+            placeholder='retype password'
             />
-        </label>
+          <input
+            id='name-searchbox'
+            type='submit'
+            onClick={(event) => this.handleSubmit(event)}
+            />
       </form>
     )
   }

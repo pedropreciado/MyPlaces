@@ -1,11 +1,11 @@
 const axios = require('axios');
 
-export const signup = (user) => {
-  return axios.post('http://localhost:3001/api/favorites', { user });
+export const signup = (params) => {
+  return axios.post('http://localhost:3001/api/users', params);
 }
 
 export const login = (user) => {
-  return axios.post('http://localhost:3001/api/favorites', { user });
+  return axios.post('http://localhost:3001/api/users', { params: user });
 }
 
 export const logout = () => {
