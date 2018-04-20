@@ -13,6 +13,8 @@ async function getBusyHours() {
     console.log(Flag.red, err);
   })
 
+  let busyPromises = [];
+
   for (var place of places) {
     console.log(Flag.red, `Getting busy hours for: ${place.name}`);
 
@@ -31,6 +33,7 @@ async function getBusyHours() {
     console.log(Flag.green, `busyHours added to: ${placeDocument.name}`);
     completed++;
   }
+
 
   console.log(Flag.blue, `Saved ${completed}/${places.length} places!`);
   console.log(Flag.green, 'Received and saved busyHours!');

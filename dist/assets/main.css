@@ -31,11 +31,11 @@ a {
 }
 
 .place-item-green {
-  background-color: rgba(80, 137, 71);
+  background-color: #92925e;
 }
 
 .place-item-red {
-  background-color: rgba(139, 40, 43);
+  background-color: #d64231;
   font-size: large;
 }
 
@@ -52,8 +52,6 @@ a {
   overflow:hidden;
   position: relative;
 }
-
-
 
 .error-div {
   color: red;
@@ -75,6 +73,11 @@ a {
   padding: 2%;
   color: white;
   font-weight: lighter;
+}
+
+::placeholder {
+  color: white;
+  font-size: x-large;
 }
 
 #name-searchbox-red {
@@ -125,14 +128,14 @@ border-top: .5px solid white;
 }
 
 #search-index-item:hover {
-  background-color: #364850;
+  background-color: #c6152f;
   cursor: pointer;
   opacity: 1s;
   transition: opacity .5s ease-in-out;
 }
 
 #search-index-item-green {
-  background-color: rgb(80, 137, 71);
+  background-color: #92925e;
 }
 
 #trashcan {
@@ -154,5 +157,4 @@ border-top: .5px solid white;
   bottom: 0;
   left: 0;
   width: 100%;
-
 }

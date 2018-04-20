@@ -26,16 +26,22 @@ const Flag = require('./utils/node_colors');
 // ******************************************* (set for 2 min!)
 // //
 console.log(Flag.yellow, Date())
-
-setInterval(() => {
-  console.log(Flag.red, 'Getting all busy hours!');
-
-  getBusyHours();
-
-  console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60 );
-
-// initializeSocket();
+//
+// setInterval(() => {
+//   console.log(Flag.red, 'Getting all busy hours!');
+//
+//   try {
+//     getBusyHours();
+//   }
+//
+//   catch(err) {
+//     console.log(err);
+//   }
+//
+//   console.log(Flag.yellow, 'on: ', Date())
+// }, 1000 * 60 );
+//
+// // initializeSocket();
 
 io.on('connection', (client) => {
   client.on('subscribeToUpdater', () => {
@@ -51,7 +57,7 @@ io.on('connection', (client) => {
 });
 
 
-const socketPort = 8000;
+const socketPort = 3002;
 io.listen(socketPort)
 
 console.log('socket listening on port: ', socketPort);
@@ -84,25 +90,32 @@ app.use(function(req, res, next) {
 app.use(session({
   secret: 'blobState',
   resave: true,
-  saveUninitialized: false
+  saveUninitialized: false,
+  maxAge:  24 * 60 * 60 * 1000
 }));
 
-app.use("/api", usersRouter);
 app.use('/api', placesRouter);
+app.use('/api', usersRouter);
 
 
 router.get("/", (req, res) => {
+  var sessData = req.session;
+  sessData.someAttribute = "foo";
+  res.send('Returning with some text');
   res.json({ message: 'API Initialized' });
 });
 
 
 router.get("/logout", (req, res) => {
   if (req.session) {
+    console.log(req.session);
     req.session.destroy((err) => {
       if (err) {
         return next(err);
       } else {
-        return res.redirect('/');
+        return res.json({
+          message: 'logged out!'
+        })
       }
     });
   }

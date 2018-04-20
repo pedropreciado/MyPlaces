@@ -1,6 +1,7 @@
 let express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const Flag = require('../utils/node_colors');
 
 router.route("/users")
   .get((req, res) => {
@@ -30,9 +31,10 @@ router.route("/users")
             email: req.body.email
           }
 
-          User.create(userData, (err, user, next) => {
+          User.create(userData, (err, user) => {
+            console.log('so something');
             if (err) {
-              console.log("POST USER FAILED");
+              console.log(Flag.red, "POST USER FAILED");
               console.log(err);
               res.send(err);
             } else {
@@ -40,20 +42,22 @@ router.route("/users")
               req.session.userId = user._id;
               res.json(user);
             }
-            return;
           });
 
         } else if (req.body.logemail && req.body.logpassword) {
 
           User.authenticate(req.body.logemail, req.body.logpassword, (error, user) => {
+
             if (error || !user) {
               var err = new Error("Wrong email or password");
               err.status = 401;
-              return next(err);
+              console.log(Flag.red, 'error logging user in');
+              res.send(err);
+
             } else {
               req.session.userId  = user._id;
               console.log("Logged in!");
-              // return res.redirect("/profile")
+              res.json(user);
               return;
             }
           })
@@ -61,9 +65,9 @@ router.route("/users")
         } else {
 
           let err = new Error('All fields required');
+          console.log(err);
           err.status = 400;
-          return next(err);
-
+          res.send(err)
         }
   })
 

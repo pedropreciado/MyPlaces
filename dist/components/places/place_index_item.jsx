@@ -7,7 +7,11 @@ class PlaceIndexItem extends React.Component {
     super(props);
 
     this.state = {
-      positionY: null
+      positionY: null,
+      style: {
+        height: '0%',
+        color: 'rgba(33, 33, 33, .3)'
+      }
     }
 
     this.updatePosition = this.updatePosition.bind(this);
@@ -21,7 +25,20 @@ class PlaceIndexItem extends React.Component {
     // })
   }
 
+  componentDidMount() {
+    let style = {
+      backgroundColor: 'rgba(33, 33, 33, .3)',
+      height: `${this.props.place.busyPercentage}%`,
+      transition: '2s'
+    }
+
+    setTimeout(() => {
+      this.setState({style})
+    }, 500)
+  }
+
   render() {
+
     const place = this.props.place;
     let color;
     let isClosed = place.busyPercentage === 0;
@@ -44,18 +61,18 @@ class PlaceIndexItem extends React.Component {
         <a>{ place.name }</a>
         <a>{ place.address}</a>
         <a>{ place.phoneNumber}</a>
-        <a>{ place.busyPercentage }% busy</a>
 
-        <a>{ isClosed ? 'CLOSED' : (
+        { isClosed ? 'CLOSED' : (
+            <div>
+            <a>{ place.busyPercentage }% busy</a>
             <div
               id='percentage'
-              style={{ height: `${place.busyPercentage}%`}}
+              style={this.state.style}
               >
-
+            </div>
             </div>
 
           )}
-        </a>
     </div>
     </Draggable>
     )

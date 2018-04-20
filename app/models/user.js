@@ -35,6 +35,7 @@ UserSchema.pre('save', function(next) {
       return;
     }
     user.password = hash;
+    user.passwordConf = hash
     next();
   })
 })
