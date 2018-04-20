@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+let ObjectId = mongoose.Schema.ObjectId;
 
 const PlaceSchema = new mongoose.Schema({
   placeid: {
@@ -18,6 +19,10 @@ const PlaceSchema = new mongoose.Schema({
   },
   busyPercentage: {
     type: Number
+  },
+  user_id: {
+    type: ObjectId,
+    required: true
   }
 });
 
