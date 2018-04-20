@@ -57,7 +57,7 @@ io.on('connection', (client) => {
 });
 
 
-const socketPort = 3002;
+const socketPort = 8000;
 io.listen(socketPort)
 
 console.log('socket listening on port: ', socketPort);
