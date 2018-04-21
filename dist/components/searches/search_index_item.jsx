@@ -14,7 +14,10 @@ class SearchIndexItem extends React.Component {
 
   handleClick() {
     this.setState({ color: '-green' })
-    this.props.addFavorite(this.props.place.place_id);
+    this.props.addFavorite({
+      placeid: this.props.place.place_id,
+      userID: this.props.currentUser.id
+    });
     this.props.onSetSidebarOpen(false);
   }
 

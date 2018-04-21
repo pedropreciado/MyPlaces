@@ -29,9 +29,10 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <form>
+      <form id='session-form'>
+          <h1>MyPlaces</h1>
           <input
-            id='name-searchbox'
+            id='session-input'
             type='text'
             onChange={(event) =>
               this.handleChange('email', event.target.value)
@@ -41,7 +42,7 @@ class SessionForm extends React.Component {
             />
 
           <input
-            id='name-searchbox'
+            id='session-input'
             type='text'
             onChange={(event) => {
               this.handleChange('username', event.target.value)
@@ -50,7 +51,7 @@ class SessionForm extends React.Component {
             placeholder='username'
             />
           <input
-            id='name-searchbox'
+            id='session-input'
             type='password'
             onChange={(event) => {
               this.handleChange('password', event.target.value)
@@ -59,7 +60,7 @@ class SessionForm extends React.Component {
             placeholder='password'
             />
           <input
-            id='name-searchbox'
+            id='session-input'
             type='password'
             onChange={(event) => {
               this.handleChange('passwordConf', event.target.value)
@@ -68,7 +69,7 @@ class SessionForm extends React.Component {
             placeholder='retype password'
             />
           <input
-            id='name-searchbox'
+            id='session-submit'
             type='submit'
             onClick={(event) => this.handleSubmit(event)}
             />

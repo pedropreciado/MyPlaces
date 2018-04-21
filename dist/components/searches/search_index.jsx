@@ -19,6 +19,7 @@ class SearchIndex extends React.Component {
               place={place}
               addFavorite={this.props.addFavorite}
               onSetSidebarOpen={this.props.onSetSidebarOpen}
+              currentUser={this.props.currentUser}
               />
             )
           })

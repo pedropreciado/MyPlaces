@@ -4,8 +4,8 @@ export const signup = (params) => {
   return axios.post('http://localhost:3001/api/users', params);
 }
 
-export const login = (user) => {
-  return axios.post('http://localhost:3001/api/users', { params: user });
+export const login = (params) => {
+  return axios.post('http://localhost:3001/api/users', params);
 }
 
 export const logout = () => {

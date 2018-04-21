@@ -99,6 +99,12 @@ app.use('/api', usersRouter);
 
 
 router.get("/", (req, res) => {
+  res.sendFile(__dirname + '../src/index.html');
+  if (req.session.userId === undefined) {
+    console.log('User not set in session');
+  } else {
+    console.log('User from session: ', req.session);
+  }
   var sessData = req.session;
   sessData.someAttribute = "foo";
   res.send('Returning with some text');

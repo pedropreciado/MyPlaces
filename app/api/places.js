@@ -66,6 +66,7 @@ router.route('/favorites')
       console.log(Flag.green, 'Response from Google success!');
 
       let place = new Place(extractDetails(response));
+      place['userID'] = req.query.userID;
 
       console.log(Flag.green, 'Details extracted!');
       console.log(place);

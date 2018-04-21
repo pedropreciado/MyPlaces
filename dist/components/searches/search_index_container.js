@@ -4,7 +4,8 @@ import { addFavorite } from '../../actions/place_actions';
 
 const mapStateToProps = (state) => {
   let searchResults = Object.keys(state.searchResults);
-  
+  let currentUser = state.session.currentUser;
+
   if (searchResults.length === 0) {
     searchResults = [];
   } else {
@@ -14,7 +15,8 @@ const mapStateToProps = (state) => {
   }
 
   return {
-    searchResults
+    searchResults,
+    currentUser
   }
 }
 

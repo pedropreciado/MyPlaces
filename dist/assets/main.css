@@ -1,3 +1,5 @@
+/*  green: #5c665e */
+
 html {
   /* background-image: url('./images/sf.jpeg'); */
   /* background-color: #3b4d56; */
@@ -157,4 +159,38 @@ border-top: .5px solid white;
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+#session-form {
+  max-width: 40%;
+  margin: 0 auto;
+  margin-top: 10%;
+  background-color: #5c665e;
+}
+
+#session-input {
+  width: 56%;
+  font-size: x-large;
+  border: none;
+  border-bottom: .5px solid white;
+  background: none;
+  padding: 2%;
+  color: white;
+  font-weight: lighter;
+}
+
+#session-submit {
+  width: 40%;
+  font-size: x-large;
+  border: .5px solid white;
+  background: none;
+  padding: 2%;
+  color: white;
+  font-weight: lighter;
+}
+
+#session-submit:hover {
+  background-color: #383e39;
+  cursor: pointer;
+  transition: .5s;
 }

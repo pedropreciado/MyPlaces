@@ -25,6 +25,7 @@
       "transform-async-to-generator"
     ]
   },
+  "proxys": "http://localhost:3001",
   "bugs": {
     "url": "https://github.com/pedropreciado/MyPlaces/issues"
   },
@@ -60,7 +61,6 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-draggable": "^3.0.5",
-    "react-fontawesome": "^1.6.1",
     "react-redux": "^5.0.7",
     "react-sidebar": "^2.3.2",
     "react-websocket": "^2.0.0",
