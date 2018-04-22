@@ -47,11 +47,7 @@ io.on('connection', (client) => {
   client.on('subscribeToUpdater', () => {
     console.log('client is subscribing to updater');
     setInterval(() => {
-      Place.find({
-      'userId ': { $in: [
-          mongoose.Types.ObjectId(`${req.query.userId}`),
-      ]}
-    }, (err, places) => {
+      Place.find((err, places) => {
         if (err)
         console.log(docs);
 

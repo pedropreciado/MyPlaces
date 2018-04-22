@@ -48,13 +48,13 @@ router.route('/favorites')
     console.log(req.query);
 
     Place.find({
-    'userId ': { $in: [
+    'userId': { $in: [
         mongoose.Types.ObjectId(`${req.query.userId}`),
     ]}
   }, (err, places) => {
       if (err)
-      console.log(docs);
-
+      console.log(err);
+      console.log(places);
       console.log(Flag.green, 'FAVORITE PLACES SENT!');
       res.json(places);
     });

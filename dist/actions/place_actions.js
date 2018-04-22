@@ -20,7 +20,7 @@ export const subscribeToUpdater = () => dispatch => {
 }
 
 export const fetchFavorites = (id) => dispatch => {
-  PlacesAPIUtil.fetchFavorites().then((places) => {
+  PlacesAPIUtil.fetchFavorites(id).then((places) => {
     dispatch(receiveFavoritePlaces(places.data));
   })
 }
