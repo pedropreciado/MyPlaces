@@ -52,7 +52,7 @@ router.route('/favorites')
   }, (err, places) => {
       if (err)
       console.log(err);
-      
+
       console.log(Flag.green, 'FAVORITE PLACES SENT!');
       res.json(places);
     });
@@ -93,7 +93,11 @@ router.route('/favorites')
   })
   .delete((req, res) => {
     console.log(Flag.red, 'DELETE REQUESTED');
+
     Place.findById(req.query.id, (err, place) => {
+      if (err)
+      console.log(Flag.red, err);
+      
       place.remove((err, post) => {
         console.log(Flag.red, place.name, 'DELETED!');
 

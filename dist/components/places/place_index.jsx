@@ -48,13 +48,15 @@ class PlaceIndex extends React.Component {
   renderTrashCan() {
     if (this.state.dragHeard) {
       return (
-        <div>
+        <div className='trash-text'>
           Drag here to delete!
         </div>
       )
     } else {
       return (
-        <h2>MyPlaces</h2>
+        <div className='trash-text'>
+          MyPlaces
+        </div>
       )
     }
   }
@@ -76,6 +78,15 @@ class PlaceIndex extends React.Component {
             onSetOpen={this.onSetSidebarOpen}
             styles={STYLES}
             >
+
+            <div
+              ref='trashcan'
+              id='trashcan'>
+              {
+                this.renderTrashCan()
+              }
+            </div>
+
       <div className='place-index'>
         {
           this.props.places.map((place) => {
@@ -92,19 +103,13 @@ class PlaceIndex extends React.Component {
           })
         }
       </div>
-      <button
+      <div
+        id='sidebar-open-button'
         onClick={() => this.onSetSidebarOpen(true)}
         >
         >
-      </button>
+      </div>
 
-      <div
-        ref='trashcan'
-        id='trashcan'>
-      {
-        this.renderTrashCan()
-      }
-    </div>
     </SideBar>
     )
   }

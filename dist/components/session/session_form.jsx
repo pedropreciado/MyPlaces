@@ -57,7 +57,7 @@ class SessionForm extends React.Component {
       return (
         <div id='inputs'>
           <input
-            id='session-input'
+            className='session-input'
             type='text'
             onChange={(event) =>
               this.handleChange('email', event.target.value)
@@ -67,7 +67,7 @@ class SessionForm extends React.Component {
             />
 
           <input
-            id='session-input'
+            className='session-input'
             type='text'
             onChange={(event) => {
               this.handleChange('username', event.target.value)
@@ -77,7 +77,7 @@ class SessionForm extends React.Component {
             />
 
           <input
-            id='session-input'
+            className='session-input'
             type='password'
             onChange={(event) => {
               this.handleChange('password', event.target.value)
@@ -87,7 +87,7 @@ class SessionForm extends React.Component {
             />
 
           <input
-            id='session-input'
+            className='session-input'
             type='password'
             onChange={(event) => {
               this.handleChange('passwordConf', event.target.value)
@@ -101,7 +101,7 @@ class SessionForm extends React.Component {
       return (
         <div id='inputs'>
           <input
-            id='session-input'
+            className='session-input'
             type='text'
             onChange={(event) =>
               this.handleChange('loginemail', event.target.value)
@@ -111,7 +111,7 @@ class SessionForm extends React.Component {
             />
 
           <input
-            id='session-input'
+            className='session-input'
             type='password'
             onChange={(event) => {
               this.handleChange('loginpassword', event.target.value)
@@ -139,14 +139,14 @@ class SessionForm extends React.Component {
             this.renderForm()
           }
           <input
-            id='session-submit'
+            className='session-submit'
             type='submit'
             onClick={(event) => this.handleSubmit(event)}
             value={formType}
             />
           or
           <input
-            id='session-submit'
+            className='session-submit'
             type='submit'
             onClick={(event) => this.toggleForm(event)}
             value={formType === 'login' ? 'signup' : 'login'}

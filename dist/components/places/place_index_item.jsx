@@ -47,13 +47,16 @@ class PlaceIndexItem extends React.Component {
 
 
     return (
-      <Draggable
-        onStart={(event) => this.props.handleDrag(true)}
-        onDrag={(event) => this.updatePosition(event.nativeEvent)}
-        onStop={(event) => this.props.handleDrag(false)}
-        >
       <div className={`place-item-${color}`}>
-        <a>{ place.name }</a>
+        <div id='place-item-header'>
+            <a
+              id='delete-place-button'
+              onClick={() => this.props.deleteFavorite(place._id)}
+              >
+              X
+            </a>
+            <a id='place-name'>{ place.name }</a>
+        </div>
         <a>{ place.address}</a>
         <a>{ place.phoneNumber}</a>
 
@@ -69,7 +72,6 @@ class PlaceIndexItem extends React.Component {
 
           )}
     </div>
-    </Draggable>
     )
   }
 }

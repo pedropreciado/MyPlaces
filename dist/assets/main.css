@@ -141,15 +141,20 @@ border-top: .5px solid white;
 }
 
 #trashcan {
-  background: white;
-  color: black;
-  text-align: center;
-  max-width: 20%;
-  margin: 0 auto;
-  min-height: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    background: black;
+    color: white;
+    text-align: center;
+    font-size: 2.5em;
+    margin: 0 auto;
+    min-height: 10%;
+    max-height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;enter;
+}
+
+#trash-text {
+  width: 100%;
 }
 
 #percentage {
@@ -162,13 +167,14 @@ border-top: .5px solid white;
 }
 
 #session-form {
-  max-width: 40%;
+  max-width: 70%;
+  min-width: 60%;
   margin: 0 auto;
   margin-top: 10%;
   background-color: #5c665e;
 }
 
-#session-input {
+.session-input {
   width: 56%;
   font-size: x-large;
   border: none;
@@ -179,7 +185,7 @@ border-top: .5px solid white;
   font-weight: lighter;
 }
 
-#session-submit {
+.session-submit {
   width: 40%;
   font-size: x-large;
   border: .5px solid white;
@@ -189,7 +195,7 @@ border-top: .5px solid white;
   font-weight: lighter;
 }
 
-#session-submit:hover {
+.session-submit:hover {
   background-color: #383e39;
   cursor: pointer;
   transition: .5s;
@@ -203,11 +209,42 @@ border-top: .5px solid white;
   justify-content: center;
 }
 
-session-input:-webkit-autofill, select:-webkit-autofill {
+#session-input:-webkit-autofill {
   background-color: rgb(33, 33, 33) !important;
   color: white !important;
 }
 
 input:-webkit-autofill {
-        color: #2a2a2a !important;
-    }
+  color: #2a2a2a !important;
+}
+
+#sidebar-open-button {
+  background: #5C665C;
+  width: 2%;
+  text-align: end;
+  font-size: 2em;
+  position: relative;
+  padding-right: 1%;;
+}
+
+#sidebar-open-button:hover {
+  width: 5%;
+  transition: .5s;
+  cursor: pointer;
+}
+
+#place-item-header {
+  width: 100%;
+}
+
+#delete-place-button {
+  color: black;
+  margin: 0;
+  float: left;
+  padding-left: 3%;
+  cursor: pointer;
+}
+
+#place-name {
+  margin-right: 7%;
+}
