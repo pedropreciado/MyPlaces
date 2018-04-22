@@ -10,20 +10,20 @@ function onError(err) {
 export const fetchLocation = () => dispatch => {
   console.log('fetching location ...');
 
-  setTimeout(() => {
-    dispatch(receiveLocation({ currentLocation: '37.746555,-122.418725' }))
-  }, 2000)
+  // setTimeout(() => {
+  //   dispatch(receiveLocation({ currentLocation: '37.746555,-122.418725' }))
+  // }, 2000)
 
-  // window.navigator
-  //   .geolocation
-  //   .getCurrentPosition((pos) => {
-  //     let lat = pos.coords.latitude.toFixed(6);
-  //     let long = pos.coords.longitude.toFixed(6);
-  //
-  //     dispatch(receiveLocation({
-  //       currentLocation:`${lat},${long}`
-  //     }));
-  //   }, onError)
+  window.navigator
+    .geolocation
+    .getCurrentPosition((pos) => {
+      let lat = pos.coords.latitude.toFixed(6);
+      let long = pos.coords.longitude.toFixed(6);
+
+      dispatch(receiveLocation({
+        currentLocation:`${lat},${long}`
+      }));
+    }, onError)
 }
 
 const receiveLocation = (location) => ({

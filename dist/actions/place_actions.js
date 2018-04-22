@@ -8,7 +8,7 @@ export const RECEIVE_SEARCH_RESULTS = 'RECEIVE_SEARCH_RESULTS';
 export const RECEIVE_FAVORITE_PLACE = 'RECEIVE_FAVORITE_PLACE';
 export const REMOVE_FAVORITE_PLACE = 'REMOVE_FAVORITE_PLACE';
 
-export const subscribeToUpdater = () => dispatch => {
+export const subscribeToUpdater = (customId) => dispatch => {
   console.log('Subscribing to Updater ...');
 
   socket.on('newPlaces', (places) => {
@@ -17,6 +17,7 @@ export const subscribeToUpdater = () => dispatch => {
   })
 
   socket.emit('subscribeToUpdater')
+  socket.emit('setCustomId', { customId })
 }
 
 export const fetchFavorites = (id) => dispatch => {

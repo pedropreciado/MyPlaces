@@ -42,20 +42,43 @@ setInterval(() => {
 }, 1000 * 60 );
 //
 // // initializeSocket();
+let clients = [];
 
 io.on('connection', (client) => {
   client.on('subscribeToUpdater', () => {
     console.log('client is subscribing to updater');
     setInterval(() => {
-      Place.find((err, places) => {
+      console.log(client);
+      Place.find({
+        'userId': { $in: [
+          mongoose.Types.ObjectId(`${client.customId}`)
+        ]}
+      }, (err, places) => {
         if (err)
-        console.log(docs);
+        console.log(client);
+        console.log(places);
 
         console.log(Flag.green, 'FAVORITE PLACES SENT!');
-        client.emit(places);
+        client.emit('newPlaces', places);
       });
     }, 1000 * 20);
   });
+
+  client.on('setCustomId', (data) => {
+    client.customId = data.customId;
+
+    clients.push(client.customId);
+  });
+
+  client.on('disconnect', (data) => {
+    for (var i = 0; i < clients.length; i++) {
+      let c = clients[i];
+      if (clients.clientId == client.id) {
+        clients.splice(i, 1);
+        break;
+      }
+    }
+  })
 });
 
 
