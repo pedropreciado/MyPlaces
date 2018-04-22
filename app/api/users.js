@@ -49,9 +49,9 @@ router.route("/users")
             }
           });
 
-        } else if (req.body.logemail && req.body.logpassword) {
+        } else if (req.body.loginemail && req.body.loginpassword) {
 
-          User.authenticate(req.body.logemail, req.body.logpassword, (error, user) => {
+          User.authenticate(req.body.loginemail, req.body.loginpassword, (error, user) => {
 
             if (error || !user) {
               var err = new Error("Wrong email or password");

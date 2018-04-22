@@ -194,3 +194,20 @@ border-top: .5px solid white;
   cursor: pointer;
   transition: .5s;
 }
+
+#inputs {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+session-input:-webkit-autofill, select:-webkit-autofill {
+  background-color: rgb(33, 33, 33) !important;
+  color: white !important;
+}
+
+input:-webkit-autofill {
+        color: #2a2a2a !important;
+    }

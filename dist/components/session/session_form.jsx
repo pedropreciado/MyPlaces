@@ -5,32 +5,42 @@ class SessionForm extends React.Component {
     super(props);
 
     this.state = {
+      formType: 'login',
       email: '',
       username: '',
       password: '',
-      passwordConf: ''
+      passwordConf: '',
+      loginemail: '',
+      loginpassword: '',
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.renderForm = this.renderForm.bind(this);
   }
 
   handleChange(key, value) {
     console.log(key, value);
-    console.log(this.state);
     this.setState({ [key]: value });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+
+    if (this.state.formType === )
     this.props.signup(this.state);
   }
 
-  render() {
-    return (
-      <form id='session-form'>
-          <h1>MyPlaces</h1>
+  toggleForm(event) {
+    event.preventDefault();
+
+    this.setState({ formType: event.target.value})
+  }
+
+  renderForm() {
+    if (this.state.formType === 'signup') {
+      return (
+        <div id='inputs'>
           <input
             id='session-input'
             type='text'
@@ -50,6 +60,7 @@ class SessionForm extends React.Component {
             value={this.state.username}
             placeholder='username'
             />
+
           <input
             id='session-input'
             type='password'
@@ -59,6 +70,7 @@ class SessionForm extends React.Component {
             value={this.state.password}
             placeholder='password'
             />
+
           <input
             id='session-input'
             type='password'
@@ -68,10 +80,55 @@ class SessionForm extends React.Component {
             value={this.state.passwordConf}
             placeholder='retype password'
             />
+        </div>
+      )
+    } else {
+      return (
+        <div id='inputs'>
+          <input
+            id='session-input'
+            type='text'
+            onChange={(event) =>
+              this.handleChange('loginemail', event.target.value)
+            }
+            value={this.state.loginemail}
+            placeholder='email'
+            />
+
+          <input
+            id='session-input'
+            type='password'
+            onChange={(event) => {
+              this.handleChange('loginpassword', event.target.value)
+            }}
+            value={this.state.loginpassword }
+            placeholder='password'
+            />
+        </div>
+      )
+    }
+  }
+
+  render() {
+    let formType = this.state.formType;
+
+    return (
+      <form id='session-form' autoComplete='off'>
+          <h1>MyPlaces</h1>
+          {
+            this.renderForm()
+          }
           <input
             id='session-submit'
             type='submit'
             onClick={(event) => this.handleSubmit(event)}
+            value={this.state.formType}
+            />
+          <input
+            id='session-submit'
+            type='submit'
+            onClick={(event) => this.toggleForm(event)}
+            value={formType === 'login' ? 'signup' : 'login'}
             />
       </form>
     )
