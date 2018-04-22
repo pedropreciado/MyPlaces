@@ -1,5 +1,4 @@
 import React from 'react';
-import FontAwesome from 'react-fontawesome';
 
 class PlaceForm extends React.Component {
   constructor(props) {

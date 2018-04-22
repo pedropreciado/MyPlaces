@@ -27,19 +27,19 @@ const Flag = require('./utils/node_colors');
 // //
 console.log(Flag.yellow, Date())
 //
-// setInterval(() => {
-//   console.log(Flag.red, 'Getting all busy hours!');
-//
-//   try {
-//     getBusyHours();
-//   }
-//
-//   catch(err) {
-//     console.log(err);
-//   }
-//
-//   console.log(Flag.yellow, 'on: ', Date())
-// }, 1000 * 60 );
+setInterval(() => {
+  console.log(Flag.red, 'Getting all busy hours!');
+
+  try {
+    getBusyHours();
+  }
+
+  catch(err) {
+    console.log(err);
+  }
+
+  console.log(Flag.yellow, 'on: ', Date())
+}, 1000 * 60 );
 //
 // // initializeSocket();
 
@@ -47,12 +47,18 @@ io.on('connection', (client) => {
   client.on('subscribeToUpdater', () => {
     console.log('client is subscribing to updater');
     setInterval(() => {
-      Place.find((err, places) => {
+      Place.find({
+      'userId ': { $in: [
+          mongoose.Types.ObjectId(`${req.query.userId}`),
+      ]}
+    }, (err, places) => {
         if (err)
-        console.log(Flag.red, err);
-        client.emit('newPlaces', places);
-      })
-    }, 1000 * 45);
+        console.log(docs);
+
+        console.log(Flag.green, 'FAVORITE PLACES SENT!');
+        client.emit(places);
+      });
+    }, 1000 * 20);
   });
 });
 

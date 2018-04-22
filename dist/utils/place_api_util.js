@@ -1,7 +1,11 @@
 const axios = require("axios");
 
-export const fetchFavorites = () => {
-  return axios.get('http://localhost:3001/api/favorites');
+export const fetchFavorites = (id) => {
+  console.log(id);
+  return axios.get(
+    'http://localhost:3001/api/favorites?' +
+    `userId=${id}`
+  );
 }
 
 export const fetchSearchResults = (query) => {

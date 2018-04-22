@@ -19,7 +19,7 @@ export const subscribeToUpdater = () => dispatch => {
   socket.emit('subscribeToUpdater')
 }
 
-export const fetchFavorites = () => dispatch => {
+export const fetchFavorites = (id) => dispatch => {
   PlacesAPIUtil.fetchFavorites().then((places) => {
     dispatch(receiveFavoritePlaces(places.data));
   })

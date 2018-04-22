@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
   })
 
   let currentUser = state.session.currentUser;
-
+  
   return {
     places,
     currentUser
@@ -22,7 +22,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchFavorites: () => dispatch(fetchFavorites()),
+    fetchFavorites: (id) => dispatch(fetchFavorites(id)),
     subscribeToUpdater: () => dispatch(subscribeToUpdater()),
     fetchLocation: () => dispatch(fetchLocation()),
     deleteFavorite: (id) => dispatch(deleteFavorite(id))

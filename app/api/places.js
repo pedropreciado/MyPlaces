@@ -3,6 +3,7 @@ const router = express.Router();
 const Place = require('../models/place');
 const { merge } = require('lodash');
 const axios = require('axios');
+const mongoose = require('mongoose');
 
 const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('../utils/node_colors');
@@ -44,10 +45,15 @@ router.route('/places')
 router.route('/favorites')
   .get((req, res) => {
     console.log(Flag.blue, 'FETCHING FAVORITE PLACES!');
+    console.log(req.query);
 
-    Place.find((err, places) => {
+    Place.find({
+    'userId ': { $in: [
+        mongoose.Types.ObjectId(`${req.query.userId}`),
+    ]}
+  }, (err, places) => {
       if (err)
-      console.log(Flag.red, err);
+      console.log(docs);
 
       console.log(Flag.green, 'FAVORITE PLACES SENT!');
       res.json(places);

@@ -18,11 +18,6 @@ class PlaceIndexItem extends React.Component {
   }
 
   updatePosition(event) {
-    console.log(event);
-    // let positionY = event.offsetY
-    // this.setState({
-    //   positionY
-    // })
   }
 
   componentDidMount() {

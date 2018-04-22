@@ -20,7 +20,6 @@ class SessionForm extends React.Component {
   }
 
   handleChange(key, value) {
-    console.log(key, value);
     this.setState({ [key]: value });
   }
 

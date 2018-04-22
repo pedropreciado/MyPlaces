@@ -11,7 +11,7 @@ class PlaceIndex extends React.Component {
 
     this.state = {
       sidebarOpen: false,
-      dragHeard: false,
+      dragHeard: false
     }
 
     this.renderTrashCan = this.renderTrashCan.bind(this);
@@ -21,14 +21,14 @@ class PlaceIndex extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.currentUser !== null) {
-      this.props.fetchFavorites();
+    if (this.props.currentUser) {
+      this.props.fetchFavorites(this.currentUser.id);
       this.props.subscribeToUpdater();
     }
   }
 
-  componentDidMount() {
-    console.log(this.refs.trashcan);
+  componentShouldUpdate() {
+    return true;
   }
 
   onSetSidebarOpen(open) {
@@ -62,56 +62,53 @@ class PlaceIndex extends React.Component {
   }
 
   render() {
-    console.log(this.props);
 
-    return this.props.currentUser !== null ? (
-        <SideBar
-          sidebar={ (
-            <div>
-              <PlaceFormContainer />
-              <SearchIndexContainer
-                currentUser={this.props.currentUser}
-                onSetSidebarOpen={this.onSetSidebarOpen}
+    return (
+          <SideBar
+            sidebar={ (
+              <div>
+                <PlaceFormContainer />
+                <SearchIndexContainer
+                  currentUser={this.props.currentUser}
+                  onSetSidebarOpen={this.onSetSidebarOpen}
+                  />
+              </div>
+            ) }
+            open={this.state.sidebarOpen}
+            onSetOpen={this.onSetSidebarOpen}
+            styles={STYLES}
+            >
+      <div className='place-index'>
+        {
+          this.props.places.map((place) => {
+
+            return (
+              <PlaceIndexItem
+                key={place._id}
+                place={place}
+                deleteFavorite={this.props.deleteFavorite}
+                handleDrag={this.handleDrag}
+                handleStop={this.handleStop}
                 />
-            </div>
-          ) }
-          open={this.state.sidebarOpen}
-          onSetOpen={this.onSetSidebarOpen}
-          styles={STYLES}
-          >
-    <div className='place-index'>
-      {
-        this.props.places.map((place) => {
+            )
+          })
+        }
+      </div>
+      <button
+        onClick={() => this.onSetSidebarOpen(true)}
+        >
+        >
+      </button>
 
-          return (
-            <PlaceIndexItem
-              key={place._id}
-              place={place}
-              deleteFavorite={this.props.deleteFavorite}
-              handleDrag={this.handleDrag}
-              handleStop={this.handleStop}
-              />
-          )
-        })
+      <div
+        ref='trashcan'
+        id='trashcan'>
+      {
+        this.renderTrashCan()
       }
     </div>
-    <button
-      onClick={() => this.onSetSidebarOpen(true)}
-      >
-      >
-    </button>
-
-    <div
-      ref='trashcan'
-      id='trashcan'>
-    {
-      this.renderTrashCan()
-    }
-  </div>
-  </SideBar>
-  ) : (
-    <SessionFormContainer />
-  )
+    </SideBar>
+    )
   }
 }
 
