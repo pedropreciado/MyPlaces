@@ -34,15 +34,16 @@ class SessionForm extends React.Component {
         passwordConf: this.state.passwordConf
       }
 
-      this.props.signup(user);
+      this.props.signup(user)
     } else {
       let user = {
         loginemail: this.state.loginemail,
         loginpassword: this.state.loginpassword
       }
 
-      this.props.login(user)
+      this.props.login(user);
     }
+    this.props.history.push('/places');
   }
 
   toggleForm(event) {

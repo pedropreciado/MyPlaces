@@ -21,14 +21,13 @@ class PlaceIndex extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.currentUser) {
-      this.props.fetchFavorites(this.currentUser.id);
+
+    if (this.props.currentUser.id) {
+
+      console.log(this.props.currentUser.id);
+      this.props.fetchFavorites(this.props.currentUser.id);
       this.props.subscribeToUpdater();
     }
-  }
-
-  componentShouldUpdate() {
-    return true;
   }
 
   onSetSidebarOpen(open) {
