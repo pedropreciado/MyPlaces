@@ -54,7 +54,6 @@ router.route('/favorites')
     });
   })
   .post((req, res) => {
-
     console.log(Flag.blue, 'POST PLACE REQUESTED!');
 
     axios.get(
@@ -66,7 +65,8 @@ router.route('/favorites')
       console.log(Flag.green, 'Response from Google success!');
 
       let place = new Place(extractDetails(response));
-      place['userID'] = req.query.userID;
+
+      place['userId'] = req.query.userId;
 
       console.log(Flag.green, 'Details extracted!');
       console.log(place);

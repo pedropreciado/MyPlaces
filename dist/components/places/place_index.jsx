@@ -71,6 +71,7 @@ class PlaceIndex extends React.Component {
               <PlaceFormContainer />
               <SearchIndexContainer
                 currentUser={this.props.currentUser}
+                onSetSidebarOpen={this.onSetSidebarOpen}
                 />
             </div>
           ) }

@@ -16,10 +16,12 @@ export const fetchSearchResults = (query) => {
   );
 }
 
-export const addFavorite = (id) => {
+export const addFavorite = (data) => {
+  console.log();
   return axios.post(
     'http://localhost:3001/api/favorites?' +
-    `placeid=${id}`
+    `placeid=${data.placeid}&`+
+    `userId=${data.userID}`
   )
 }
 

@@ -14,18 +14,20 @@ class SearchIndexItem extends React.Component {
 
   handleClick() {
     this.setState({ color: '-green' })
+    console.log(this.props);
     this.props.addFavorite({
       placeid: this.props.place.place_id,
       userID: this.props.currentUser.id
     });
+
     this.props.onSetSidebarOpen(false);
   }
 
-  onSetSidebarOpen(open) {
-    this.setState({
-      sidebarOpen: open
-    })
-  }
+  // onSetSidebarOpen(open) {
+  //   this.setState({
+  //     sidebarOpen: open
+  //   })
+  // }
 
   render() {
     let place = this.props.place;

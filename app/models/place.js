@@ -20,7 +20,7 @@ const PlaceSchema = new mongoose.Schema({
   busyPercentage: {
     type: Number
   },
-  userID: {
+  userId: {
     type: ObjectId,
     required: true
   }
