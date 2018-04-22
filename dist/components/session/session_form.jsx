@@ -27,8 +27,23 @@ class SessionForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    if (this.state.formType === )
-    this.props.signup(this.state);
+    if (this.state.formType === 'signup') {
+      let user = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+        passwordConf: this.state.passwordConf
+      }
+
+      this.props.signup(user);
+    } else {
+      let user = {
+        loginemail: this.state.loginemail,
+        loginpassword: this.state.loginpassword
+      }
+
+      this.props.login(user)
+    }
   }
 
   toggleForm(event) {
@@ -114,6 +129,11 @@ class SessionForm extends React.Component {
 
     return (
       <form id='session-form' autoComplete='off'>
+          {
+            this.props.errors.map((err) => {
+              (<a>error</a>)
+            })
+          }
           <h1>MyPlaces</h1>
           {
             this.renderForm()
@@ -122,8 +142,9 @@ class SessionForm extends React.Component {
             id='session-submit'
             type='submit'
             onClick={(event) => this.handleSubmit(event)}
-            value={this.state.formType}
+            value={formType}
             />
+          or
           <input
             id='session-submit'
             type='submit'

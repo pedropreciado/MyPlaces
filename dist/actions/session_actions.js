@@ -4,11 +4,14 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER'
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 
 export const login = (user) => dispatch => {
-  SessionAPIUtil.login(credentials)
+  SessionAPIUtil.login(user)
     .then(({ data }) => {
-    dispatch(receiveCurrentUser(data))
-  }, (err) => {
-    dispatch(receiveErrors(err))
+      console.log(data);
+      if (data.status > 400) {
+        dispatch(receiveErrors(data))
+      } else {
+        dispatch(receiveCurrentUser(data))
+      }
   })
     .catch((err) => {
       console.error(err)

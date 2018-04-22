@@ -18,7 +18,7 @@ router.route("/users")
     let user = new User();
 
     console.log("POST USER REQUESTED");
-    console.log(req);
+    console.log(req.body);
     if (req.body.username &&
         req.body.password &&
         req.body.passwordConf &&
@@ -71,7 +71,7 @@ router.route("/users")
 
           let err = new Error('All fields required');
           console.log(err);
-          err.status = 400;
+          // err.status = 400;
           res.send(err)
         }
   })

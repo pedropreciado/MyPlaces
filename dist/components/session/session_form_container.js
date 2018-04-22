@@ -8,9 +8,11 @@ import {
 
 const mapStateToProps = (state) => {
   let currentUser = state.session.currentUser;
+  let errors = [];
 
   return {
-    currentUser
+    currentUser,
+    errors
   }
 }
 
