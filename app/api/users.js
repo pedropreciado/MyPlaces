@@ -62,7 +62,11 @@ router.route("/users")
             } else {
               req.session.userId  = user._id;
               console.log("Logged in!");
-              res.json(user);
+              res.json({
+                id: user._id,
+                username: user.username,
+                email: user.email
+              });
               return;
             }
           })
