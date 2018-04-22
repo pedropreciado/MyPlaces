@@ -45,20 +45,23 @@ setInterval(() => {
 let clients = [];
 
 io.on('connection', (client) => {
-  client.on('subscribeToUpdater', () => {
-    console.log('client is subscribing to updater');
+  client.on('subscribeToUpdater', (data) => {
+    client.customId = data.customId;
+
+    clients.push(client.customId);
+
+    console.log(client.customId, ' is subscribing to updater');
+
     setInterval(() => {
-      console.log(client);
       Place.find({
         'userId': { $in: [
           mongoose.Types.ObjectId(`${client.customId}`)
         ]}
       }, (err, places) => {
         if (err)
-        console.log(client);
-        console.log(places);
+        console.log(Flag.red, err);
 
-        console.log(Flag.green, 'FAVORITE PLACES SENT!');
+        console.log('SENT ', places.length, ' to ', client.customId);
         client.emit('newPlaces', places);
       });
     }, 1000 * 20);

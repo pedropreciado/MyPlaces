@@ -13,7 +13,6 @@ const getPercentage = require('../utils/get_percentage');
 
 router.route('/places')
   .get((req, res) => {
-    console.log(req.query);
 
     console.log(
       'GET PLACES FROM GOOGLE API REQUESTED WITH QUERY: ' +
@@ -45,7 +44,6 @@ router.route('/places')
 router.route('/favorites')
   .get((req, res) => {
     console.log(Flag.blue, 'FETCHING FAVORITE PLACES!');
-    console.log(req.query);
 
     Place.find({
     'userId': { $in: [
@@ -54,7 +52,7 @@ router.route('/favorites')
   }, (err, places) => {
       if (err)
       console.log(err);
-      console.log(places);
+      
       console.log(Flag.green, 'FAVORITE PLACES SENT!');
       res.json(places);
     });

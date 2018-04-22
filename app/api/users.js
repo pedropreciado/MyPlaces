@@ -18,7 +18,6 @@ router.route("/users")
     let user = new User();
 
     console.log("POST USER REQUESTED");
-    console.log(req.body);
     if (req.body.username &&
         req.body.password &&
         req.body.passwordConf &&
@@ -32,7 +31,6 @@ router.route("/users")
           }
 
           User.create(userData, (err, user) => {
-            console.log('so something');
             if (err) {
               console.log(Flag.red, "POST USER FAILED");
               console.log(err);

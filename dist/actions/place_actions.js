@@ -16,8 +16,7 @@ export const subscribeToUpdater = (customId) => dispatch => {
     console.log('Favorites updated through socket!');
   })
 
-  socket.emit('subscribeToUpdater')
-  socket.emit('setCustomId', { customId })
+  socket.emit('subscribeToUpdater', { customId });
 }
 
 export const fetchFavorites = (id) => dispatch => {
