@@ -64,7 +64,7 @@ io.on('connection', (client) => {
         console.log('SENT ', places.length, ' to ', client.customId);
         client.emit('newPlaces', places);
       });
-    }, 1000 * 20);
+    }, 1000 * 60 );
   });
 
   client.on('setCustomId', (data) => {

@@ -165,8 +165,8 @@ border-top: .5px solid white;
 }
 
 #session-form {
-  max-width: 70%;
-  min-width: 60%;
+  max-width: 40%;
+  min-width: 35%;
   margin: 0 auto;
   margin-top: 10%;
   background-color: #5c665e;
@@ -219,9 +219,7 @@ input:-webkit-autofill {
 #sidebar-open-button {
   background: #5C665C;
   width: 2%;
-  text-align: end;
   font-size: 2em;
-  position: relative;
   padding-right: 1%;
   position: absolute;
   bottom: 10px;
