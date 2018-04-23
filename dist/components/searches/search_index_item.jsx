@@ -21,6 +21,7 @@ class SearchIndexItem extends React.Component {
     });
 
     this.props.onSetSidebarOpen(false);
+    this.setState({ color: '' });
   }
 
   // onSetSidebarOpen(open) {
