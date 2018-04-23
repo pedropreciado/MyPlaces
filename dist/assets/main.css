@@ -3,9 +3,12 @@
 html {
   /* background-image: url('./images/sf.jpeg'); */
   /* background-color: #3b4d56; */
-  background-color: black;
-  color: white;
+  background-color: #fafafa;
+  color: rgb(51, 51, 51);
   font-family: 'Roboto', sans-serif;
+  /* font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
+
+
 }
 
 form {
@@ -33,15 +36,16 @@ a {
 }
 
 .place-item-green {
-  background-color: #92925e;
+  background-color: #53d869;
 }
 
 .place-item-red {
-  background-color: #d64231;
+  background-color: #fc3d39;
   font-size: large;
 }
 
 .place-item-green, .place-item-red {
+  color: white;
   text-align: center;
   display: flex;
   align-items: center;
@@ -53,10 +57,11 @@ a {
   margin: 20px;
   overflow:hidden;
   position: relative;
+  border-bottom: .5px solid #D6D6D6;
 }
 
 .error-div {
-  color: red;
+  color: #fc3d39;
 }
 
 #location-container {
@@ -70,15 +75,15 @@ a {
 #name-searchbox {
   width: 56%;
   font-size: x-large;
-  border: .5px solid white;
+  border: none;
   background: none;
   padding: 2%;
-  color: white;
+  color: rgb(33, 33, 33);
   font-weight: lighter;
 }
 
 ::placeholder {
-  color: white;
+  color: rgb(51, 51, 51);
   font-size: x-large;
 }
 
@@ -130,19 +135,19 @@ border-top: .5px solid white;
 }
 
 #search-index-item:hover {
-  background-color: #92925e;
+  background-color: #53d869;
   cursor: pointer;
   opacity: 1s;
   transition: opacity .5s ease-in-out;
 }
 
 #search-index-item-green {
-  background-color: #92925e;
+  background-color: #53d869;
 }
 
 #trashcan {
-    background: black;
-    color: white;
+    background: none;
+    color: black;
     text-align: center;
     font-size: 2.5em;
     margin: 0 auto;
@@ -169,32 +174,32 @@ border-top: .5px solid white;
   min-width: 35%;
   margin: 0 auto;
   margin-top: 10%;
-  background-color: #5c665e;
+  background-color: #FFFFFF;
+  border-bottom: .5px solid #D6D6D6;
 }
 
 .session-input {
   width: 56%;
   font-size: x-large;
   border: none;
-  border-bottom: .5px solid white;
-  background: none;
   padding: 2%;
-  color: white;
+  color: rgb(51, 51, 51);
   font-weight: lighter;
 }
 
 .session-submit {
-  width: 40%;
+  width: 25%;
   font-size: x-large;
-  border: .5px solid white;
-  background: none;
+  border: none;
   padding: 2%;
-  color: white;
+  color: rgb(51, 51, 51);
   font-weight: lighter;
 }
 
 .session-submit:hover {
-  background-color: #383e39;
+  /* border-bottom: .5px solid rgb(51, 51, 51); */
+  /* background-color: rgb(51, 51, 51); */
+  color: #53d869;
   cursor: pointer;
   transition: .5s;
 }
@@ -217,19 +222,21 @@ input:-webkit-autofill {
 }
 
 #sidebar-open-button {
-  background: #5C665C;
+  background: white;
+  color: black;
   width: 2%;
   font-size: 2em;
   padding-right: 1%;
   position: absolute;
-  bottom: 10px;
-  height: 64px;
+  bottom: 8%;
+  height: 20%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
 #sidebar-open-button:hover {
+  background: #E9E7E2;
   width: 5%;
   transition: .5s;
   cursor: pointer;
@@ -240,7 +247,7 @@ input:-webkit-autofill {
 }
 
 #delete-place-button {
-  color: black;
+  color: white;
   margin: 0;
   float: left;
   padding-left: 3%;

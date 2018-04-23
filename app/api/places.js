@@ -79,7 +79,17 @@ router.route('/favorites')
         if (err) {
           res.send(err);
         } else {
-          res.json(place);
+          Place.find({
+          'userId': { $in: [
+              mongoose.Types.ObjectId(`${req.query.userId}`),
+          ]}
+        }, (err, places) => {
+            if (err)
+            console.log(err);
+
+            console.log(Flag.green, 'FAVORITE PLACES SENT!');
+            res.json(places);
+          });
         }
       });
 
@@ -97,7 +107,7 @@ router.route('/favorites')
     Place.findById(req.query.id, (err, place) => {
       if (err)
       console.log(Flag.red, err);
-      
+
       place.remove((err, post) => {
         console.log(Flag.red, place.name, 'DELETED!');
 
