@@ -98,6 +98,7 @@ class PlaceForm extends React.Component {
             />
 
           <input
+            className='session-submit'
             type='submit'
             value='Search'
             onClick={ (event) => this.handleSubmit(event)}

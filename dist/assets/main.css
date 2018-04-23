@@ -188,6 +188,7 @@ border-top: .5px solid white;
   padding: 2%;
   color: rgb(51, 51, 51);
   font-weight: lighter;
+  margin-bottom: 0;
 }
 
 .session-submit {
