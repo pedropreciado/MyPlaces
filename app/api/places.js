@@ -4,6 +4,7 @@ const Place = require('../models/place');
 const { merge } = require('lodash');
 const axios = require('axios');
 const mongoose = require('mongoose');
+const regeneratorRuntime = require("regenerator-runtime");
 
 const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('../utils/node_colors');

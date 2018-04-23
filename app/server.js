@@ -27,62 +27,62 @@ const Flag = require('./utils/node_colors');
 // //
 console.log(Flag.yellow, Date())
 //
-setInterval(() => {
-  console.log(Flag.red, 'Getting all busy hours!');
-
-  try {
-    getBusyHours();
-  }
-
-  catch(err) {
-    console.log(err);
-  }
-
-  console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60);
+// setInterval(() => {
+//   console.log(Flag.red, 'Getting all busy hours!');
 //
-// // initializeSocket();
-let clients = [];
-
-io.on('connection', (client) => {
-  client.on('subscribeToUpdater', (data) => {
-    client.customId = data.customId;
-
-    clients.push(client.customId);
-
-    console.log(client.customId, ' is subscribing to updater');
-
-    setInterval(() => {
-      Place.find({
-        'userId': { $in: [
-          mongoose.Types.ObjectId(`${client.customId}`)
-        ]}
-      }, (err, places) => {
-        if (err)
-        console.log(Flag.red, err);
-
-        console.log('SENT ', places.length, ' to ', client.customId);
-        client.emit('newPlaces', places);
-      });
-    }, 1000 * 60 * 10);
-  });
-
-  client.on('setCustomId', (data) => {
-    client.customId = data.customId;
-
-    clients.push(client.customId);
-  });
-
-  client.on('disconnect', (data) => {
-    for (var i = 0; i < clients.length; i++) {
-      let c = clients[i];
-      if (clients.clientId == client.id) {
-        clients.splice(i, 1);
-        break;
-      }
-    }
-  })
-});
+//   try {
+//     getBusyHours();
+//   }
+//
+//   catch(err) {
+//     console.log(err);
+//   }
+//
+//   console.log(Flag.yellow, 'on: ', Date())
+// }, 1000 * 60);
+// //
+// // // initializeSocket();
+// let clients = [];
+//
+// io.on('connection', (client) => {
+//   client.on('subscribeToUpdater', (data) => {
+//     client.customId = data.customId;
+//
+//     clients.push(client.customId);
+//
+//     console.log(client.customId, ' is subscribing to updater');
+//
+//     setInterval(() => {
+//       Place.find({
+//         'userId': { $in: [
+//           mongoose.Types.ObjectId(`${client.customId}`)
+//         ]}
+//       }, (err, places) => {
+//         if (err)
+//         console.log(Flag.red, err);
+//
+//         console.log('SENT ', places.length, ' to ', client.customId);
+//         client.emit('newPlaces', places);
+//       });
+//     }, 1000 * 60 * 10);
+//   });
+//
+//   client.on('setCustomId', (data) => {
+//     client.customId = data.customId;
+//
+//     clients.push(client.customId);
+//   });
+//
+//   client.on('disconnect', (data) => {
+//     for (var i = 0; i < clients.length; i++) {
+//       let c = clients[i];
+//       if (clients.clientId == client.id) {
+//         clients.splice(i, 1);
+//         break;
+//       }
+//     }
+//   })
+// });
 
 
 const socketPort = 8000;

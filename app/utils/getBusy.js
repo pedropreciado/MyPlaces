@@ -3,6 +3,7 @@ const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('./node_colors');
 const Place = require('../models/place');
 const getPercentage = require('./get_percentage');
+const regeneratorRuntime = require("regenerator-runtime");
 
 
 async function getBusyHours() {
