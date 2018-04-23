@@ -6,7 +6,7 @@
     "bin"
   ],
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./bin/server.js",
     "transpile": "babel --presets es2015 ./server.js ./models/* ./utils/* ./api/* --out-dir bin",
     "create": "npm run transpile && claudia create --region us-east-1 --api-module bin/api",
     "update": "npm run transpile && claudia update"
