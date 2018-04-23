@@ -32,7 +32,7 @@ router.route('/places')
     )
     .then((response) => {
       console.log('SUCCESS!', "\x1b[36m");
-
+      console.log(response);
       res.json(response.data.results);
     })
     .catch((err) => {

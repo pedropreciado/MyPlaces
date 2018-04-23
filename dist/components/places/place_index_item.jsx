@@ -59,7 +59,17 @@ class PlaceIndexItem extends React.Component {
             </a>
         </div>
         <a>{ place.address }</a>
-        <a>{ place.busyPercentage }% busy</a>
+
+        <a>
+          {
+            isClosed ? '' :
+              place.busyPercentage ?
+              place.busyPercentage + '% busy' :
+              'getting percentage ...'
+            }
+            </a>
+
+
         { isClosed ? 'CLOSED' : (
             <div
               id='percentage'

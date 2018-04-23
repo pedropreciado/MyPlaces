@@ -21,7 +21,9 @@ form {
 form > * {
   margin: 10px;
 }
-
+input:focus {
+  outline:none;
+}
 
 a {
   text-align: center;
@@ -88,14 +90,13 @@ a {
 }
 
 #name-searchbox-red {
-  width: 56%;
+  width: 85%;
   font-size: x-large;
-  border: .5px solid red;
   background: none;
   padding: 2%;
   color: red;
+  border: none;
   font-weight: lighter;
-
   visibility: hidden;
   opacity: 0;
   transition: visibility 3s 4s, opacity 2s linear;
@@ -146,7 +147,7 @@ border-top: .5px solid white;
 }
 
 #trashcan {
-    background: none;
+    background: white;
     color: black;
     text-align: center;
     font-size: 2.5em;
@@ -156,6 +157,8 @@ border-top: .5px solid white;
     display: flex;
     justify-content: center;
     align-items: center;enter;
+    border-bottom: .5px solid #D6D6D6;
+
 }
 
 #trash-text {
@@ -202,6 +205,11 @@ border-top: .5px solid white;
   color: #53d869;
   cursor: pointer;
   transition: .5s;
+  border: none;
+}
+
+.session-submit:active {
+  border: none;
 }
 
 #inputs {

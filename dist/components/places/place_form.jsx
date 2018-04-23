@@ -60,8 +60,7 @@ class PlaceForm extends React.Component {
     event.preventDefault();
 
     if (this.props.location === undefined) {
-      // this.showError(<div className="error-div">Still seaching for your location! Please wait. 😊 </div>)
-      this.showError('Still searching for your location! Please wait.')
+      this.showError('Searching for your location!  😊')
       return;
     }
 
