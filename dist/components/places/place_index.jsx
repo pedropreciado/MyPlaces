@@ -55,7 +55,7 @@ class PlaceIndex extends React.Component {
     } else {
       return (
         <div className='trash-text'>
-          MyPlaces
+          Hello, { this.props.currentUser.username }.
         </div>
       )
     }
@@ -107,7 +107,7 @@ class PlaceIndex extends React.Component {
         id='sidebar-open-button'
         onClick={() => this.onSetSidebarOpen(true)}
         >
-        >
+                >
       </div>
 
     </SideBar>
