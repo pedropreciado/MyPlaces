@@ -95,7 +95,7 @@ console.log('socket listening on port: ', socketPort);
 var app = express();
 var router = express.Router();
 
-var port = process.env.API_PORT || 3000;
+var port = process.env.PORT || 3000;
 
 mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
 
