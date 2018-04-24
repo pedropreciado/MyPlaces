@@ -122,12 +122,12 @@ app.use(session({
   maxAge:  24 * 60 * 60 * 1000
 }));
 
-app.use('/', placesRouter);
-app.use('/', usersRouter);
+app.use('/api', placesRouter);
+app.use('/api', usersRouter);
 
 
 
-router.get("/", (req, res) => {
+router.get("/api", (req, res) => {
   if (req.session.userId === undefined) {
     console.log('User not set in session');
   } else {
@@ -154,7 +154,7 @@ router.get("/logout", (req, res) => {
   }
 })
 
-app.use('/', router);
+app.use('/api', router);
 
 app.listen(port, '0.0.0.0');
 
