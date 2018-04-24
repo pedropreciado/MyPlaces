@@ -128,7 +128,6 @@ app.use('/', usersRouter);
 
 
 router.get("/", (req, res) => {
-  res.sendFile('/src/index.html');
   if (req.session.userId === undefined) {
     console.log('User not set in session');
   } else {
@@ -136,7 +135,7 @@ router.get("/", (req, res) => {
   }
   var sessData = req.session;
   sessData.someAttribute = "foo";
-  res.json({ message: 'API Initialized' });
+  res.sendFile('/src/index.html');
 });
 
 
