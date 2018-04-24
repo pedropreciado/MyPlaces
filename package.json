@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "npx babel-node ./app/server.js",
     "transpile": "babel --presets es2015 ./server.js ./models/* ./utils/* ./api/* --out-dir bin",
     "create": "npm run transpile && claudia create --region us-east-1 --api-module bin/api",
     "update": "npm run transpile && claudia update"

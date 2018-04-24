@@ -42,53 +42,53 @@ console.log(Flag.yellow, Date())
 // }, 1000 * 60);
 // //
 // // // initializeSocket();
-// let clients = [];
+let clients = [];
 //
-// io.on('connection', (client) => {
-//   client.on('subscribeToUpdater', (data) => {
-//     client.customId = data.customId;
-//
-//     clients.push(client.customId);
-//
-//     console.log(client.customId, ' is subscribing to updater');
-//
-//     setInterval(() => {
-//       Place.find({
-//         'userId': { $in: [
-//           mongoose.Types.ObjectId(`${client.customId}`)
-//         ]}
-//       }, (err, places) => {
-//         if (err)
-//         console.log(Flag.red, err);
-//
-//         console.log('SENT ', places.length, ' to ', client.customId);
-//         client.emit('newPlaces', places);
-//       });
-//     }, 1000 * 60 * 10);
-//   });
-//
-//   client.on('setCustomId', (data) => {
-//     client.customId = data.customId;
-//
-//     clients.push(client.customId);
-//   });
-//
-//   client.on('disconnect', (data) => {
-//     for (var i = 0; i < clients.length; i++) {
-//       let c = clients[i];
-//       if (clients.clientId == client.id) {
-//         clients.splice(i, 1);
-//         break;
-//       }
-//     }
-//   })
-// });
+io.on('connection', (client) => {
+  client.on('subscribeToUpdater', (data) => {
+    client.customId = data.customId;
+
+    clients.push(client.customId);
+
+    console.log(client.customId, ' is subscribing to updater');
+
+    setInterval(() => {
+      Place.find({
+        'userId': { $in: [
+          mongoose.Types.ObjectId(`${client.customId}`)
+        ]}
+      }, (err, places) => {
+        if (err)
+        console.log(Flag.red, err);
+
+        console.log('SENT ', places.length, ' to ', client.customId);
+        client.emit('newPlaces', places);
+      });
+    }, 0);
+  });
+
+  client.on('setCustomId', (data) => {
+    client.customId = data.customId;
+
+    clients.push(client.customId);
+  });
+
+  client.on('disconnect', (data) => {
+    for (var i = 0; i < clients.length; i++) {
+      let c = clients[i];
+      if (clients.clientId == client.id) {
+        clients.splice(i, 1);
+        break;
+      }
+    }
+  })
+});
 
 
-// const socketPort = 8000;
-// io.listen(socketPort)
-//
-// console.log('socket listening on port: ', socketPort);
+const socketPort = 8000;
+io.listen(socketPort)
+
+console.log('socket listening on port: ', socketPort);
 
 
 
@@ -126,8 +126,9 @@ app.use('/api', placesRouter);
 app.use('/api', usersRouter);
 
 
+
 router.get("/", (req, res) => {
-  res.sendFile(__dirname + '../src/index.html');
+  res.sendFile('/src/index.html');
   if (req.session.userId === undefined) {
     console.log('User not set in session');
   } else {
@@ -135,7 +136,6 @@ router.get("/", (req, res) => {
   }
   var sessData = req.session;
   sessData.someAttribute = "foo";
-  res.send('Returning with some text');
   res.json({ message: 'API Initialized' });
 });
 
@@ -158,3 +158,5 @@ router.get("/logout", (req, res) => {
 app.use('/api', router);
 
 app.listen(port, '0.0.0.0');
+
+console.log('api listening on', port);
