@@ -122,8 +122,8 @@ app.use(session({
   maxAge:  24 * 60 * 60 * 1000
 }));
 
-app.use('/api', placesRouter);
-app.use('/api', usersRouter);
+app.use('/', placesRouter);
+app.use('/', usersRouter);
 
 
 
@@ -155,7 +155,7 @@ router.get("/logout", (req, res) => {
   }
 })
 
-app.use('/api', router);
+app.use('/', router);
 
 app.listen(port, '0.0.0.0');
 
