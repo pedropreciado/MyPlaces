@@ -85,10 +85,10 @@ console.log(Flag.yellow, Date())
 // });
 
 
-const socketPort = 8000;
-io.listen(socketPort)
-
-console.log('socket listening on port: ', socketPort);
+// const socketPort = 8000;
+// io.listen(socketPort)
+//
+// console.log('socket listening on port: ', socketPort);
 
 
 
