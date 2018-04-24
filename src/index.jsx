@@ -11,6 +11,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ReactDOM.render(<App store={store}/>, app);
 })
-
-
-module.hot.accept();

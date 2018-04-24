@@ -95,7 +95,7 @@ console.log(Flag.yellow, Date())
 var app = express();
 var router = express.Router();
 
-var port = process.env.API_PORT || 3001;
+var port = process.env.API_PORT || 3000;
 
 mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
 
