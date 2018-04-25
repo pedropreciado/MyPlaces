@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const NodeColors = require('./utils/node_colors');
 const io = require('socket.io')();
+const path = require('path');
 
 // ******************************************* routes
 
@@ -27,19 +28,19 @@ const Flag = require('./utils/node_colors');
 // //
 console.log(Flag.yellow, Date())
 //
-// setInterval(() => {
-//   console.log(Flag.red, 'Getting all busy hours!');
-//
-//   try {
-//     getBusyHours();
-//   }
-//
-//   catch(err) {
-//     console.log(err);
-//   }
-//
-//   console.log(Flag.yellow, 'on: ', Date())
-// }, 1000 * 60);
+setInterval(() => {
+  console.log(Flag.red, 'Getting all busy hours!');
+
+  try {
+    getBusyHours();
+  }
+
+  catch(err) {
+    console.log(err);
+  }
+
+  console.log(Flag.yellow, 'on: ', Date())
+}, 1000 * 60 * 30);
 // //
 // // // initializeSocket();
 let clients = [];
@@ -64,7 +65,7 @@ io.on('connection', (client) => {
         console.log('SENT ', places.length, ' to ', client.customId);
         client.emit('newPlaces', places);
       });
-    }, 0);
+    }, 1000 * 60 * 35);
   });
 
   client.on('setCustomId', (data) => {
@@ -95,9 +96,10 @@ console.log('socket listening on port: ', socketPort);
 var app = express();
 var router = express.Router();
 
-var port = process.env.PORT || 3000;
 
-mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
+// mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
+mongoose.connect('mongodb://heroku_rj6brblq:gl270ik87viphijtr5k10qsbvu@ds255889.mlab.com:55889/heroku_rj6brblq')
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -154,7 +156,16 @@ router.get("/logout", (req, res) => {
   }
 })
 
+
 app.use('/api', router);
+
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+var port = process.env.PORT || 3001;
 
 app.listen(port, '0.0.0.0');
 

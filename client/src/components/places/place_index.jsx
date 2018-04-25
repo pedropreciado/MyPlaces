@@ -17,7 +17,6 @@ class PlaceIndex extends React.Component {
     this.renderTrashCan = this.renderTrashCan.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
-    this.handleStop = this.handleStop.bind(this);
   }
 
   componentWillMount() {
@@ -35,12 +34,6 @@ class PlaceIndex extends React.Component {
     })
   }
 
-  handleStop(positionY, id) {
-    if (event.pageY > 500) {
-      this.props.deleteFavorite(id);
-    }
-  }
-
   handleDrag(dragHeard) {
     this.setState({ dragHeard });
   }
@@ -54,9 +47,9 @@ class PlaceIndex extends React.Component {
       )
     } else {
       return (
-        <div className='trash-text'>
-          Hello, { this.props.currentUser.username }.
-        </div>
+          <div className='trash-text'>
+            Hello, { this.props.currentUser.username }.
+          </div>
       )
     }
   }
@@ -85,6 +78,11 @@ class PlaceIndex extends React.Component {
               {
                 this.renderTrashCan()
               }
+              <div
+                onClick={this.props.logout}
+                id='logout'>
+                logout
+              </div>
             </div>
 
       <div className='place-index'>

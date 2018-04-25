@@ -9,7 +9,12 @@ import { fetchFavorites } from '../../actions/place_actions';
 
 const mapStateToProps = (state) => {
   let currentUser = state.session.currentUser;
-  let errors = [];
+
+  let errors = state.session.errors;
+
+  if (errors.split(' ')[0] === 'E11000') {
+    errors = 'User already exists!'
+  }
 
   return {
     currentUser,

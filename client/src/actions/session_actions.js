@@ -8,8 +8,8 @@ export const login = (user) => dispatch => {
   SessionAPIUtil.login(user)
     .then(({ data }) => {
       console.log(data);
-      if (data.status > 400) {
-        dispatch(receiveErrors(data))
+      if (data.errmsg) {
+        dispatch(receiveErrors(data.errmsg))
       } else {
         dispatch(receiveCurrentUser(data))
       }
@@ -30,8 +30,8 @@ export const logout = () => dispatch => {
 export const signup = (user) => dispatch => {
   SessionAPIUtil.signup(user)
     .then(({ data }) => {
-      if (data.status === 400) {
-        dispatch(receiveErrors(data.status))
+      if (data.errmsg) {
+        dispatch(receiveErrors(data.errmsg))
       } else {
         dispatch(receiveCurrentUser(data))
       }

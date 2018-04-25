@@ -19,7 +19,7 @@ async function getBusyHours() {
   for (var place of places) {
     // console.log(Flag.red, `Getting busy hours for: ${place.name}`);
 
-    let busyHourData = await BusyHours(place.placeid, key);
+    let busyHourData = await BusyHours(place.placeid, process.env.GOOGLE_API_KEY);
     console.log(Flag.green, `busyHours recieved for: ${place.name}`);
 
     let placeDocument = await Place.findById(place._id);

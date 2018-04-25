@@ -12,6 +12,7 @@ class SessionForm extends React.Component {
       passwordConf: '',
       loginemail: '',
       loginpassword: '',
+      errors: props.errors
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -129,12 +130,12 @@ class SessionForm extends React.Component {
 
     return (
       <form id='session-form' autoComplete='off'>
-          {
-            this.props.errors.map((err) => {
-              (<a>error</a>)
-            })
-          }
           <h1>MyPlaces</h1>
+          <a style={{ color: 'red' }}>
+          {
+            this.props.errors
+          }
+        </a>
           {
             this.renderForm()
           }

@@ -28,7 +28,7 @@ router.route('/places')
     }
 
     axios.get(
-      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}`,
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${process.env.GOOGLE_API_KEY}`,
       { params }
     )
     .then((response) => {
@@ -64,7 +64,7 @@ router.route('/favorites')
     axios.get(
       'https://maps.googleapis.com/maps/api/place/details/json?' +
       `placeid=${req.query.placeid}` +
-      `&key=${key}`
+      `&key=${process.env.GOOGLE_API_KEY}`
     )
     .then((response) => {
       console.log(Flag.green, 'Response from Google success!');

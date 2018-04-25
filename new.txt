@@ -1,0 +1,1 @@
+/* "heroku-postbuild": "cd myplaces && npm install --only=dev && npm install && npm run build" */

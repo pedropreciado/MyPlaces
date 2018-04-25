@@ -52,11 +52,12 @@ router.route("/users")
           User.authenticate(req.body.loginemail, req.body.loginpassword, (error, user) => {
 
             if (error || !user) {
-              var err = new Error("Wrong email or password");
-              err.status = 401;
+              var errmsg = "Wrong email or password";
               console.log(Flag.red, 'error logging user in');
-              res.send(err);
 
+              res.json({
+                errmsg
+              });
             } else {
               req.session.userId  = user._id;
               console.log("Logged in!");
@@ -71,10 +72,12 @@ router.route("/users")
 
         } else {
 
-          let err = new Error('All fields required');
-          console.log(err);
-          // err.status = 400;
-          res.send(err)
+          let errmsg = 'All fields required';
+          console.log(errmsg);
+
+          res.json({
+            errmsg
+          })
         }
   })
 

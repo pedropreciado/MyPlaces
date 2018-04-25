@@ -5,6 +5,7 @@ import {
   deleteFavorite,
   subscribeToUpdater } from "../../actions/place_actions";
 import { fetchLocation } from '../../actions/location_actions';
+import { logout } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => {
 
@@ -25,7 +26,8 @@ const mapDispatchToProps = (dispatch) => {
     fetchFavorites: (id) => dispatch(fetchFavorites(id)),
     subscribeToUpdater: (id) => dispatch(subscribeToUpdater(id)),
     fetchLocation: () => dispatch(fetchLocation()),
-    deleteFavorite: (id) => dispatch(deleteFavorite(id))
+    deleteFavorite: (id) => dispatch(deleteFavorite(id)),
+    logout: () => dispatch(logout())
   }
 }
 
