@@ -25,6 +25,7 @@ async function getBusyHours() {
     let placeDocument = await Place.findById(place._id);
 
     placeDocument['busyPercentage'] = getPercentage(busyHourData);
+    placeDocument['lastUpdated'] = new Date().toString();
 
     placeDocument.save((err) => {
       if (err);

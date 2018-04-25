@@ -40,50 +40,50 @@ setInterval(() => {
   }
 
   console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60 * 30);
+}, 1000 * 60 * 45);
 // //
 // // // initializeSocket();
 let clients = [];
 //
-io.on('connection', (client) => {
-  client.on('subscribeToUpdater', (data) => {
-    client.customId = data.customId;
+// io.on('connection', (client) => {
+//   client.on('subscribeToUpdater', (data) => {
+//     client.customId = data.customId;
+//
+//     clients.push(client.customId);
+//
+//     console.log(client.customId, ' is subscribing to updater');
+//
+//     setInterval(() => {
+//       Place.find({
+//         'userId': { $in: [
+//           mongoose.Types.ObjectId(`${client.customId}`)
+//         ]}
+//       }, (err, places) => {
+//         if (err)
+//         console.log(Flag.red, err);
+//
+//         console.log('SENT ', places.length, ' to ', client.customId);
+//         client.emit('newPlaces', places);
+//       });
+//     }, 1000 * 60 * 35);
+//   });
 
-    clients.push(client.customId);
-
-    console.log(client.customId, ' is subscribing to updater');
-
-    setInterval(() => {
-      Place.find({
-        'userId': { $in: [
-          mongoose.Types.ObjectId(`${client.customId}`)
-        ]}
-      }, (err, places) => {
-        if (err)
-        console.log(Flag.red, err);
-
-        console.log('SENT ', places.length, ' to ', client.customId);
-        client.emit('newPlaces', places);
-      });
-    }, 1000 * 60 * 35);
-  });
-
-  client.on('setCustomId', (data) => {
-    client.customId = data.customId;
-
-    clients.push(client.customId);
-  });
-
-  client.on('disconnect', (data) => {
-    for (var i = 0; i < clients.length; i++) {
-      let c = clients[i];
-      if (clients.clientId == client.id) {
-        clients.splice(i, 1);
-        break;
-      }
-    }
-  })
-});
+//   client.on('setCustomId', (data) => {
+//     client.customId = data.customId;
+//
+//     clients.push(client.customId);
+//   });
+//
+//   client.on('disconnect', (data) => {
+//     for (var i = 0; i < clients.length; i++) {
+//       let c = clients[i];
+//       if (clients.clientId == client.id) {
+//         clients.splice(i, 1);
+//         break;
+//       }
+//     }
+//   })
+// });
 
 
 const socketPort = 8000;
@@ -97,8 +97,8 @@ var app = express();
 var router = express.Router();
 
 
-// mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
-mongoose.connect('mongodb://heroku_rj6brblq:gl270ik87viphijtr5k10qsbvu@ds255889.mlab.com:55889/heroku_rj6brblq')
+mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
+// mongoose.connect('mongodb://heroku_rj6brblq:gl270ik87viphijtr5k10qsbvu@ds255889.mlab.com:55889/heroku_rj6brblq')
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -108,8 +108,7 @@ app.use(function(req, res, next) {
  res.setHeader('Access-Control-Allow-Origin', '*');
  res.setHeader('Access-Control-Allow-Credentials', 'true');
  res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
- res.setHeader(
-   'Access-Control-Allow-Headers',
+ res.setHeader(   'Access-Control-Allow-Headers',
    'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers'
 );
 

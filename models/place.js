@@ -23,6 +23,10 @@ const PlaceSchema = new mongoose.Schema({
   userId: {
     type: ObjectId,
     required: true
+  },
+  lastUpdated: {
+    type: String,
+    required: true
   }
 });
 

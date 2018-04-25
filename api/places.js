@@ -11,6 +11,7 @@ const Flag = require('../utils/node_colors');
 const extractDetails = require('../utils/details_parser');
 const getBusyHours = require('../utils/getBusy');
 const getPercentage = require('../utils/get_percentage');
+const BusyHours = require('busy-hours');
 
 router.route('/places')
   .get((req, res) => {
@@ -28,7 +29,8 @@ router.route('/places')
     }
 
     axios.get(
-      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${process.env.GOOGLE_API_KEY}`,
+      // `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${process.env.GOOGLE_API_KEY}`,
+      `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}`,
       { params }
     )
     .then((response) => {
@@ -64,7 +66,8 @@ router.route('/favorites')
     axios.get(
       'https://maps.googleapis.com/maps/api/place/details/json?' +
       `placeid=${req.query.placeid}` +
-      `&key=${process.env.GOOGLE_API_KEY}`
+      // `&key=${process.env.GOOGLE_API_KEY}`
+      `&key=${key}`
     )
     .then((response) => {
       console.log(Flag.green, 'Response from Google success!');
@@ -117,4 +120,27 @@ router.route('/favorites')
     })
   })
 
+router.route('/getBusyHours')
+  .get((req, res) => {
+    console.log('fetching busy hours for place');
+
+    async function getBusyHours() {
+      let place = await Place.findById(req.query.id);
+      // let busyHourData = await BusyHours(place.placeid, process.env.GOOGLE_API_KEY);
+      let busyHourData = await BusyHours(place.placeid, key);
+
+      console.log(Flag.green, `busyHours recieved for: ${place.name}`);
+      place['busyPercentage'] = getPercentage(busyHourData);
+      place['lastUpdated'] = new Date().toString();
+
+      place.save((err) => {
+        if (err);
+        console.log(Flag.red, err);
+      })
+
+      res.json(place);
+    };
+
+    getBusyHours();
+  })
 module.exports = router;
