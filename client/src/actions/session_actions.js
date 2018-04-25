@@ -15,7 +15,8 @@ export const login = (user) => dispatch => {
       }
   })
     .catch((err) => {
-      console.error(err)
+      console.log(err);
+      dispatch(receiveErrors(err));
     })
 }
 
@@ -23,7 +24,8 @@ export const logout = () => dispatch => {
   SessionAPIUtil.logout()
     .then(dispatch(receiveCurrentUser(null)))
     .catch((err) => {
-      console.error(err);
+      console.log();(err);
+      
     })
 }
 
