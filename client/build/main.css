@@ -150,18 +150,19 @@ border-top: .5px solid white;
 }
 
 #trashcan {
-    background: white;
-    color: black;
-    text-align: center;
-    font-size: 2.5em;
-    margin: 0 auto;
-    min-height: 10%;
-    max-height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;enter;
-    border-bottom: .5px solid #D6D6D6;
-
+  background: white;
+  color: black;
+  text-align: center;
+  font-size: 2.5em;
+  margin: 0 auto;
+  min-height: 10%;
+  max-height: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: .5px solid #D6D6D6;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #trash-text {
@@ -269,4 +270,19 @@ input:-webkit-autofill {
 
 #place-name {
   margin-right: 7%;
+}
+
+#logout {
+  font-size: .5em;
+}
+
+#logout:hover {
+  color:red;
+  cursor: pointer;
+  font-size: .5em;
+  transition: 1s;
+}
+
+.trash-text {
+  margin-left: 40%;
 }
