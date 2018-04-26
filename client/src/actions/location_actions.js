@@ -8,7 +8,6 @@ function onError(err) {
 }
 
 export const fetchLocation = () => dispatch => {
-  console.log('fetching location ...');
 
   // setTimeout(() => {
   //   dispatch(receiveLocation({ currentLocation: '37.746555,-122.418725' }))

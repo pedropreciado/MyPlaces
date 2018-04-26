@@ -23,7 +23,6 @@ class PlaceIndex extends React.Component {
   componentWillMount() {
 
     if (this.props.currentUser.id) {
-      console.log(this.props.currentUser.id);
       this.props.subscribeToUpdater(this.props.currentUser.id);
       this.props.fetchFavorites(this.props.currentUser.id);
     }

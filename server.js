@@ -97,8 +97,8 @@ var app = express();
 var router = express.Router();
 
 
-mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
-// mongoose.connect('mongodb://heroku_rj6brblq:gl270ik87viphijtr5k10qsbvu@ds255889.mlab.com:55889/heroku_rj6brblq')
+// mongoose.connect('mongodb://username:password@ds125489.mlab.com:25489/myplaces')
+mongoose.connect('mongodb://heroku_rj6brblq:gl270ik87viphijtr5k10qsbvu@ds255889.mlab.com:55889/heroku_rj6brblq')
 
 
 app.use(bodyParser.urlencoded({ extended: true }));

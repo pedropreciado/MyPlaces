@@ -17,11 +17,9 @@ const PlaceReducer = (oldState = {}, action) => {
 
       for (let key in newState) {
         let place = freshState[key];
-        
+
         if (place.placeid === action.placeid) {
-          console.log(freshState[key]);
           freshState[key] = action.place;
-          console.log(freshState[key])
         }
       }
 

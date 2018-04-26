@@ -7,7 +7,6 @@ export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
 export const login = (user) => dispatch => {
   SessionAPIUtil.login(user)
     .then(({ data }) => {
-      console.log(data);
       if (data.errmsg) {
         dispatch(receiveErrors(data.errmsg))
       } else {
@@ -15,7 +14,6 @@ export const login = (user) => dispatch => {
       }
   })
     .catch((err) => {
-      console.log(err);
       dispatch(receiveErrors(err));
     })
 }
@@ -24,8 +22,7 @@ export const logout = () => dispatch => {
   SessionAPIUtil.logout()
     .then(dispatch(receiveCurrentUser(null)))
     .catch((err) => {
-      console.log();(err);
-      
+      dispatch(receiveErrors(err))
     })
 }
 

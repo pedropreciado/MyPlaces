@@ -4,7 +4,6 @@ import SideBar from 'react-sidebar';
 class SearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = {
       color: ''
     }
@@ -14,7 +13,7 @@ class SearchIndexItem extends React.Component {
 
   handleClick() {
     this.setState({ color: '-green' })
-    
+
     this.props.addFavorite({
       placeid: this.props.place.place_id,
       userID: this.props.currentUser.id
