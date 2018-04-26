@@ -13,13 +13,12 @@ class PlaceIndexItem extends React.Component {
       style: {
         height: '0%',
         color: 'rgba(33, 33, 33, .3)'
-      }
+      },
+      mouseStatus: 'left'
     }
 
-    this.updatePosition = this.updatePosition.bind(this);
-  }
-
-  updatePosition(event) {
+    this.renderText = this.renderText.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   componentDidMount() {
@@ -34,11 +33,47 @@ class PlaceIndexItem extends React.Component {
     }, 500)
   }
 
+  handleHover(mouseStatus) {
+    this.setState({ mouseStatus })
+  }
+
+  renderText(isClosed) {
+    if (this.state.mouseStatus === 'entered') {
+      return (
+        this.props.place.lastUpdated
+      )
+    } else {
+      return (
+        <div>
+          <div id='place-item-header'>
+            <a id='place-name'>{ this.props.place.name }</a>
+            <a
+              id='delete-this.props.place-button'
+              onClick={() => this.props.deleteFavorite(this.props.place._id)}
+              >
+              X
+            </a>
+          </div>
+          <a>{ this.props.place.address }</a>
+
+          <a>
+            {
+              isClosed ? '' :
+              this.props.place.busyPercentage ?
+              this.props.place.busyPercentage + '% busy' :
+              'getting percentage ...'
+            }
+          </a>
+      </div>
+      )
+    }
+  }
+
   render() {
 
     const place = this.props.place;
     let color;
-    let isClosed = place.busyPercentage === 0;
+    let isClosed = this.props.place.busyPercentage === 0;
 
     if (isClosed) {
       color = 'red';
@@ -47,39 +82,23 @@ class PlaceIndexItem extends React.Component {
     }
 
     return (
-      <div
-        className={`place-item-${color}`}
-        onClick={() => this.props.refresh(place._id)}
-      >
-        <div id='place-item-header'>
-          <a id='place-name'>{ place.name }</a>
-            <a
-              id='delete-place-button'
-              onClick={() => this.props.deleteFavorite(place._id)}
-              >
-              X
-            </a>
-        </div>
-        <a>{ place.address }</a>
-
-        <a>
+        <div
+          className={`place-item-${color}`}
+          onClick={() => this.props.refresh(place._id)}
+          onMouseEnter={() => this.handleHover('entered')}
+          onMouseLeave={() => this.handleHover('left')}
+          >
           {
-            isClosed ? '' :
-              place.busyPercentage ?
-              place.busyPercentage + '% busy' :
-              'getting percentage ...'
-            }
-            </a>
-
-
-        { isClosed ? 'CLOSED' : (
+            this.renderText(isClosed)
+          }
+          { isClosed ? 'CLOSED' : (
             <div
               id='percentage'
               style={this.state.style}
               >
             </div>
-          )}
-    </div>
+        )}
+        </div>
     )
   }
 }

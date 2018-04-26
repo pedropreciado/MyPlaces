@@ -130,7 +130,7 @@ class SessionForm extends React.Component {
 
     return (
       <form id='session-form' autoComplete='off'>
-          <h1>MyPlaces</h1>
+          <h1 id='session-title'>yooshe</h1>
           <a style={{ color: 'red' }}>
           {
             this.props.errors

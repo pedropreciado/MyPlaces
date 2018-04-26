@@ -283,3 +283,15 @@ input:-webkit-autofill {
   font-size: 1em;
   transition: 2s;
 }
+
+#session-title {
+  border-bottom: .5px solid black;
+}
+
+#last-updated {
+    display: none;
+}
+
+place-item-green:hover + #last-updated, place-item-red:hover + #last-updated {
+    display: block;
+}
