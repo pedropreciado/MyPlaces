@@ -47,6 +47,7 @@ a {
 .place-item-green, .place-item-red {
   font-size: 1.5em;
   color: white;
+  overflow: hidden;
   text-align: center;
   display: flex;
   flex-flow: column;
@@ -253,7 +254,10 @@ input:-webkit-autofill {
 
 #place-item-header {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
   margin: 3%;
+  border-bottom: 3px solid #fafafa;
 }
 
 #delete-place-button {
@@ -265,6 +269,7 @@ input:-webkit-autofill {
 }
 
 #place-name {
+  font-size: .9em;
   margin-right: 7%;
 }
 
@@ -288,4 +293,19 @@ input:-webkit-autofill {
   text-align: center;
   border-bottom: .5px solid #D6D6D6;
   padding-bottom: 10px;
+}
+
+#last-updated {
+  display: flex;
+  flex-flow: column;
+  font-size: .75em;
+}
+
+#percent-busy {
+  font-size: .8em;
+}
+
+#place-item-initial {
+  display: flex;
+  flex-direction: column;
 }

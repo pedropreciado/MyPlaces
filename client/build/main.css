@@ -289,7 +289,9 @@ input:-webkit-autofill {
 }
 
 #last-updated {
-    display: none;
+  display: flex;
+  flex-flow: column;
+  font-size: .75em;
 }
 
 place-item-green:hover + #last-updated, place-item-red:hover + #last-updated {

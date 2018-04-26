@@ -67,7 +67,11 @@ class PlaceIndex extends React.Component {
   }
 
   render() {
-
+    if (typeof this.places === 'object') {
+      return (
+        <a>Loading ...</a>
+      )
+    }
     return (
           <SideBar
             sidebar={ (
