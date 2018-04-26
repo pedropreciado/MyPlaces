@@ -47,6 +47,7 @@ a {
 .place-item-green, .place-item-red {
   font-size: 1.5em;
   color: white;
+  overflow: hidden;
   text-align: center;
   display: flex;
   flex-flow: column;
@@ -253,7 +254,10 @@ input:-webkit-autofill {
 
 #place-item-header {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
   margin: 3%;
+  border-bottom: 3px solid #fafafa;
 }
 
 #delete-place-button {
@@ -265,6 +269,7 @@ input:-webkit-autofill {
 }
 
 #place-name {
+  font-size: .9em;
   margin-right: 7%;
 }
 
@@ -280,12 +285,14 @@ input:-webkit-autofill {
 }
 
 .trash-text {
-  font-size: 1em;
-  transition: 2s;
+  font-size: .75em;
 }
 
 #session-title {
-  border-bottom: .5px solid black;
+  width: 100%;
+  text-align: center;
+  border-bottom: .5px solid #D6D6D6;
+  padding-bottom: 10px;
 }
 
 #last-updated {
@@ -294,6 +301,11 @@ input:-webkit-autofill {
   font-size: .75em;
 }
 
-place-item-green:hover + #last-updated, place-item-red:hover + #last-updated {
-    display: block;
+#percent-busy {
+  font-size: .8em;
+}
+
+#place-item-initial {
+  display: flex;
+  flex-direction: column;
 }
