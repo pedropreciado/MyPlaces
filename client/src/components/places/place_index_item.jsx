@@ -119,7 +119,7 @@ class PlaceIndexItem extends React.Component {
             </a>
             <a id='place-name'>{
                 this.props.place.name.length > 12
-                ? this.props.place.name.slice(0, 12) + ' ...'
+                ? this.props.place.name.slice(0, 12) + '...'
                 : this.props.place.name
               }</a>
           </div>
