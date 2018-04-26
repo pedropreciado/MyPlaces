@@ -11,10 +11,11 @@ class PlaceIndex extends React.Component {
 
     this.state = {
       sidebarOpen: false,
-      dragHeard: false
+      dragHeard: false,
+      text: `Hello, ${props.currentUser.username}`
     }
 
-    this.renderTrashCan = this.renderTrashCan.bind(this);
+    this.renderHeader = this.renderHeader.bind(this);
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
   }
@@ -28,6 +29,25 @@ class PlaceIndex extends React.Component {
     }
   }
 
+  componentDidMount() {
+    let texts = [
+      'yooshe',
+      this.props.places.length
+      ? 'click a yooshe to refresh'
+      : 'open sidebar to add new place',
+      `Hello, ${this.props.currentUser.username}`
+    ]
+
+    let i = 0;
+
+    setInterval(() => {
+
+      this.setState({ text: texts[i] });
+
+      i = (i + 1) % texts.length;
+    }, 5000)
+  }
+
   onSetSidebarOpen(open) {
     this.setState({
       sidebarOpen: open
@@ -38,20 +58,12 @@ class PlaceIndex extends React.Component {
     this.setState({ dragHeard });
   }
 
-  renderTrashCan() {
-    if (this.state.dragHeard) {
-      return (
-        <div className='trash-text'>
-          Drag here to delete!
-        </div>
-      )
-    } else {
+  renderHeader() {
       return (
           <div className='trash-text'>
-            Hello, { this.props.currentUser.username }.
+            { this.state.text }
           </div>
       )
-    }
   }
 
   render() {
@@ -76,7 +88,7 @@ class PlaceIndex extends React.Component {
               ref='trashcan'
               id='trashcan'>
               {
-                this.renderTrashCan()
+                this.renderHeader()
               }
               <div
                 onClick={this.props.logout}
@@ -96,6 +108,7 @@ class PlaceIndex extends React.Component {
                 deleteFavorite={this.props.deleteFavorite}
                 handleDrag={this.handleDrag}
                 handleStop={this.handleStop}
+                refresh={this.props.refresh}
                 />
             )
           })

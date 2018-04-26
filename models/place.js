@@ -25,8 +25,7 @@ const PlaceSchema = new mongoose.Schema({
     required: true
   },
   lastUpdated: {
-    type: String,
-    required: true
+    type: String
   }
 });
 

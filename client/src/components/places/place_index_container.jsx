@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import {
   fetchFavorites,
   deleteFavorite,
-  subscribeToUpdater } from "../../actions/place_actions";
+  subscribeToUpdater,
+  refresh
+} from "../../actions/place_actions";
 import { fetchLocation } from '../../actions/location_actions';
 import { logout } from '../../actions/session_actions';
 
@@ -27,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
     subscribeToUpdater: (id) => dispatch(subscribeToUpdater(id)),
     fetchLocation: () => dispatch(fetchLocation()),
     deleteFavorite: (id) => dispatch(deleteFavorite(id)),
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    refresh: (id) => dispatch(refresh(id))
   }
 }
 

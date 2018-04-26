@@ -1,7 +1,6 @@
 const axios = require("axios");
 
 export const fetchFavorites = (id) => {
-  console.log(id);
   return axios.get(
     '/api/favorites?' +
     `userId=${id}`
@@ -21,11 +20,17 @@ export const fetchSearchResults = (query) => {
 }
 
 export const addFavorite = (data) => {
-  console.log();
   return axios.post(
     '/api/favorites?' +
     `placeid=${data.placeid}&`+
     `userId=${data.userID}`
+  )
+}
+
+export const refresh = (id) => {
+  return axios.get(
+    '/api/refresh?'+
+    `id=${id}`
   )
 }
 

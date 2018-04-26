@@ -13,11 +13,11 @@ export const subscribeToUpdater = (customId) => dispatch => {
 
   socket.on('newPlaces', (places) => {
     dispatch(receiveFavoritePlaces(places));
-    
+
     console.log('Favorites updated through socket!');
   })
 
-  socket.emit('subscribeToUpdater', { customId });
+  // socket.emit('subscribeToUpdater', { customId });
 }
 
 export const fetchFavorites = (id) => dispatch => {
@@ -39,6 +39,13 @@ export const fetchSearchResults = (query) => dispatch => {
 export const addFavorite = (id) => dispatch => {
   PlacesAPIUtil.addFavorite(id).then(({ data }) => {
     dispatch(receiveFavoritePlaces(data));
+  })
+}
+
+export const refresh = (id) => dispatch => {
+  PlacesAPIUtil.refresh(id)
+    .then(({ data }) => {
+      dispatch(receiveFavoritePlace(data))
   })
 }
 

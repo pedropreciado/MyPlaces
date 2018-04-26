@@ -43,7 +43,7 @@ setInterval(() => {
 }, 1000 * 60 * 45);
 // //
 // // // initializeSocket();
-let clients = [];
+// let clients = [];
 //
 // io.on('connection', (client) => {
 //   client.on('subscribeToUpdater', (data) => {

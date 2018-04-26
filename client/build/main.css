@@ -165,10 +165,6 @@ border-top: .5px solid white;
   padding-right: 20px;
 }
 
-#trash-text {
-  width: 100%;
-}
-
 #percentage {
   background-color: rgba(33, 33, 33, .1);
   width: 100%;
@@ -284,5 +280,6 @@ input:-webkit-autofill {
 }
 
 .trash-text {
-  margin-left: 36%;
+  font-size: 1em;
+  transition: 2s;
 }

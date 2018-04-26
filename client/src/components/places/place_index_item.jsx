@@ -47,8 +47,10 @@ class PlaceIndexItem extends React.Component {
     }
 
     return (
-      <Draggable>
-      <div className={`place-item-${color}`}>
+      <div
+        className={`place-item-${color}`}
+        onClick={() => this.props.refresh(place._id)}
+      >
         <div id='place-item-header'>
           <a id='place-name'>{ place.name }</a>
             <a
@@ -78,7 +80,6 @@ class PlaceIndexItem extends React.Component {
             </div>
           )}
     </div>
-    </ Draggable>
     )
   }
 }

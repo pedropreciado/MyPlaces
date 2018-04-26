@@ -120,9 +120,10 @@ router.route('/favorites')
     })
   })
 
-router.route('/getBusyHours')
+router.route('/refresh')
   .get((req, res) => {
-    console.log('fetching busy hours for place');
+
+    console.log('refresh');
 
     async function getBusyHours() {
       let place = await Place.findById(req.query.id);
@@ -130,6 +131,7 @@ router.route('/getBusyHours')
       let busyHourData = await BusyHours(place.placeid, key);
 
       console.log(Flag.green, `busyHours recieved for: ${place.name}`);
+
       place['busyPercentage'] = getPercentage(busyHourData);
       place['lastUpdated'] = new Date().toString();
 
@@ -142,5 +144,6 @@ router.route('/getBusyHours')
     };
 
     getBusyHours();
-  })
+  });
+
 module.exports = router;
