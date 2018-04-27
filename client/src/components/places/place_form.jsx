@@ -7,7 +7,8 @@ class PlaceForm extends React.Component {
     this.state = {
       name: '',
       error: '',
-      color: ''
+      color: '',
+      zipcode: ''
     }
 
     this.renderCurrentLocation = this.renderCurrentLocation.bind(this);
@@ -21,6 +22,34 @@ class PlaceForm extends React.Component {
   }
 
   renderCurrentLocation() {
+    if (this.props.locationError) {
+      return (
+        <form
+          id='zipcode-form'
+          >
+            <input
+              id='zipcode-input'
+              type='text'
+              placeholder='Click here to enter your zipcode'
+              value={this.state.zipcode}
+              onChange={
+                (event) =>
+                this.handleChange(event.target.value, 'zipcode')
+              }/>
+          <input
+            type='submit'
+            value='submit'
+            onClick={(event) => {
+              event.preventDefault()
+
+              !this.state.zipcode
+              ? this.setState({ error: 'enter zipcode'})
+              : this.props.setZipcode(this.state.zipcode)}
+            }
+              />
+        </form>
+      )
+    }
     if (this.props.location === undefined) {
       return (
         <a>
@@ -52,8 +81,8 @@ class PlaceForm extends React.Component {
     }, 2000);
   }
 
-  handleChange(name) {
-    this.setState({ name });
+  handleChange(value, type = 'name') {
+    this.setState({ [type]: value });
   }
 
   handleSubmit(event) {

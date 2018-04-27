@@ -1,5 +1,5 @@
 const BusyHours = require('busy-hours');
-const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
+const key = process.env.GOOGLE_API_KEY || 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('./node_colors');
 const Place = require('../models/place');
 const getPercentage = require('./get_percentage');

@@ -34,7 +34,7 @@ class PlaceIndex extends React.Component {
       this.props.places.length
       ? 'click a yooshe to refresh'
       : 'open sidebar to add new place',
-      `Hello, ${this.props.currentUser.username}`
+      `Hello, ${this.props.currentUser.username}.`
     ]
 
     let i = 0;

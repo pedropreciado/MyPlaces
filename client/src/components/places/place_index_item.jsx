@@ -31,7 +31,7 @@ class PlaceIndexItem extends React.Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  componentDidMount() {
+  setStyle() {
     let style = {
       backgroundColor: 'rgba(33, 33, 33, .3)',
       height: `${this.props.place.busyPercentage}%`,
@@ -39,13 +39,15 @@ class PlaceIndexItem extends React.Component {
     }
 
     setTimeout(() => {
-      this.setState({style})
+      this.setState({ style })
     }, 500)
   }
 
   handleHover(mouseStatus) {
     this.setState({ mouseStatus })
   }
+
+
 
   renderText(isClosed) {
     let lastUpdated = this.props.place.lastUpdated;
@@ -75,7 +77,6 @@ class PlaceIndexItem extends React.Component {
               : 'Click to see busyPercentage'
             }
           </a>
-          <a>
             {
               isClosed ? 'CLOSED' : (
                 <div
@@ -85,7 +86,6 @@ class PlaceIndexItem extends React.Component {
                 </div>
             )
             }
-          </a>
       </div>
       )
     }

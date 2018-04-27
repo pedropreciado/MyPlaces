@@ -6,7 +6,7 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const regeneratorRuntime = require("regenerator-runtime");
 
-const key = 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
+const key = process.env.GOOGLE_API_KEY || 'AIzaSyCQbp4QicSsS_PtZWRJpBPaOd5jJBY1Dy0';
 const Flag = require('../utils/node_colors');
 const extractDetails = require('../utils/details_parser');
 const getBusyHours = require('../utils/getBusy');

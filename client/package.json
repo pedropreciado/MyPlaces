@@ -26,7 +26,8 @@
     "serviceworker-webpack-plugin": "^1.0.0-alpha02",
     "socket.io": "^2.1.0",
     "socket.io-client": "^2.1.0",
-    "webpack": "^3.11.0"
+    "webpack": "^3.11.0",
+    "zipcodes": "^6.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,11 +1,17 @@
 html {
-  /* background-image: url('./images/sf.jpeg'); */
+  background-image: url('./assets/images/white_cafe.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
   /* background-color: #3b4d56; */
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   color: rgb(51, 51, 51);
   font-family: 'Roboto', sans-serif;
   /* font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
 
+
+}
+
+body {
 
 }
 
@@ -47,7 +53,6 @@ a {
 .place-item-green, .place-item-red {
   font-size: 1.5em;
   color: white;
-  overflow: hidden;
   text-align: center;
   display: flex;
   flex-flow: column;
@@ -59,7 +64,6 @@ a {
   margin: 20px;
   overflow:hidden;
   position: relative;
-  border-bottom: .5px solid #D6D6D6;
 }
 
 .place-item-green:hover, .place-item-red:hover {
@@ -122,7 +126,7 @@ left: 0px;
 right: 0px;
 bottom: 0px;
 overflow-y: scroll;
-border-top: .5px solid white;
+
 }
 
 #search-index-item, #search-index-item-green {
@@ -161,7 +165,7 @@ border-top: .5px solid white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: .5px solid #D6D6D6;
+  /* border-bottom: .5px solid #D6D6D6; */
   padding-left: 20px;
   padding-right: 20px;
 }
@@ -257,7 +261,7 @@ input:-webkit-autofill {
   display: flex;
   justify-content: space-between;
   margin: 3%;
-  border-bottom: 3px solid #fafafa;
+  border-bottom: 3px solid transparent;
 }
 
 #delete-place-button {
@@ -308,4 +312,19 @@ input:-webkit-autofill {
 #place-item-initial {
   display: flex;
   flex-direction: column;
+}
+
+#zipcode-input {
+  border: none;
+  width: 100%;
+  font-weight: 100;
+}
+
+#zipcode-input::placeholder {
+  font-size: 1em;
+  font-weight: 100;
+}
+
+#zipcode-form {
+  width: 35%;
 }

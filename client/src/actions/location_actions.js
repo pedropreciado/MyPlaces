@@ -1,18 +1,10 @@
 export const RECEIVE_LOCATION = 'RECEIVE_LOCATION';
+export const RECEIVE_LOCATION_ERROR = 'RECEIVE_LOCATION_ERROR';
+export const CLEAR_LOCATION_ERROR = 'CLEAR_LOCATION_ERROR';
 
-const options = {
-}
-
-function onError(err) {
-  console.error(err);
-}
+const ZipCode = require('zipcodes');
 
 export const fetchLocation = () => dispatch => {
-
-  // setTimeout(() => {
-  //   dispatch(receiveLocation({ currentLocation: '37.746555,-122.418725' }))
-  // }, 2000)
-
   window.navigator
     .geolocation
     .getCurrentPosition((pos) => {
@@ -22,10 +14,35 @@ export const fetchLocation = () => dispatch => {
       dispatch(receiveLocation({
         currentLocation:`${lat},${long}`
       }));
-    }, onError)
+
+      dispatch(clearLocationError())
+    }, (err) => {
+      dispatch(receiveLocationError({ error: 'timedout'}))
+    }, { timeout: 10000 })
+}
+
+export const setZipcode = (zipcode) => dispatch => {
+  let locationObj = ZipCode.lookup(zipcode);
+  let coors = `${locationObj.latitude}, ${locationObj.longitude}`;
+
+  dispatch(receiveLocation(
+    {
+    currentLocation: coors
+  }))
+  dispatch(clearLocationError())
+
 }
 
 const receiveLocation = (location) => ({
   type: RECEIVE_LOCATION,
   location
+})
+
+const receiveLocationError = (err) => ({
+  type: RECEIVE_LOCATION_ERROR,
+  err
+})
+
+const clearLocationError = () => ({
+  type: CLEAR_LOCATION_ERROR
 })
