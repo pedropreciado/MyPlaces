@@ -26,6 +26,9 @@ const PlaceSchema = new mongoose.Schema({
   },
   lastUpdated: {
     type: String
+  },
+  isOpen: {
+    type: Boolean
   }
 });
 

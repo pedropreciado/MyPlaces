@@ -31,7 +31,7 @@ class PlaceIndexItem extends React.Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  setStyle() {
+  componentDidMount() {
     let style = {
       backgroundColor: 'rgba(33, 33, 33, .3)',
       height: `${this.props.place.busyPercentage}%`,
@@ -46,8 +46,6 @@ class PlaceIndexItem extends React.Component {
   handleHover(mouseStatus) {
     this.setState({ mouseStatus })
   }
-
-
 
   renderText(isClosed) {
     let lastUpdated = this.props.place.lastUpdated;

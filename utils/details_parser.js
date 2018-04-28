@@ -7,6 +7,7 @@ function getDetails({ data: { result }}) {
     placeid: result.place_id,
     name: result.name,
     address: result.vicinity,
+    isOpen: result.opening_hours.open_now
   }
 }
 

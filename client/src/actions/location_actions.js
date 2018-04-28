@@ -18,7 +18,7 @@ export const fetchLocation = () => dispatch => {
       dispatch(clearLocationError())
     }, (err) => {
       dispatch(receiveLocationError({ error: 'timedout'}))
-    }, { timeout: 10000 })
+    }, { timeout: 10 })
 }
 
 export const setZipcode = (zipcode) => dispatch => {
