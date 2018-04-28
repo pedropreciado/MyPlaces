@@ -77,7 +77,6 @@ router.route('/favorites')
       place['userId'] = req.query.userId;
 
       console.log(Flag.green, 'Details extracted!');
-      console.log(place);
 
       place.save((err) => {
         if (err) {
@@ -96,8 +95,6 @@ router.route('/favorites')
           });
         }
       });
-
-      getBusyHours();
     })
     .catch((err) => {
       console.log(Flag.red, err);
@@ -125,7 +122,7 @@ router.route('/refresh')
 
     console.log('refresh');
 
-    async function getBusyHours() {
+    async function getBusyHour() {
       let place = await Place.findById(req.query.id);
       // let busyHourData = await BusyHours(place.placeid, process.env.GOOGLE_API_KEY);
       let busyHourData = await BusyHours(place.placeid, key);
@@ -143,7 +140,7 @@ router.route('/refresh')
       res.json(place);
     };
 
-    getBusyHours();
+    getBusyHour();
   });
 
 module.exports = router;
