@@ -1,8 +1,8 @@
 html {
-  background-image: url('./assets/images/cafe.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* background-color: #3b4d56; */
+  background: url('./assets/images/cafe.jpg') no-repeat center center;
+  /* background-position:center; */
+  /* bac/kground-color: #3b4d56; */
+  /* background-color: #f9c4c4; */
   /* background-color: #fafafa; */
   color: rgb(51, 51, 51);
   font-family: 'Roboto', sans-serif;
