@@ -21,6 +21,10 @@ class PlaceIndexItem extends React.Component {
   }
 
   componentDidMount() {
+    if (!this.props.place.busyPercentage) {
+      return;
+    }
+    
     let style = {
       backgroundColor: 'rgba(33, 33, 33, .3)',
       height: `${this.props.place.busyPercentage}%`,
@@ -87,7 +91,7 @@ class PlaceIndexItem extends React.Component {
     let color;
     let isOpen = this.props.place.isOpen;
 
-    
+
 
     if (isOpen) {
       color = 'green';

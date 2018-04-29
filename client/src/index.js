@@ -7,9 +7,9 @@ import * as PlaceAPIUtil from './utils/place_api_util';
 document.addEventListener("DOMContentLoaded", () => {
   let store = configureStore();
 
-  window.onbeforeunload = function() {
-  return "Session will be lost if you leave the page, are you sure?";
-  };
+  // window.onbeforeunload = function() {
+  // return "Session will be lost if you leave the page, are you sure?";
+  // };
 
   const app = document.getElementById("app");
 

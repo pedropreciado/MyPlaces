@@ -184,7 +184,9 @@ overflow-y: scroll;
 
 #session-form {
   max-width: 40%;
-  min-width: 35%;
+  min-width: 40%;
+  max-height: 40%;
+  min-width: 40%;
   background-color: #FFFFFF;
   border-bottom: .5px solid #D6D6D6;
 }
@@ -193,7 +195,7 @@ overflow-y: scroll;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 25%;
+  padding-top: 20%;
 }
 
 .session-input {
