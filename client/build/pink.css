@@ -212,17 +212,17 @@ color: #f9c4c4;
   font-size: x-large;
   border: none;
   padding: 2%;
-  color: #f9c4c4;
+  color: black;
   font-weight: lighter;
+  border-bottom-width: 0px;
 }
 
 .session-submit:hover {
   /* border-bottom: .5px solid rgb(51, 51, 51); */
   /* background-color: rgb(51, 51, 51); */
-  color: #53d869;
   cursor: pointer;
-  transition: .5s;
-  border: none;
+  border-bottom: .5px solid black;
+  transition: 2s;
 }
 
 .session-submit:active {

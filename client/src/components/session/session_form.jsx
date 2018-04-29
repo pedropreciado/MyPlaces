@@ -129,13 +129,14 @@ class SessionForm extends React.Component {
     let formType = this.state.formType;
 
     return (
-      <form id='session-form' autoComplete='off'>
+      <div id='session-container'>
+        <form id='session-form' autoComplete='off'>
           <h1 id='session-title'>yooshe</h1>
           <a style={{ color: 'red' }}>
-          {
-            this.props.errors
-          }
-        </a>
+            {
+              this.props.errors
+            }
+          </a>
           {
             this.renderForm()
           }
@@ -152,7 +153,8 @@ class SessionForm extends React.Component {
             onClick={(event) => this.toggleForm(event)}
             value={formType === 'login' ? 'signup' : 'login'}
             />
-      </form>
+        </form>
+      </div>
     )
   }
 }

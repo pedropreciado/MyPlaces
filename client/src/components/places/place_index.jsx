@@ -113,11 +113,9 @@ class PlaceIndex extends React.Component {
 
             return (
               <PlaceIndexItem
-                key={place._id}
-                place={place}
+                key={place._id} place={place}
                 deleteFavorite={this.props.deleteFavorite}
-                handleDrag={this.handleDrag}
-                handleStop={this.handleStop}
+                handleDrag={this.handleDrag} handleStop={this.handleStop}
                 refresh={this.props.refresh}
                 />
             )
@@ -141,8 +139,8 @@ export default PlaceIndex;
 const STYLES = {
   sidebar: {
     width: '40%',
-    backgroundColor: 'black',
-    color: '#f9c4c4',
+    backgroundColor: '#fafafa',
+    color: 'white',
     opacity: 5
   }
 }

@@ -36,7 +36,7 @@ class PlaceIndexItem extends React.Component {
     this.setState({ mouseStatus })
   }
 
-  renderText(isClosed) {
+  renderText(isOpen) {
     let lastUpdated = this.props.place.lastUpdated;
     let dateObj = new Date(lastUpdated);
     let time = TimeFormatter(dateObj);
@@ -58,14 +58,17 @@ class PlaceIndexItem extends React.Component {
 
           <a id='percent-busy'>
             {
-              isClosed ? '' :
-              this.props.place.busyPercentage
+              !isOpen
+              ? ''
+              : this.props.place.busyPercentage
               ? this.props.place.busyPercentage + '% busy'
               : 'Click to see busyPercentage'
             }
           </a>
             {
-              isClosed ? 'CLOSED' : (
+              !isOpen
+              ? 'CLOSED'
+              : (
                 <div
                   id='percentage'
                   style={this.state.style}
@@ -82,12 +85,14 @@ class PlaceIndexItem extends React.Component {
 
     const place = this.props.place;
     let color;
-    let isClosed = this.props.place.busyPercentage === 0;
+    let isOpen = this.props.place.isOpen;
 
-    if (isClosed) {
-      color = 'red';
-    } else {
+    
+
+    if (isOpen) {
       color = 'green';
+    } else {
+      color = 'red';
     }
 
     return (
@@ -111,7 +116,7 @@ class PlaceIndexItem extends React.Component {
               }</a>
           </div>
           {
-            this.renderText(isClosed)
+            this.renderText(isOpen)
           }
         </div>
     )

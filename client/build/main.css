@@ -1,18 +1,23 @@
 html {
-  background: url('./assets/images/cafe.jpg') no-repeat center center;
   /* background-position:center; */
   /* bac/kground-color: #3b4d56; */
   /* background-color: #f9c4c4; */
-  /* background-color: #fafafa; */
+  background-color: rgb(51, 51, 51);
   color: rgb(51, 51, 51);
   font-family: 'Roboto', sans-serif;
-  /* font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif; */
-
-
+   height: 100%;
 }
 
 body {
+   height: 100%;
+}
 
+#bg {
+  background-image: url('./assets/images/cafe.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 form {
@@ -181,9 +186,14 @@ overflow-y: scroll;
   max-width: 40%;
   min-width: 35%;
   margin: 0 auto;
-  margin-top: 10%;
   background-color: #FFFFFF;
   border-bottom: .5px solid #D6D6D6;
+}
+
+#session-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .session-input {
