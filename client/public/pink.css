@@ -262,7 +262,8 @@ input:-webkit-autofill {
 }
 
 #sidebar-open-button:hover {
-  background: #E9E7E2;
+  background: black;
+  color: #f9c4c4;
   width: 6%;
   transition: .25s;
   cursor: pointer;
