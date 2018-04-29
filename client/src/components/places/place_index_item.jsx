@@ -1,18 +1,7 @@
 import React from 'react';
 import PlaceItemOptions from './place_item_options';
 import Draggable from 'react-draggable';
-
-// formatAMPM from => https://stackoverflow.com/a/8888498
-function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'pm' : 'am';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
-  return strTime;
-}
+import TimeFormatter from '../../utils/time_formatter';
 
 class PlaceIndexItem extends React.Component {
   constructor(props) {
@@ -50,7 +39,7 @@ class PlaceIndexItem extends React.Component {
   renderText(isClosed) {
     let lastUpdated = this.props.place.lastUpdated;
     let dateObj = new Date(lastUpdated);
-    let time = formatAMPM(dateObj);
+    let time = TimeFormatter(dateObj);
     let date = dateObj.toDateString();
 
     if (this.state.mouseStatus === 'entered' && lastUpdated) {

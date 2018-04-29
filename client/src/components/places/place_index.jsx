@@ -4,6 +4,7 @@ import SideBar from 'react-sidebar';
 import PlaceFormContainer from './place_form_container';
 import SearchIndexContainer from '../searches/search_index_container';
 import SessionFormContainer from '../session/session_form_container';
+import TimeFormatter from '../../utils/time_formatter';
 
 class PlaceIndex extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class PlaceIndex extends React.Component {
   }
 
   componentDidMount() {
+
     let texts = [
       'yooshe',
       this.props.places.length
@@ -37,13 +39,18 @@ class PlaceIndex extends React.Component {
       `Hello, ${this.props.currentUser.username}.`
     ]
 
+
     let i = 0;
 
     setInterval(() => {
+      var dateObj = new Date();
 
-      this.setState({ text: texts[i] });
-
-      i = (i + 1) % texts.length;
+      if (i === 3) {
+        let d = new Date();
+        this.setState({ text: `${TimeFormatter(d)}` })
+      } else {
+        this.setState({ text: texts[++i % texts.length] });
+      }
     }, 5000)
   }
 
@@ -134,8 +141,8 @@ export default PlaceIndex;
 const STYLES = {
   sidebar: {
     width: '40%',
-    backgroundColor: 'white',
-    color: 'black',
+    backgroundColor: 'black',
+    color: '#f9c4c4',
     opacity: 5
   }
 }

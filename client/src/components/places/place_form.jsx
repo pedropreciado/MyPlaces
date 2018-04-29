@@ -30,7 +30,7 @@ class PlaceForm extends React.Component {
             <input
               id='zipcode-input'
               type='text'
-              placeholder='Click here to enter your zipcode'
+              placeholder='Enter your zipcode'
               value={this.state.zipcode}
               onChange={
                 (event) =>

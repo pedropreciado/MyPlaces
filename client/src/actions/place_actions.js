@@ -10,10 +10,10 @@ export const REMOVE_FAVORITE_PLACE = 'REMOVE_FAVORITE_PLACE';
 
 export const subscribeToUpdater = (customId) => dispatch => {
 
-  socket.on('newPlaces', (places) => {
-    dispatch(receiveFavoritePlaces(places));
-
-  })
+  // socket.on('newPlaces', (places) => {
+  //   dispatch(receiveFavoritePlaces(places));
+  //
+  // })
 
   // socket.emit('subscribeToUpdater', { customId });
 }
