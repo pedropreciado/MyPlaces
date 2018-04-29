@@ -253,8 +253,8 @@ input:-webkit-autofill {
   font-size: 2em;
   padding-right: 1%;
   position: absolute;
-  bottom: 8%;
-  height: 20%;
+  bottom: -10%;
+  height: 110%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
