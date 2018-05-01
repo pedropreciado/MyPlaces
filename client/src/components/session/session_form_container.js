@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 
   let errors = state.session.errors;
 
-  if (errors.split(' ')[0] === 'E11000') {
+  if (errors) {
     errors = 'User already exists!'
   }
 

@@ -4,7 +4,7 @@ const Flag = require('./node_colors');
 const Place = require('../models/place');
 const getPercentage = require('./get_percentage');
 const regeneratorRuntime = require("regenerator-runtime");
-const openStatus = require('openStatus');
+const openStatus = require('./open_status');
 
 async function getBusyHours() {
   let completed = 0;
@@ -20,16 +20,29 @@ async function getBusyHours() {
     let busyHourData = await BusyHours(place.placeid, key);
     console.log(Flag.green, `busyHours recieved for: ${place.name}`);
 
-    let placeDocument = await Place.findById(place._id);
 
-    placeDocument['busyPercentage'] = getPercentage(busyHourData);
-    
-    placeDocument['isOpen'] = openStatus(place.periods);
-    console.log(place.name, 'is open?:', place.isOpen);
 
-    placeDocument['lastUpdated'] = new Date().toString();
 
-    placeDocument.save((err) => {
+
+    place['busyPercentage'] = getPercentage(busyHourData);
+
+
+
+
+
+    if (place.periods) {
+      place['isOpen'] = openStatus(place.periods);
+      console.log(place.name, 'is open?:', place.isOpen);
+    } else {
+      place['isOpen'] = true;
+    }
+
+
+
+
+
+    place['lastUpdated'] = new Date().toString();
+    place.save((err) => {
       if (err);
       console.log(Flag.red, err);
     })

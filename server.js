@@ -40,7 +40,7 @@ setInterval(() => {
   }
 
   console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60);
+}, 1000 * 60 * 20);
 // //
 // // // initializeSocket();
 // let clients = [];

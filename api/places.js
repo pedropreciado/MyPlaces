@@ -29,13 +29,11 @@ router.route('/places')
     }
 
     axios.get(
-      // `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${process.env.GOOGLE_API_KEY}`,
       `https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=${key}`,
       { params }
     )
     .then((response) => {
       console.log('SUCCESS!', "\x1b[36m");
-      console.log(response);
       res.json(response.data.results);
     })
     .catch((err) => {
@@ -71,7 +69,7 @@ router.route('/favorites')
     )
     .then((response) => {
       console.log(Flag.green, 'Response from Google success!');
-      
+
       let place = new Place(extractDetails(response));
       place['userId'] = req.query.userId;
 
@@ -131,15 +129,13 @@ router.route('/refresh')
       place['busyPercentage'] = getPercentage(busyHourData);
       place['lastUpdated'] = new Date().toString();
 
-      place.save((err) => {
+    place.save((err) => {
         if (err);
         console.log(Flag.red, err);
       })
 
       res.json(place);
     };
-
-    getBusyHour();
   });
 
 module.exports = router;
