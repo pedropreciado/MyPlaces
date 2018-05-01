@@ -8,7 +8,7 @@ function getDetails({ data: { result }}) {
     placeid: result.place_id,
     name: result.name,
     address: result.vicinity,
-    isOpen: result.openStatus(result.opening_hours.periods),
+    isOpen: openStatus(result.opening_hours.periods),
     periods: result.opening_hours.periods
   }
 }

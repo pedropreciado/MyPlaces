@@ -12,9 +12,7 @@ function isOpen(periods) {
     let period = periods[i];
 
     if (period.open.day === day) {
-
       todaysPeriod = period;
-      console.log(todaysPeriod);
       break;
     }
   }
@@ -27,9 +25,14 @@ function isOpen(periods) {
     return;
   }
 
-  let result = currentTime > periods[day].open.time && currentTime <  periods[day].close.time;
-  console.log(' isopen?: ', result);
-  return result;
+  let open = periods[day].open.time
+  let close = periods[day].close.time
+
+  if (close < open) {
+    return currentTime > open || currentTime < close;
+  } else {
+    return currentTime > open && currentTime < close;
+  }
 }
 
 module.exports = isOpen;
