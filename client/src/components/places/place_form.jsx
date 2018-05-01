@@ -15,10 +15,27 @@ class PlaceForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.showError = this.showError.bind(this);
+    this.handleZipcode = this.handleZipcode.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchLocation();
+  }
+
+  handleZipcode() {
+    var isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.state.zipcode);
+    if (!isValidZip) {
+      
+      this.setState({ zipcode: 'Invalid zip!' });
+
+      setTimeout((
+        this.setState({ zipcode: '' })
+      ), 2000)
+
+      return;
+    }
+
+    this.props.setZipcode(this.state.zipcode);
   }
 
   renderCurrentLocation() {
@@ -44,7 +61,7 @@ class PlaceForm extends React.Component {
 
               !this.state.zipcode
               ? this.setState({ error: 'enter zipcode'})
-              : this.props.setZipcode(this.state.zipcode)}
+              : this.handleZipcode()}
             }
               />
         </form>
