@@ -27,7 +27,8 @@ class PlaceIndexItem extends React.Component {
 
     let style = {
       backgroundColor: 'rgba(33, 33, 33, .3)',
-      height: `${newProps.place.busyPercentage}%`
+      height: `${newProps.place.busyPercentage}%`,
+      transition: '2s'
     }
 
     this.setState({ style })
