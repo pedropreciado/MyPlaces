@@ -10,7 +10,6 @@ const LocationReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_LOCATION:
-    console.log(action);
       return merge({}, oldState, action.location);
     case RECEIVE_LOCATION_ERROR:
       return merge({}, oldState, action.err)

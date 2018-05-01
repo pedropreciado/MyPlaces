@@ -37,7 +37,6 @@ class PlaceIndexItem extends React.Component {
   }
 
   handleHover(mouseStatus) {
-    console.log(mouseStatus);
     this.setState({ mouseStatus })
   }
 
