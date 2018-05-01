@@ -103,6 +103,7 @@ router.route('/favorites')
   .delete((req, res) => {
     console.log(Flag.red, 'DELETE REQUESTED');
 
+
     Place.findById(req.query.id, (err, place) => {
       if (err)
       console.log(Flag.red, err);
@@ -141,7 +142,7 @@ router.route('/refresh')
 
 
     place.save((err) => {
-        if (err);
+        if (err)
         console.log(Flag.red, err);
       })
 

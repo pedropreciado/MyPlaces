@@ -40,7 +40,7 @@ setInterval(() => {
   }
 
   console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60 * 5);
+}, 1000 * 60 * 20);
 // //
 // // // initializeSocket();
 let clients = [];
@@ -66,7 +66,7 @@ io.on('connection', (client) => {
         console.log('SENT ', places.length, ' to ', client.customId);
         client.emit('newPlaces', places);
       });
-    }, 1000 * 60 * 10);
+    }, 1000 * 60 * 30);
   });
 
   client.on('setCustomId', (data) => {

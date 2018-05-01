@@ -20,7 +20,20 @@ class PlaceIndexItem extends React.Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(newProps) {
+    if (!newProps.place.busyPercentage) {
+      return;
+    }
+
+    let style = {
+      backgroundColor: 'rgba(33, 33, 33, .3)',
+      height: `${newProps.place.busyPercentage}%`
+    }
+
+    this.setState({ style })
+  }
+
+  componentWillMount() {
     if (!this.props.place.busyPercentage) {
       return;
     }
@@ -100,14 +113,18 @@ class PlaceIndexItem extends React.Component {
     return (
         <div
           className={`place-item-${color}`}
-          onClick={() => this.props.refresh(place._id)}
+          onClick={(event) => this.props.refresh(place._id)}
           onMouseEnter={() => this.handleHover('entered')}
           onMouseLeave={() => this.handleHover('left')}
           >
           <div id='place-item-header'>
             <a
               id='delete-this.props.place-button'
-              onClick={() => this.props.deleteFavorite(this.props.place._id)}
+              onClick={(event) => {
+                event.stopPropagation()
+
+                this.props.deleteFavorite(this.props.place._id)
+                }}
               >
               X
             </a>
