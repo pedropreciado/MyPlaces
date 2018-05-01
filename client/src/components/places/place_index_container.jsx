@@ -18,7 +18,9 @@ const mapStateToProps = (state) => {
   let currentUser = state.session.currentUser;
 
   return {
-    places: places.sort((a, b) => { return a.busyPercentage - b.busyPercentage }),
+    places: places.sort((a, b) => {
+      return b.busyPercentage - a.busyPercentage 
+    }),
     currentUser
   }
 }
