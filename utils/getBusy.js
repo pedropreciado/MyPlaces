@@ -39,8 +39,6 @@ async function getBusyHours() {
 
 
 
-
-
     place['lastUpdated'] = new Date().toString();
     place.save((err) => {
       if (err);

@@ -12,10 +12,6 @@ const mapStateToProps = (state) => {
 
   let errors = state.session.errors;
 
-  if (errors) {
-    errors = 'User already exists!'
-  }
-
   return {
     currentUser,
     errors

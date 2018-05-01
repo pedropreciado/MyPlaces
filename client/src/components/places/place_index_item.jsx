@@ -24,7 +24,7 @@ class PlaceIndexItem extends React.Component {
     if (!this.props.place.busyPercentage) {
       return;
     }
-    
+
     let style = {
       backgroundColor: 'rgba(33, 33, 33, .3)',
       height: `${this.props.place.busyPercentage}%`,
@@ -37,6 +37,7 @@ class PlaceIndexItem extends React.Component {
   }
 
   handleHover(mouseStatus) {
+    console.log(mouseStatus);
     this.setState({ mouseStatus })
   }
 
@@ -90,8 +91,6 @@ class PlaceIndexItem extends React.Component {
     const place = this.props.place;
     let color;
     let isOpen = this.props.place.isOpen;
-
-
 
     if (isOpen) {
       color = 'green';

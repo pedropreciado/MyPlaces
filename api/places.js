@@ -12,6 +12,7 @@ const extractDetails = require('../utils/details_parser');
 const getBusyHours = require('../utils/getBusy');
 const getPercentage = require('../utils/get_percentage');
 const BusyHours = require('busy-hours');
+const openStatus = require('../utils/open_status');
 
 router.route('/places')
   .get((req, res) => {
@@ -72,7 +73,7 @@ router.route('/favorites')
 
       let place = new Place(extractDetails(response));
       place['userId'] = req.query.userId;
-
+      place['isOpen'] = true;
       console.log(Flag.green, 'Details extracted!');
 
       place.save((err) => {
@@ -121,13 +122,23 @@ router.route('/refresh')
 
     async function getBusyHour() {
       let place = await Place.findById(req.query.id);
-      // let busyHourData = await BusyHours(place.placeid, process.env.GOOGLE_API_KEY);
-      let busyHourData = await BusyHours(place.placeid, key);
 
-      console.log(Flag.green, `busyHours recieved for: ${place.name}`);
+
+
+      let busyHourData = await BusyHours(place.placeid, key);
+      let isOpen = openStatus(place.periods);
+
+
+      console.log(isOpen);
+      console.log(Flag.green, `busyHours and open status recieved for: ${place.name}`);
+
+
 
       place['busyPercentage'] = getPercentage(busyHourData);
+      place['isOpen'] = isOpen;
       place['lastUpdated'] = new Date().toString();
+
+
 
     place.save((err) => {
         if (err);
@@ -136,6 +147,8 @@ router.route('/refresh')
 
       res.json(place);
     };
+
+    getBusyHour();
   });
 
 module.exports = router;

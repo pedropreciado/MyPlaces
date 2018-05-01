@@ -9,13 +9,12 @@ export const RECEIVE_FAVORITE_PLACE = 'RECEIVE_FAVORITE_PLACE';
 export const REMOVE_FAVORITE_PLACE = 'REMOVE_FAVORITE_PLACE';
 
 export const subscribeToUpdater = (customId) => dispatch => {
+  socket.on('newPlaces', (places) => {
+    dispatch(receiveFavoritePlaces(places));
 
-  // socket.on('newPlaces', (places) => {
-  //   dispatch(receiveFavoritePlaces(places));
-  //
-  // })
+  })
 
-  // socket.emit('subscribeToUpdater', { customId });
+  socket.emit('subscribeToUpdater', { customId });
 }
 
 export const fetchFavorites = (id) => dispatch => {

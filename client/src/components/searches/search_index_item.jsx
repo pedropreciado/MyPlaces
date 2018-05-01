@@ -29,6 +29,7 @@ class SearchIndexItem extends React.Component {
     return (
       <div
         id={`search-index-item${this.state.color}`}
+        key={place._id}
         onClick={this.handleClick}
         >
         <a>{
