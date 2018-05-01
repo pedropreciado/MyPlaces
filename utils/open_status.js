@@ -7,7 +7,9 @@ function isOpen(periods) {
   minutes = minutes < 10 ? '0' + minutes : minutes;
   let currentTime = `${today.getHours()}${minutes}`
 
-  return currentTime > periods[day].open.time && currentTime <  periods[day].close.time;
+  let result = currentTime > periods[day].open.time && currentTime <  periods[day].close.time;
+  console.log(' isopen?: ', result);
+  return result;
 }
 
 module.exports = isOpen;

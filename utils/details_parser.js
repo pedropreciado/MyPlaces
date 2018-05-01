@@ -1,3 +1,5 @@
+const openStatus = require('./open_status');
+
 const Flag = require('./node_colors');
 
 function getDetails({ data: { result }}) {
@@ -7,7 +9,8 @@ function getDetails({ data: { result }}) {
     placeid: result.place_id,
     name: result.name,
     address: result.vicinity,
-    isOpen: result.opening_hours.open_now
+    isOpen: result.isOpen,
+    periods: result.opening_hours.periods
   }
 }
 

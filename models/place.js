@@ -29,7 +29,8 @@ const PlaceSchema = new mongoose.Schema({
   },
   isOpen: {
     type: Boolean
-  }
+  },
+  periods: [{}]
 });
 
 const Place = mongoose.model('Place', PlaceSchema);

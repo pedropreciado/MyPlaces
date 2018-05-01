@@ -29,7 +29,7 @@ const Flag = require('./utils/node_colors');
 console.log(Flag.yellow, Date())
 //
 setInterval(() => {
-  console.log(Flag.red, 'Getting all busy hours!');
+  console.log(Flag.red, 'updating all places!!');
 
   try {
     getBusyHours();
@@ -40,7 +40,7 @@ setInterval(() => {
   }
 
   console.log(Flag.yellow, 'on: ', Date())
-}, 1000 * 60 * 45);
+}, 1000 * 60);
 // //
 // // // initializeSocket();
 // let clients = [];
