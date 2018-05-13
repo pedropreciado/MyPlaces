@@ -2,7 +2,7 @@
 
 [yooshe on Heroku](https://yooshe.herokuapp.com)
 
-yooshe is a single page application built with React + Redux, Socket.io, Express.js, GooglePlacesAPI, and MongoDB. yooshe gives the user a place to add their usual places to eat or drink, and provides real-time data on how busy those places are. yooshe's design was influenced by Apple's [Human Interface Guidelines](https://developer.apple.com/design/).
+yooshe is a single page application built with React + Redux, Socket.io, Express.js, GooglePlacesAPI, and MongoDB. yooshe gives the user a place to add their usual places to eat or drink, and provides real-time data on how busy those places are. 
 
 ## Features and Implementation
 
