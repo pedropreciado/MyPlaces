@@ -1,6 +1,5 @@
 import React from 'react';
 import PlaceItemOptions from './place_item_options';
-import Draggable from 'react-draggable';
 import TimeFormatter from '../../utils/time_formatter';
 
 class PlaceIndexItem extends React.Component {

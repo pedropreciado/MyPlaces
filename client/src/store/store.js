@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { logger } from 'redux-logger';
+// import { logger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import * as PlaceAPIUtil from '../utils/place_api_util';
 import RootReducer from '../reducers/root_reducer';

@@ -13,11 +13,11 @@ import { AuthRoute, ProtectedRoute } from "../utils/route_util";
 const App = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-    <Switch>
-      <Route exact path='/' component={SessionFormContainer} />
-      <AuthRoute path='/auth' component={SessionFormContainer} />
-      <ProtectedRoute path='/places' component={PlaceIndexContainer}/>
-  </Switch>
+      <Switch>
+        <Route exact path='/' component={SessionFormContainer} />
+        <AuthRoute path='/auth' component={SessionFormContainer} />
+        <ProtectedRoute path='/places' component={PlaceIndexContainer}/>
+      </Switch>
     </ HashRouter>
   </Provider>
 )

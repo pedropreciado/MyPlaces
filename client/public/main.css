@@ -2,7 +2,7 @@ html {
   /* background-position:center; */
   /* bac/kground-color: #3b4d56; */
   /* background-color: #f9c4c4; */
-  background-color: rgb(51, 51, 51);
+  background-color: #424242;
   color: rgb(51, 51, 51);
   font-family: 'Roboto', sans-serif;
    height: 100%;
@@ -13,7 +13,7 @@ body {
 }
 
 #bg {
-  background-image: url('./assets/images/cafe.jpg');
+  /* background-image: url('./assets/images/cafe.jpg'); */
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,6 +44,7 @@ a {
   flex-flow: row;
   justify-content: space-around;
   flex-wrap: wrap;
+  padding: 2%;
 }
 
 .place-item-green {
@@ -67,6 +68,7 @@ a {
   min-height: 200px;
   max-height: 200px;
   margin: 20px;
+  border-radius: 5px;
   overflow:hidden;
   position: relative;
 }
@@ -93,12 +95,12 @@ a {
   border: none;
   background: none;
   padding: 2%;
-  color: rgb(33, 33, 33);
+  color: white;
   font-weight: lighter;
 }
 
 ::placeholder {
-  color: rgb(51, 51, 51);
+  color: #424242;
   font-size: x-large;
 }
 
@@ -160,12 +162,15 @@ overflow-y: scroll;
 }
 
 #trashcan {
-  background: white;
-  color: black;
+  background: #212121;
+  color: white;
+  width: 90%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   text-align: center;
   font-size: 2.5em;
   margin: 0 auto;
-  min-height: 10%;
+  min-height: 11%;
   max-height: 20%;
   display: flex;
   justify-content: space-between;
@@ -183,37 +188,40 @@ overflow-y: scroll;
 }
 
 #session-form {
-  max-width: 40%;
-  min-width: 40%;
-  max-height: 40%;
-  min-width: 40%;
-  background-color: #FFFFFF;
-  border-bottom: .5px solid #D6D6D6;
+  max-width: 45%;
+  min-width: 41%;
+  max-height: 60%;
+  min-height: 50%;
+  background-color: #212121;
+  /* border-bottom: .5px solid #D6D6D6; */
+  border-radius: 5px;
 }
 
 #session-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 20%;
+  padding-top: 15%;
 }
 
 .session-input {
   width: 90%;
+  background: none;
   font-size: x-large;
   border: none;
   padding: 2%;
-  color: rgb(51, 51, 51);
+  color: white;
   font-weight: lighter;
   margin-bottom: 0;
 }
 
 .session-submit {
+  background: none;
   width: 25%;
   font-size: x-large;
   border: none;
   padding: 2%;
-  color: rgb(51, 51, 51);
+  color: white;
   font-weight: lighter;
 }
 
@@ -248,9 +256,9 @@ input:-webkit-autofill {
 }
 
 #sidebar-open-button {
-  background: white;
-  color: black;
-  width: 4%;
+  background: #212121;
+  color: white;
+  width: 5%;
   font-size: 2em;
   padding-right: 1%;
   position: absolute;
@@ -259,11 +267,12 @@ input:-webkit-autofill {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #sidebar-open-button:hover {
-  background: #E9E7E2;
-  width: 6%;
+  width: 7%;
   transition: .5s;
   cursor: pointer;
 }
@@ -306,8 +315,11 @@ input:-webkit-autofill {
 
 #session-title {
   width: 100%;
+  color: white;
+  font-weight: lighter;
+  font-size: 2.5em;
   text-align: center;
-  border-bottom: .5px solid #D6D6D6;
+  border-bottom: .5px solid #616161;
   padding-bottom: 10px;
 }
 
