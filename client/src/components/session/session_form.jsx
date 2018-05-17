@@ -20,6 +20,10 @@ class SessionForm extends React.Component {
     this.renderForm = this.renderForm.bind(this);
   }
 
+  componentWillMount() {
+    this.props.fetchLocalUser();
+  }
+
   handleChange(key, value) {
     this.setState({ [key]: value });
   }

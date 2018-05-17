@@ -4,6 +4,7 @@ import {
   login,
   logout,
   signup,
+  fetchLocalUser
 } from '../../actions/session_actions';
 import { fetchFavorites } from '../../actions/place_actions';
 
@@ -15,16 +16,17 @@ const mapStateToProps = (state) => {
   return {
     currentUser,
     errors
-  }
-}
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (user) => dispatch(login(user)),
     logout: () => dispatch(logout()),
     signup: (user) => dispatch(signup(user)),
-  }
-}
+    fetchLocalUser: () => dispatch(fetchLocalUser())
+  };
+};
 
 export default connect(
   mapStateToProps,
