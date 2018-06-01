@@ -352,3 +352,9 @@ input:-webkit-autofill {
 #zipcode-form {
   width: 35%;
 }
+
+#refresh-all-button {
+  padding: 10%;
+  text-align: center;
+  color: white;
+}
